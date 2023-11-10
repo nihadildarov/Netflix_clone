@@ -16,18 +16,6 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        with(binding){
-            spMonths.onItemSelectedListener = object:AdapterView.OnItemSelectedListener{
-                override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    Toast.makeText(this@MainActivity,"You selected ${adapterView?.getItemAtPosition(position).toString()}",Toast.LENGTH_LONG).show()
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-
-                }
-
-            }
-        }
 
 
     }
