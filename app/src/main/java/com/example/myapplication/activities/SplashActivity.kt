@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -17,10 +17,10 @@ class SplashActivity : AppCompatActivity() {
 
         binding.imageView.alpha = 0f
         binding.imageView.animate().setDuration(3500).alpha(1f).withEndAction{
-            val i = Intent(this,MainActivity::class.java)
+            val i = Intent(this, MainActivity::class.java)
             startActivity(i)
-            overrideActivityTransition(OVERRIDE_TRANSITION_OPEN,android.R.anim.fade_in,android.R.anim.fade_out)
-            //overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+                //overrideActivityTransition(OVERRIDE_TRANSITION_CLOSE,android.R.anim.slide_in_left,android.R.anim.slide_out_right)
+            overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right)
             finish()
         }
 
