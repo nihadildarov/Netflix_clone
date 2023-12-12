@@ -1,14 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SignInEmailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back_arrow"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="@id/imgHeader"
+        app:layout_constraintBottom_toBottomOf="@id/imgHeader"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/imgHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:src="@drawable/logo_netflix"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="9dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailTil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgHeader"
+        app:layout_constraintBottom_toTopOf="@id/passwordTil"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginHorizontal="26dp"
+        app:boxBackgroundColor="@color/divider"
+        app:hintTextColor="@color/white"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="filled"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:hint="Email or phone number"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/emailTil"
+        app:layout_constraintEnd_toEndOf="@id/emailTil"
+        app:layout_constraintTop_toBottomOf="@id/emailTil"
+        app:layout_constraintBottom_toTopOf="@id/btnSignIn"
+        app:boxBackgroundColor="@color/divider"
+        app:hintTextColor="@color/white"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="filled"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sign in"
+        app:layout_constraintTop_toBottomOf="@id/passwordTil"
+        app:layout_constraintStart_toStartOf="@id/emailTil"
+        app:layout_constraintEnd_toEndOf="@id/emailTil"
+        app:layout_constraintBottom_toTopOf="@id/txtNeedHelp"
+        android:layout_marginVertical="20dp"
+        android:padding="10dp"
+        android:textSize="20sp"
+        style="@style/Button.Outline"
+
+
+        />
+
+    <TextView
+        android:id="@+id/txtNeedHelp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/emailTil"
+        app:layout_constraintEnd_toEndOf="@id/emailTil"
+        app:layout_constraintTop_toBottomOf="@id/btnSignIn"
+        app:layout_constraintBottom_toTopOf="@id/txtSignUpNow"
+        android:text="Need help?"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_marginVertical="10dp"/>
+
+
+    <TextView
+        android:id="@+id/txtSignUpNow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="New to Netflix? Sign up now."
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/txtNeedHelp"
+        app:layout_constraintStart_toStartOf="@id/emailTil"
+        app:layout_constraintEnd_toEndOf="@id/emailTil"
+        app:layout_constraintBottom_toTopOf="@+id/txtSignIn_protected_info"
+        android:gravity="center"
+        android:layout_marginVertical="20dp"/>
+
+    <TextView
+        android:id="@+id/txtSignIn_protected_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/signIn_protected_info"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/emailTil"
+        app:layout_constraintEnd_toEndOf="@id/emailTil"
+        app:layout_constraintTop_toBottomOf="@id/txtSignUpNow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginVertical="10dp"/>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
