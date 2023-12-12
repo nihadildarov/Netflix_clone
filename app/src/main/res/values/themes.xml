@@ -25,4 +25,8 @@
         <item name="strokeColor">@color/white</item>
         <item name="strokeWidth">2dp</item>
     </style>
+
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/edt_til_signin_main</item>
+    </style>
 </resources>
