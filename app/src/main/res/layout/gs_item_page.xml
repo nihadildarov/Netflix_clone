@@ -17,6 +17,8 @@
         android:scaleType="fitCenter"
         />
 
+
+
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
