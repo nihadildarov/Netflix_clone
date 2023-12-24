@@ -6,11 +6,6 @@
     app:startDestination="@id/signInMainFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.example.myapplication.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
-    <fragment
         android:id="@+id/getStartedFragment"
         android:name="com.example.myapplication.GetStartedFragment"
         android:label="fragment_get_started"
@@ -35,4 +30,19 @@
         android:name="com.example.myapplication.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/newHotFragment"
+        android:name="com.example.myapplication.NewHotFragment"
+        android:label="fragment_new_hot"
+        tools:layout="@layout/fragment_new_hot" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.myapplication.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/downloadsFragment"
+        android:name="com.example.myapplication.DownloadsFragment"
+        android:label="fragment_downloads"
+        tools:layout="@layout/fragment_downloads" />
 </navigation>

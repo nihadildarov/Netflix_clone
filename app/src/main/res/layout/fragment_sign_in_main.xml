@@ -1,75 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SignInMainFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".SignInMainFragment">
 
     <ImageButton
         android:id="@+id/btnClose"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_close"
-        android:background="@android:color/transparent"
+        android:layout_width="38dp"
+        android:layout_height="44dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
         />
 
     <TextView
         android:id="@+id/txtReadyTo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
         android:text="Ready to watch?"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnClose"
         app:layout_constraintBottom_toTopOf="@id/txtDesc"
-        android:gravity="center"
-        android:layout_marginHorizontal="10dp"
-        app:layout_constraintVertical_chainStyle="packed"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnClose"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/txtDesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Enter your email to create or sign in to your account."
-        app:layout_constraintTop_toBottomOf="@id/txtReadyTo"
-        app:layout_constraintStart_toStartOf="@id/txtReadyTo"
-        app:layout_constraintEnd_toEndOf="@id/txtReadyTo"
-        app:layout_constraintBottom_toTopOf="@id/emailTil"
         android:gravity="center"
-        />
+        android:text="Enter your email to create or sign in to your account."
+        android:textColor="@color/divider"
+        app:layout_constraintBottom_toTopOf="@id/emailTil"
+        app:layout_constraintEnd_toEndOf="@id/txtReadyTo"
+        app:layout_constraintStart_toStartOf="@id/txtReadyTo"
+        app:layout_constraintTop_toBottomOf="@id/txtReadyTo" />
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailTil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/txtReadyTo"
-        app:layout_constraintEnd_toEndOf="@id/txtReadyTo"
-        app:layout_constraintTop_toBottomOf="@id/txtDesc"
-        app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
-        style="@style/LoginTextInputLayoutStyle"
-        app:boxBackgroundMode="filled"
-        app:boxStrokeColor="@color/divider"
         android:layout_marginTop="45dp"
-
+        app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
+        app:layout_constraintEnd_toEndOf="@id/txtReadyTo"
+        app:layout_constraintStart_toStartOf="@id/txtReadyTo"
+        app:layout_constraintTop_toBottomOf="@id/txtDesc"
 
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:inputType="textEmailAddress"
-            />
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -77,23 +73,22 @@
         android:id="@+id/btnGetStarted"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:backgroundTint="@color/red"
         android:text="Get Started"
-        android:textStyle="bold"
         android:textSize="24dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="@id/txtReadyTo"
-        app:layout_constraintEnd_toEndOf="@id/txtReadyTo"
-        app:layout_constraintTop_toBottomOf="@id/emailTil"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/guide"
-        />
+        app:layout_constraintEnd_toEndOf="@id/txtReadyTo"
+        app:layout_constraintStart_toStartOf="@id/txtReadyTo"
+        app:layout_constraintTop_toBottomOf="@id/emailTil" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
