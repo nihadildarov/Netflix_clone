@@ -2,6 +2,8 @@ package com.example.myapplication.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.R
@@ -24,7 +26,20 @@ class MainActivity : AppCompatActivity() {
         val navController = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navHost = navController.navController
         binding.btmNav.setupWithNavController(navHost)
+        btmNavVisibilityControl(navHost)
     }
+    private fun btmNavVisibilityControl(navController: NavController) {
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.getStartedFragment -> binding.btmNav.visibility = View.GONE
+                R.id.signInMainFragment -> binding.btmNav.visibility = View.GONE
+                R.id.signInEmailFragment -> binding.btmNav.visibility = View.GONE
+                else -> binding.btmNav.visibility = View.VISIBLE
+            }
+        }
+    }
+
 
 
 }
