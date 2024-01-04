@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="FAQs"
+        android:id="@+id/menuFAQs"
+        app:showAsAction="collapseActionView"/>
+
+    <item android:id="@+id/menuHelp"
+        android:title="HELP"
+        app:showAsAction="collapseActionView"/>
+
+    <item
+        android:id="@+id/btnprivacy"
+        android:title="Privacy"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/btnLogin"
+        android:title="Login"
+        app:showAsAction="always"
+        />
+</menu>
