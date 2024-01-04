@@ -27,9 +27,27 @@ class GetStartedFragment : Fragment() {
     ): View? {
         binding = FragmentGetStartedBinding.inflate(inflater, container, false)
         setViewPagerAdapter()
+        menuItemClick()
 
 
         return binding.root
+    }
+
+
+
+
+    private fun menuItemClick() {
+
+        binding.toolbar.overflowIcon?.setTint(resources.getColor(R.color.white))
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.title) {
+                "Privacy" -> Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+                "Login" -> Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+                "HELP" -> Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+                "FAQs" -> Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+            }
+            true
+        }
     }
 
 
