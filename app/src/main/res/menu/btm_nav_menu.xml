@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Home"
+    <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
 
-    <item android:title="New &amp; Hot"
+
+    <item
+        android:id="@+id/gamesFragment"
+        android:icon="@drawable/ic_games"
+        android:title="Games" />
+    <item
         android:id="@+id/newHotFragment"
-        android:icon="@drawable/ic_video_library"/>
+        android:icon="@drawable/ic_video_library"
+        android:title="New &amp; Hot" />
 
-    <item android:title="Search"
-        android:id="@+id/searchFragment"
-        android:icon="@drawable/ic_search"/>
-
-    <item android:title="Downloads"
+    <item
         android:id="@+id/downloadsFragment"
-        android:icon="@drawable/ic_download_circle"/>
+        android:icon="@drawable/ic_download_circle"
+        android:title="Downloads" />
 </menu>

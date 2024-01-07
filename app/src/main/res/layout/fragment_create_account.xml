@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".CreateAccountFragment">
+
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="Theme.Material3.DayNight.NoActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/gs_appbar_menu"
+        app:popupTheme="@style/Theme.PopupOverlay.Menu">
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:backgroundTint="@android:color/transparent"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo_netflix"/>
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <TextView
+        android:id="@+id/txtTitleCreateAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Unlimited movies, TV shows &amp; more"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toTopOf="@id/txtDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/txtDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Create an account and we'll send you an email with everything you need to know about Netflix."
+        android:textColor="@color/divider"
+        app:layout_constraintBottom_toTopOf="@id/emailTil"
+        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
+        app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
+        app:layout_constraintTop_toBottomOf="@id/txtTitleCreateAccount"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailTil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        app:layout_constraintBottom_toTopOf="@id/passwordTil"
+        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
+        app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
+        app:layout_constraintTop_toBottomOf="@id/txtDesc"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
+        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
+        app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
+        app:layout_constraintTop_toBottomOf="@id/emailTil"
+        app:layout_constraintVertical_chainStyle="packed"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <CheckBox
+        android:id="@+id/checkBoxEmailMe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Please do not email me Netflix special offers."
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
+        app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
+        app:layout_constraintTop_toBottomOf="@id/passwordTil"
+        app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
+        app:layout_constraintVertical_chainStyle="packed"/>
+
+    <Button
+        android:id="@+id/btnGetStarted"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/btn_get_started"
+        android:text="CREATE ACCOUNT"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:theme="@style/Button.GetStarted"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
+        app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
+        app:layout_constraintTop_toBottomOf="@id/checkBoxEmailMe" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

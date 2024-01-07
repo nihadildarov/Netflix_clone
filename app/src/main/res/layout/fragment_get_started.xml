@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.GetStarted.ui.GetStartedFragment">
+        tools:context=".fragments.getstarted.ui.GetStartedFragment">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/getStartedViewPager"
@@ -25,32 +25,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="Theme.Material3.DayNight.NoActionBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/gs_appbar_menu"
+            app:popupTheme="@style/Theme.PopupOverlay.Menu">
 
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:menu="@menu/gs_appbar_menu"
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:backgroundTint="@android:color/transparent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                style="Theme.Material3.DayNight.NoActionBar"
-                app:popupTheme="@style/Theme.PopupOverlay.Menu"
-                >
-
-
-
-                <ImageButton
-                    android:scaleType="fitXY"
-                    android:backgroundTint="@android:color/transparent"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_netflix_short_logo"
-                    android:padding="8dp"
-                    />
-            </com.google.android.material.appbar.MaterialToolbar>
+                android:padding="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_netflix_short_logo" />
+        </com.google.android.material.appbar.MaterialToolbar>
 
 
         <com.google.android.material.tabs.TabLayout
@@ -72,11 +67,16 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginBottom="25dp"
-            android:backgroundTint="@color/red"
             android:text="Get Started"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="@color/red"
+            android:background="@drawable/btn_get_started"
+            android:theme="@style/Button.GetStarted"
+            />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

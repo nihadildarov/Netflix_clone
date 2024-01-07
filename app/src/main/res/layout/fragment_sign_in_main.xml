@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".fragments.SignInMainFragment">
+    tools:context=".fragments.signin.main.ui.SignInMainFragment">
 
     <ImageButton
         android:id="@+id/btnClose"
@@ -21,13 +21,14 @@
         />
 
     <TextView
-        android:id="@+id/txtReadyTo"
+        android:id="@+id/txtTitleCreateAccount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:gravity="center"
         android:text="Ready to watch?"
         android:textSize="24sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@id/txtDesc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,9 +44,9 @@
         android:text="Enter your email to create or sign in to your account."
         android:textColor="@color/divider"
         app:layout_constraintBottom_toTopOf="@id/emailTil"
-        app:layout_constraintEnd_toEndOf="@id/txtReadyTo"
-        app:layout_constraintStart_toStartOf="@id/txtReadyTo"
-        app:layout_constraintTop_toBottomOf="@id/txtReadyTo" />
+        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
+        app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
+        app:layout_constraintTop_toBottomOf="@id/txtTitleCreateAccount" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -54,8 +55,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
-        app:layout_constraintEnd_toEndOf="@id/txtReadyTo"
-        app:layout_constraintStart_toStartOf="@id/txtReadyTo"
+        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
+        app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
         app:layout_constraintTop_toBottomOf="@id/txtDesc"
 
         >
@@ -74,13 +75,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:backgroundTint="@color/red"
         android:text="Get Started"
         android:textSize="24dp"
         android:textStyle="bold"
+        android:background="@drawable/btn_get_started"
+        android:theme="@style/Button.GetStarted"
         app:layout_constraintBottom_toBottomOf="@id/guide"
-        app:layout_constraintEnd_toEndOf="@id/txtReadyTo"
-        app:layout_constraintStart_toStartOf="@id/txtReadyTo"
+        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
+        app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
         app:layout_constraintTop_toBottomOf="@id/emailTil" />
 
     <androidx.constraintlayout.widget.Guideline

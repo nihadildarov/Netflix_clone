@@ -4,11 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SignInEmailFragment">
+    tools:context=".fragments.signin.email.ui.SignInEmailFragment">
 
 
 
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:paddingVertical="8dp"
+        android:src="@drawable/logo_netflix"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:layout_constraintTop_toTopOf="@id/btnBack"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"/>
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -24,7 +43,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
+        app:layout_constraintVertical_chainStyle="packed"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEmail"
@@ -49,7 +69,10 @@
         app:layout_constraintBottom_toTopOf="@id/btnSignIn"
         app:layout_constraintEnd_toEndOf="@id/emailTil"
         app:layout_constraintStart_toStartOf="@id/emailTil"
-        app:layout_constraintTop_toBottomOf="@id/emailTil">
+        app:layout_constraintTop_toBottomOf="@id/emailTil"
+        app:boxStrokeErrorColor="@android:color/holo_orange_light"
+        app:errorContentDescription="Your Password must contain between 4 and 60 characters"
+        app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtPassword"
@@ -64,6 +87,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
+        android:backgroundTint="@android:color/transparent"
         android:padding="10dp"
         android:text="Sign in"
         android:textSize="20sp"
@@ -76,6 +100,7 @@
         android:id="@+id/txtNeedHelp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
         android:gravity="center"
         android:text="Forgot Password?"
         android:textColor="@color/white"
@@ -88,6 +113,7 @@
         android:id="@+id/txtSignUpNow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
         android:gravity="center"
         android:text="New to Netflix? Sign up now."
         android:textColor="@color/white"

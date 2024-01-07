@@ -1,40 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.HomeFragment">
-
+    tools:context=".fragments.home.ui.HomeFragment">
 
 
     <ImageView
         android:id="@+id/imgLogoShort"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_netflix_short_logo"
         android:layout_margin="10dp"
-        />
+        android:src="@drawable/ic_netflix_short_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgSearch"
         android:layout_width="35dp"
         android:layout_height="30dp"
         android:src="@drawable/ic_search"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/imgProfile"
-        app:layout_constraintBottom_toBottomOf="@id/imgLogoShort"/>
+        app:layout_constraintBottom_toBottomOf="@id/imgLogoShort"
+        app:layout_constraintEnd_toStartOf="@id/imgAvatar"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
-        android:id="@+id/imgProfile"
+        android:id="@+id/imgAvatar"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:src="@drawable/ic_chevron_right"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/imgLogoShort"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/imgLogoShort"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipSeries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:text="Diziler"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgLogoShort" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipFilms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:text="Filmler"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/chipSeries"
+        app:layout_constraintStart_toEndOf="@id/chipSeries"
+        app:layout_constraintTop_toTopOf="@id/chipSeries" />
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:text="Categories"
+        android:drawableRight="@drawable/ic_arrow_down"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@id/chipSeries"
+        app:layout_constraintBottom_toBottomOf="@id/chipSeries"
+        app:layout_constraintStart_toEndOf="@id/chipFilms"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
