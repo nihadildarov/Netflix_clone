@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/transparent"
         android:text="Categories"
-        android:drawableRight="@drawable/ic_arrow_down"
+        android:drawableEnd="@drawable/ic_arrow_down"
         android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="@id/chipSeries"
         app:layout_constraintBottom_toBottomOf="@id/chipSeries"

@@ -8,6 +8,8 @@
     tools:context=".CreateAccountFragment">
 
 
+
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         style="Theme.Material3.DayNight.NoActionBar"
@@ -22,14 +24,29 @@
 
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="130dp"
+            android:layout_height="45dp"
             android:backgroundTint="@android:color/transparent"
-            android:padding="10dp"
+            android:padding="8dp"
             android:scaleType="fitXY"
-            android:src="@drawable/logo_netflix"/>
+            android:src="@drawable/logo_netflix" />
     </com.google.android.material.appbar.MaterialToolbar>
 
+
+    <TextView
+        android:id="@+id/txtAccountExists"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Looks like that account already exists. Sign into that account or try using a different email."
+        android:background="@android:color/holo_orange_dark"
+        android:drawableStart="@drawable/ic_info"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="10dp"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
+        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount" />
 
     <TextView
         android:id="@+id/txtTitleCreateAccount"
@@ -39,11 +56,11 @@
         android:text="Unlimited movies, TV shows &amp; more"
         android:textColor="@color/black"
         android:textSize="24sp"
+        android:layout_marginTop="15dp"
         android:textAlignment="textStart"
-        app:layout_constraintBottom_toTopOf="@id/txtDesc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/txtAccountExists"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
@@ -51,33 +68,28 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:gravity="center"
+        android:gravity="start"
         android:text="Create an account and we'll send you an email with everything you need to know about Netflix."
         android:textColor="@color/divider"
-        app:layout_constraintBottom_toTopOf="@id/emailTil"
         app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
         app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
-        app:layout_constraintTop_toBottomOf="@id/txtTitleCreateAccount"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@id/txtTitleCreateAccount" />
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailTil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        app:layout_constraintBottom_toTopOf="@id/passwordTil"
+        android:hint="Email"
         app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
         app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
-        app:layout_constraintTop_toBottomOf="@id/txtDesc"
-        app:layout_constraintVertical_chainStyle="packed"
-        >
+        app:layout_constraintTop_toBottomOf="@id/txtDesc">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,12 +97,9 @@
         android:id="@+id/passwordTil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
         app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
         app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
         app:layout_constraintTop_toBottomOf="@id/emailTil"
-        app:layout_constraintVertical_chainStyle="packed"
 
         >
 
@@ -98,10 +107,9 @@
             android:id="@+id/edtpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="Password"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <CheckBox
@@ -112,27 +120,21 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
         app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
-        app:layout_constraintTop_toBottomOf="@id/passwordTil"
-        app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintTop_toBottomOf="@id/passwordTil" />
 
     <Button
-        android:id="@+id/btnGetStarted"
+        android:id="@+id/btnCreateAccount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@drawable/btn_get_started"
         android:text="CREATE ACCOUNT"
-        app:layout_constraintVertical_chainStyle="packed"
         android:textSize="24dp"
         android:textStyle="bold"
         android:theme="@style/Button.GetStarted"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
         app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
         app:layout_constraintTop_toBottomOf="@id/checkBoxEmailMe" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

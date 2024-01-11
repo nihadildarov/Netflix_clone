@@ -5,7 +5,8 @@
     <item
         android:title="FAQs"
         android:id="@+id/menuFAQs"
-        app:showAsAction="collapseActionView"/>
+        app:showAsAction="collapseActionView"
+        />
 
     <item android:id="@+id/menuHelp"
         android:title="HELP"

@@ -15,7 +15,7 @@ class CreateAccountFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCreateAccountBinding.inflate(inflater,container,false)
+        binding = FragmentCreateAccountBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -23,14 +23,44 @@ class CreateAccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         hideMenuItems()
+        checkEmptyFields()
     }
 
-    private fun hideMenuItems(){
+    private fun hideMenuItems() {
         binding.toolbar.menu.getItem(0).setVisible(false)
         binding.toolbar.menu.getItem(2).setVisible(false)
         binding.toolbar.menu.getItem(1).setShowAsAction(1)
         binding.toolbar.menu.getItem(3).setShowAsAction(1)
 
+
+    }
+
+
+    private fun checkEmptyFields() {
+        binding.btnCreateAccount.setOnClickListener {
+            if (binding.edtEmail.text.isNullOrEmpty()) {
+                binding.emailTil.setError("This field is required!")
+                binding.emailTil.isErrorEnabled = true
+            }
+
+            if ( binding.edtpassword.text.isNullOrEmpty()) {
+                binding.passwordTil.setError("This field is required!")
+                binding.passwordTil.isErrorEnabled = true
+            }
+
+        }
+
+        binding.edtEmail.setOnFocusChangeListener{_,hasFocus->
+            if (hasFocus){
+                binding.emailTil.error = null
+            }
+        }
+
+        binding.edtpassword.setOnFocusChangeListener{_,hasFocus->
+            if (hasFocus){
+                binding.passwordTil.error = null
+            }
+        }
 
     }
 

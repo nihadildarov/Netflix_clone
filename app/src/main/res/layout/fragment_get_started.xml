@@ -27,7 +27,7 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
-            style="Theme.Material3.DayNight.NoActionBar"
+            android:theme="@style/Theme.PopupOverlay.Menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"

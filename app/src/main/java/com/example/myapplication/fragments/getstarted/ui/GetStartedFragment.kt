@@ -19,13 +19,17 @@ class GetStartedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentGetStartedBinding.inflate(inflater, container, false)
-        setViewPagerAdapter()
-        menuItemClick()
-        btnGetStartedClick()
+
 
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setViewPagerAdapter()
+        menuItemClick()
+        btnGetStartedClick()
+    }
 
 
 

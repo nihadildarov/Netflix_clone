@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.getStartedFragment -> binding.btmNav.visibility = View.GONE
                 R.id.signInMainFragment -> binding.btmNav.visibility = View.GONE
                 R.id.signInEmailFragment -> binding.btmNav.visibility = View.GONE
+                R.id.createAccountFragment -> binding.btmNav.visibility = View.GONE
                 else -> binding.btmNav.visibility = View.VISIBLE
             }
         }
