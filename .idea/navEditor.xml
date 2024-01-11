@@ -106,13 +106,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="signInEmailFragment">
+                  <entry key="signInFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="236" />
-                            <option name="y" value="-97" />
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                       </LayoutPositions>

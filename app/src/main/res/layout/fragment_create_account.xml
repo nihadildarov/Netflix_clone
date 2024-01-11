@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".CreateAccountFragment">
+    tools:context=".fragments.createa_account.ui.CreateAccountFragment">
 
 
 
@@ -39,14 +39,14 @@
         android:layout_height="wrap_content"
         android:text="Looks like that account already exists. Sign into that account or try using a different email."
         android:background="@android:color/holo_orange_dark"
-        android:drawableStart="@drawable/ic_info"
         android:padding="15dp"
         android:layout_marginTop="10dp"
         android:drawablePadding="10dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="@id/txtTitleCreateAccount"
-        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount" />
+        app:layout_constraintEnd_toEndOf="@id/txtTitleCreateAccount"
+        app:drawableStartCompat="@drawable/ic_info" />
 
     <TextView
         android:id="@+id/txtTitleCreateAccount"

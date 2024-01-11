@@ -13,29 +13,29 @@
         tools:layout="@layout/fragment_get_started" >
         <action
             android:id="@+id/action_getStartedFragment_to_signInEmailFragment"
-            app:destination="@id/signInEmailFragment" />
+            app:destination="@id/signInFragment" />
         <action
             android:id="@+id/action_getStartedFragment_to_signInMainFragment"
             app:destination="@id/signInMainFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/signInEmailFragment"
-        android:name="com.example.myapplication.fragments.signin.email.ui.SignInEmailFragment"
-        android:label="fragment_sign_in_email"
-        tools:layout="@layout/fragment_sign_in_email" />
+        android:id="@+id/signInFragment"
+        android:name="com.example.myapplication.fragments.signin.email.ui.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
 
     <fragment
         android:id="@+id/signInMainFragment"
-        android:name="com.example.myapplication.fragments.signin.main.ui.SignInMainFragment"
+        android:name="com.example.myapplication.fragments.signin.main.ui.SignInMainGstartedFragment"
         android:label="fragment_sign_in_main"
-        tools:layout="@layout/fragment_sign_in_main" >
+        tools:layout="@layout/fragment_sign_in_gstarted" >
         <action
             android:id="@+id/action_signInMainFragment_to_createAccountFragment"
             app:destination="@id/createAccountFragment" />
         <action
             android:id="@+id/action_signInMainFragment_to_signInEmailFragment"
-            app:destination="@id/signInEmailFragment" />
+            app:destination="@id/signInFragment" />
     </fragment>
 
     <fragment
@@ -69,7 +69,7 @@
         tools:layout="@layout/fragment_downloads" />
     <fragment
         android:id="@+id/createAccountFragment"
-        android:name="com.example.myapplication.CreateAccountFragment"
+        android:name="com.example.myapplication.fragments.createa_account.ui.CreateAccountFragment"
         android:label="fragment_create_account"
         tools:layout="@layout/fragment_create_account" />
 
