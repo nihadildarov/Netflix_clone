@@ -34,13 +34,16 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.getStartedFragment -> binding.btmNav.visibility = View.GONE
-                R.id.signInMainFragment -> binding.btmNav.visibility = View.GONE
+                R.id.signUpFragment -> binding.btmNav.visibility = View.GONE
                 R.id.signInFragment -> binding.btmNav.visibility = View.GONE
                 R.id.createAccountFragment -> binding.btmNav.visibility = View.GONE
+                R.id.accountsFragment -> binding.btmNav.visibility = View.GONE
                 else -> binding.btmNav.visibility = View.VISIBLE
             }
         }
     }
+
+
 
 
 

@@ -39,13 +39,12 @@ class GetStartedFragment : Fragment() {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.title) {
                 "Privacy" -> Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
-                "Login" -> findNavController().navigate(R.id.action_getStartedFragment_to_signInEmailFragment)
+                "Login" -> findNavController().navigate(R.id.action_getStarted_to_signIn)
                 "HELP" -> Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
                 "FAQs" -> Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
             }
             true
         }
-
 
     }
 
@@ -86,7 +85,7 @@ class GetStartedFragment : Fragment() {
 
     private fun btnGetStartedClick(){
         binding.btnGetStarted.setOnClickListener {
-            findNavController().navigate(R.id.action_getStartedFragment_to_signInMainFragment)
+            findNavController().navigate(R.id.action_getStarted_to_signInMain)
         }
     }
 

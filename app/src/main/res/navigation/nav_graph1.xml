@@ -12,26 +12,26 @@
         android:label="fragment_get_started"
         tools:layout="@layout/fragment_get_started" >
         <action
-            android:id="@+id/action_getStartedFragment_to_signInEmailFragment"
+            android:id="@+id/action_getStarted_to_signIn"
             app:destination="@id/signInFragment" />
         <action
-            android:id="@+id/action_getStartedFragment_to_signInMainFragment"
-            app:destination="@id/signInMainFragment" />
+            android:id="@+id/action_getStarted_to_signInMain"
+            app:destination="@id/signUpFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.myapplication.fragments.signin.email.ui.SignInFragment"
+        android:name="com.example.myapplication.fragments.signin.ui.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" />
 
     <fragment
-        android:id="@+id/signInMainFragment"
-        android:name="com.example.myapplication.fragments.signin.main.ui.SignInMainGstartedFragment"
-        android:label="fragment_sign_in_main"
-        tools:layout="@layout/fragment_sign_in_gstarted" >
+        android:id="@+id/signUpFragment"
+        android:name="com.example.myapplication.fragments.signup.ui.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up">
         <action
-            android:id="@+id/action_signInMainFragment_to_createAccountFragment"
+            android:id="@+id/action_signInMain_to_createAccount"
             app:destination="@id/createAccountFragment" />
         <action
             android:id="@+id/action_signInMainFragment_to_signInEmailFragment"
@@ -54,7 +54,11 @@
         android:id="@+id/newHotFragment"
         android:name="com.example.myapplication.fragments.new_hot.ui.NewHotFragment"
         android:label="fragment_new_hot"
-        tools:layout="@layout/fragment_new_hot" />
+        tools:layout="@layout/fragment_new_hot" >
+        <action
+            android:id="@+id/action_finishSignUp_to_newHot"
+            app:destination="@id/finishSignUpFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/searchFragment"
@@ -69,8 +73,35 @@
         tools:layout="@layout/fragment_downloads" />
     <fragment
         android:id="@+id/createAccountFragment"
-        android:name="com.example.myapplication.fragments.createa_account.ui.CreateAccountFragment"
+        android:name="com.example.myapplication.fragments.create_account.ui.CreateAccountFragment"
         android:label="fragment_create_account"
-        tools:layout="@layout/fragment_create_account" />
+        tools:layout="@layout/fragment_create_account" >
+        <action
+            android:id="@+id/action_createAccount_to_signIn"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_createAccounts_to_accounts"
+            app:destination="@id/accountsFragment" />
+        <action
+            android:id="@+id/action_createAccount_to_verifyEmail"
+            app:destination="@id/verifyEmailFragment" />
+        <action
+            android:id="@+id/action_createAccount_to_newHot"
+            app:destination="@id/newHotFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyEmailFragment"
+        android:name="com.example.myapplication.fragments.verify_email.ui.VerifyEmailFragment"
+        android:label="fragment_verify_email"
+        tools:layout="@layout/fragment_verify_email" />
+    <fragment
+        android:id="@+id/finishSignUpFragment"
+        android:name="com.example.myapplication.fragments.finish_signup.ui.FinishSignUpFragment"
+        android:label="fragment_finish_sign_up"
+        tools:layout="@layout/fragment_finish_sign_up" >
+        <action
+            android:id="@+id/action_newHot_to_finishSignUp"
+            app:destination="@id/newHotFragment" />
+    </fragment>
 
 </navigation>

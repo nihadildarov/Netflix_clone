@@ -71,7 +71,7 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in_gstarted.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_up.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
         </config>
@@ -108,6 +108,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1878a53f-51cd-484c-9c5f-0526dd177420" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/accounts/adapter/AccountsRcyAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/finish_signup/ui/FinishSignUpFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/verify_email/ui/VerifyEmailFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_lock.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_finish_sign_up.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_verify_email.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
@@ -115,15 +121,22 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/CreateAccountFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/createa_account/ui/CreateAccountFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/activities/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/signin/email/ui/SignInEmailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/signin/email/ui/SignInFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/signin/main/ui/SignInMainFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/signin/main/ui/SignInMainGstartedFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/accounts/ui/AccountsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/accounts/ui/AccountsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/createa_account/ui/CreateAccountFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/create_account/ui/CreateAccountFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/getstarted/adapter/ViewPagerAdapterGetStartedBG.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/getstarted/adapter/ViewPagerAdapterGetStartedBG.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/getstarted/ui/GetStartedFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/getstarted/ui/GetStartedFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/home/ui/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/home/ui/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/signin/email/ui/SignInFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/signin/ui/SignInFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/signin/main/ui/SignInMainGstartedFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/fragments/signup/ui/SignUpFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_create_account.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in_email.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in_gstarted.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in_gstarted.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rcy_item_accounts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rcy_item_accounts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph1.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,8 +197,8 @@
         <option value="valueResourceFile" />
         <option value="navigationResourceFile" />
         <option value="layoutResourceFile" />
-        <option value="Kotlin Class" />
         <option value="resourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -242,11 +255,11 @@
       <recent name="com.example.myapplication" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.myapplication.fragments.finish_signup.ui" />
+      <recent name="com.example.myapplication.fragments.verify_email.ui" />
+      <recent name="com.example.myapplication.fragments.verify_email" />
+      <recent name="com.example.myapplication.fragments.finish_signup" />
       <recent name="com.example.myapplication.fragments.createa_account.ui" />
-      <recent name="com.example.myapplication.fragments.createa_account" />
-      <recent name="com.example.myapplication.fragments.search.ui" />
-      <recent name="com.example.myapplication.fragments.new_hot.ui" />
-      <recent name="com.example.myapplication.fragments.home.ui" />
     </key>
   </component>
   <component name="RunManager">
@@ -434,7 +447,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704959753043</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Created spannable text in CreateAccountFragment">
+      <option name="closed" value="true" />
+      <created>1705005526717</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1705005526717</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -447,6 +468,7 @@
     <MESSAGE value="Toolbar updated in GetStartedFragment" />
     <MESSAGE value="Three dot in GetStartedFragment changed to white" />
     <MESSAGE value="Project updated.&#10;Kotlin version updated from 1.9.0 to 1.9.20&#10;CreateAccountFragment added.&#10;Actions assigned to clicklisteners" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project updated.&#10;Kotlin version updated from 1.9.0 to 1.9.20&#10;CreateAccountFragment added.&#10;Actions assigned to clicklisteners" />
+    <MESSAGE value="Created spannable text in CreateAccountFragment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created spannable text in CreateAccountFragment" />
   </component>
 </project>

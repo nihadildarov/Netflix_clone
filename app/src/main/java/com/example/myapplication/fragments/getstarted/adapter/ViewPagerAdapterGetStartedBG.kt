@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.GsItemPageBinding
 
 class ViewPagerAdapterGetStartedBG(
-    val images: List<Int>,
-    val titles: List<String>,
-    val descs: List<String>
+    private val images: List<Int>,
+    private val titles: List<String>,
+    private val descs: List<String>
 ) : RecyclerView.Adapter<ViewPagerAdapterGetStartedBG.GetStartedViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GetStartedViewHolder {
         val inflater = LayoutInflater.from(parent.context)

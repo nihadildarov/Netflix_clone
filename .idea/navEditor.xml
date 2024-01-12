@@ -25,9 +25,33 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="445" />
-                            <option name="y" value="-545" />
+                            <option name="x" value="51" />
+                            <option name="y" value="-466" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_createAccountFragment_to_newHotFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_createAccount_to_signIn">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_createAccount_to_verifyEmail">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_createAccounts_to_accounts">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -44,23 +68,35 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="finishSignUpFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="572" />
+                            <option name="y" value="-509" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="getStartedFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="18" />
-                            <option name="y" value="-97" />
+                            <option name="x" value="-494" />
+                            <option name="y" value="-332" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_getStartedFragment_to_signInEmailFragment">
+                            <entry key="action_getStarted_to_signIn">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_getStartedFragment_to_signInMainFragment">
+                            <entry key="action_getStarted_to_signInMain">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -111,35 +147,47 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="-224" />
+                            <option name="y" value="-447" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="signInMainFragment">
+                  <entry key="signUpFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="454" />
-                            <option name="y" value="-97" />
+                            <option name="x" value="-222" />
+                            <option name="y" value="42" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_signInMainFragment_to_createAccountFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_signInMainFragment_to_signInEmailFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_signInMain_to_createAccount">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="verifyEmailFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="322" />
+                            <option name="y" value="-637" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

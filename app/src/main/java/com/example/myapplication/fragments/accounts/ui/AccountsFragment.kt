@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAccountsBinding
+import com.example.myapplication.fragments.accounts.adapter.AccountsRcyAdapter
 
 class AccountsFragment : Fragment() {
     private lateinit var binding : FragmentAccountsBinding
@@ -16,5 +20,40 @@ class AccountsFragment : Fragment() {
         binding = FragmentAccountsBinding.inflate(inflater,container,false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setRcy ()
+        setAdapter ()
+
+    }
+
+
+    private fun setRcy (){
+        binding.rcyAccounts.layoutManager = GridLayoutManager(context,2)
+    }
+
+    private fun setAdapter (){
+        val img = listOf<Int>(
+            R.drawable.img,
+            R.drawable.img,
+            R.drawable.img,
+            R.drawable.img,
+            R.drawable.img,
+            )
+
+        val name = listOf<String>(
+            "Martin",
+            "John",
+            "Bob",
+            "Julia",
+            "Elizabeth"
+        )
+
+
+        val accountsAdapter = AccountsRcyAdapter(img,name)
+        binding.rcyAccounts.adapter = accountsAdapter
+    }
+
 
 }
