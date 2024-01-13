@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ForNavigationFragment">
+
+
+    <Button
+
+        android:id="@+id/accounts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accounts"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <Button
+        android:id="@+id/createAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CreateAccount"
+        app:layout_constraintTop_toBottomOf="@id/accounts"
+        app:layout_constraintStart_toStartOf="@id/accounts"/>
+
+
+    <Button
+        android:id="@+id/downloads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Downloads"
+        app:layout_constraintTop_toBottomOf="@id/createAccount"
+        app:layout_constraintStart_toStartOf="@id/accounts"/>
+
+
+    <Button
+        android:id="@+id/finishSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FinishSignUp"
+        app:layout_constraintTop_toBottomOf="@id/downloads"
+        app:layout_constraintStart_toStartOf="@id/accounts"/>
+
+    <Button
+        android:id="@+id/getStarted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GetStarted"
+        app:layout_constraintTop_toBottomOf="@id/finishSignUp"
+        app:layout_constraintStart_toStartOf="@id/accounts"/>
+
+
+    <Button
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        app:layout_constraintTop_toBottomOf="@id/getStarted"
+        app:layout_constraintStart_toStartOf="@id/accounts"/>
+
+
+    <Button
+        android:id="@+id/newHot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NewHot"
+        app:layout_constraintTop_toBottomOf="@id/home"
+        app:layout_constraintStart_toStartOf="@id/accounts"/>
+
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        app:layout_constraintTop_toBottomOf="@id/newHot"
+        app:layout_constraintStart_toStartOf="@id/accounts"/>
+
+
+    <Button
+        android:id="@+id/signIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SignIn"
+        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintStart_toStartOf="@id/accounts"/>
+
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SignUp"
+        app:layout_constraintTop_toBottomOf="@id/signIn"
+        app:layout_constraintStart_toStartOf="@id/accounts"/>
+
+
+    <Button
+        android:id="@+id/verifyEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VerifyEmail"
+        app:layout_constraintTop_toBottomOf="@id/signUp"
+        app:layout_constraintStart_toStartOf="@id/accounts"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

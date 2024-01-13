@@ -35,37 +35,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chipSeries"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/homeChips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
-        android:text="Diziler"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgLogoShort" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imgLogoShort"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogoShort">
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chipFilms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
-        android:text="Filmler"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/chipSeries"
-        app:layout_constraintStart_toEndOf="@id/chipSeries"
-        app:layout_constraintTop_toTopOf="@id/chipSeries" />
+    </com.google.android.material.chip.ChipGroup>
 
-    <com.google.android.material.chip.Chip
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
-        android:text="Categories"
-        app:chipIcon="@drawable/ic_arrow_down"
-
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="@id/chipSeries"
-        app:layout_constraintBottom_toBottomOf="@id/chipSeries"
-        app:layout_constraintStart_toEndOf="@id/chipFilms"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

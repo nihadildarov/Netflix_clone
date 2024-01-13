@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph1"
-    app:startDestination="@id/getStartedFragment">
+    app:startDestination="@id/forNavigationFragment">
 
     <fragment
         android:id="@+id/getStartedFragment"
@@ -42,7 +42,11 @@
         android:id="@+id/accountsFragment"
         android:name="com.example.myapplication.fragments.accounts.ui.AccountsFragment"
         android:label="fragment_accounts"
-        tools:layout="@layout/fragment_accounts" />
+        tools:layout="@layout/fragment_accounts" >
+        <action
+            android:id="@+id/action_accounts_to_home"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/homeFragment"
@@ -102,6 +106,45 @@
         <action
             android:id="@+id/action_newHot_to_finishSignUp"
             app:destination="@id/newHotFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forNavigationFragment"
+        android:name="com.example.myapplication.ForNavigationFragment"
+        android:label="fragment_for_navigation"
+        tools:layout="@layout/fragment_for_navigation" >
+        <action
+            android:id="@+id/f_action_forNavigation_to_getStarted"
+            app:destination="@id/getStartedFragment" />
+        <action
+            android:id="@+id/f_action_forNavigation_to_signIn"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/f_action_forNavigation_to_createAccount"
+            app:destination="@id/createAccountFragment" />
+        <action
+            android:id="@+id/f_action_forNavigation_to_verifyEmail"
+            app:destination="@id/verifyEmailFragment" />
+        <action
+            android:id="@+id/f_action_forNavigation_to_finishSignUp"
+            app:destination="@id/finishSignUpFragment" />
+        <action
+            android:id="@+id/f_action_forNavigation_to_accounts"
+            app:destination="@id/accountsFragment" />
+        <action
+            android:id="@+id/f_action_forNavigation_to_downloads"
+            app:destination="@id/downloadsFragment" />
+        <action
+            android:id="@+id/f_action_forNavigation_to_search"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/f_action_forNavigation_to_newHot"
+            app:destination="@id/newHotFragment" />
+        <action
+            android:id="@+id/f_action_forNavigation_to_home"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/f_action_forNavigation_to_signUp"
+            app:destination="@id/signUpFragment" />
     </fragment>
 
 </navigation>

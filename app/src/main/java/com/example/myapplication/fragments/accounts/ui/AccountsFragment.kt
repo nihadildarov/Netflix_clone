@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAccountsBinding
@@ -26,7 +27,7 @@ class AccountsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRcy ()
         setAdapter ()
-
+        goHome()
     }
 
 
@@ -57,6 +58,12 @@ class AccountsFragment : Fragment() {
         }
         binding.rcyAccounts.adapter = accountsAdapter
 
+    }
+
+    private fun goHome(){
+        binding.imgEdit.setOnClickListener {
+            findNavController().navigate(R.id.action_accounts_to_home)
+        }
     }
 
 

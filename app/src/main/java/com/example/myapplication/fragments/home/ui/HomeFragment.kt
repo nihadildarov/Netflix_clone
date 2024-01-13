@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentHomeBinding
+import com.google.android.material.chip.Chip
 
 class HomeFragment : Fragment() {
 
@@ -22,7 +24,19 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        customizeChipGroup()
+    }
 
+    private fun customizeChipGroup(){
+        val chipTvShows = Chip(context)
+        chipTvShows.apply {
+            text = "TV Shows"
+            setTextColor(resources.getColor(R.color.white))
+            setChipBackgroundColorResource(R.color.trans)
+
+        }
+
+        binding.homeChips.addView(chipTvShows as View)
     }
 
 }
