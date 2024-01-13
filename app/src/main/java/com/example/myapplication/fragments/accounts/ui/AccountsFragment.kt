@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAccountsBinding
@@ -51,9 +52,14 @@ class AccountsFragment : Fragment() {
         )
 
 
-        val accountsAdapter = AccountsRcyAdapter(img,name)
+        val accountsAdapter = AccountsRcyAdapter(img,name){
+            Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+        }
         binding.rcyAccounts.adapter = accountsAdapter
+
     }
+
+
 
 
 }
