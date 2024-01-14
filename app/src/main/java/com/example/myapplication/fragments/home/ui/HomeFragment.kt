@@ -24,19 +24,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        customizeChipGroup()
+
     }
 
-    private fun customizeChipGroup(){
-        val chipTvShows = Chip(context)
-        chipTvShows.apply {
-            text = "TV Shows"
-            setTextColor(resources.getColor(R.color.white))
-            setChipBackgroundColorResource(R.color.trans)
 
-        }
-
-        binding.homeChips.addView(chipTvShows as View)
-    }
 
 }

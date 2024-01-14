@@ -40,11 +40,153 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/imgLogoShort"
         app:layout_constraintTop_toBottomOf="@+id/imgLogoShort">
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTvShows"
+            android:text="TV Shows"
+            app:chipCornerRadius="40dp"
+            android:textColor="@color/white"
+            app:chipStrokeColor="@color/white"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_width="wrap_content"
+            app:chipStrokeWidth="0.5dp"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMovies"
+            android:text="Movies"
+            app:chipCornerRadius="40dp"
+            app:chipStrokeColor="@color/white"
+            app:chipStrokeWidth="0.5dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCategories"
+            android:text="Categories"
+            app:chipStrokeColor="@color/white"
+            app:chipCornerRadius="40dp"
+            app:chipStrokeWidth="0.5dp"
+            app:closeIcon="@drawable/ic_arrow_down"
+            app:closeIconEnabled="true"
+            app:closeIconVisible="true"
+            app:rippleColor="@color/white"
+            app:closeIconTint="@color/white"
+            android:textColor="@color/white"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </com.google.android.material.chip.ChipGroup>
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewPoster"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeChips"
+        android:padding="5dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginHorizontal="18dp"
+        app:cardCornerRadius="15dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imgPosterHeader"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:minHeight="360dp"
+            android:src="@drawable/img"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/txtCategoriesHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="categoryName "
+            app:layout_constraintBottom_toTopOf="@id/btnPlayHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPlayHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:layout_margin="10dp"
+            app:cornerRadius="5dp"
+            app:iconSize="25sp"
+            app:backgroundTint="@color/gray"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_play"
+            app:rippleColor="@color/divider"
+            app:iconGravity="textStart"
+            app:iconTint="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnAddMyListHeader"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddMyListHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="My List"
+            android:layout_margin="10dp"
+            app:cornerRadius="5dp"
+            app:icon="@drawable/ic_add"
+            app:iconGravity="textStart"
+            app:iconSize="25dp"
+            android:backgroundTint="@color/dark_gray"
+            app:layout_constraintBottom_toBottomOf="@id/btnPlayHeader"
+            app:layout_constraintTop_toTopOf="@id/btnPlayHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnPlayHeader"
+            app:backgroundTint="@color/dark_gray"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txtMobileGames"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Mobile Games"
+        app:layout_constraintTop_toBottomOf="@id/cardViewPoster"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/txtMyGameList"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtMyGameList"
+        android:text="My List"
+        android:drawableEnd="@drawable/ic_chevron_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtMobileGames"
+        app:layout_constraintBottom_toBottomOf="@id/txtMobileGames"
+        />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
