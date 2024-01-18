@@ -10,7 +10,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragments.home.ui.HomeFragment">
+    tools:context=".fragments.home.ui.HomeFragment"
+    android:id="@+id/constraintHome">
 
 
     <ImageView
@@ -98,34 +99,38 @@
 
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardViewPoster"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="360dp"
         android:layout_marginHorizontal="18dp"
+        app:cardCornerRadius="20dp"
         android:layout_marginVertical="15dp"
-        android:padding="5dp"
-        app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chipTvShows">
+        app:layout_constraintTop_toBottomOf="@id/chipTvShows"
+        >
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
 
-            <ImageView
-                android:id="@+id/imgPosterHeader"
-                android:layout_width="match_parent"
-                android:layout_height="360dp"
-                android:minHeight="360dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/img"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
+           <ImageView
+               android:id="@+id/imgPosterHeader"
+               android:layout_width="match_parent"
+               android:layout_height="360dp"
+               android:minHeight="360dp"
+               android:scaleType="fitXY"
+               android:src="@drawable/img"
+               android:padding="1dp"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txtCategoriesHeader"
@@ -173,9 +178,9 @@
                 app:layout_constraintStart_toEndOf="@id/btnPlayHeader"
                 app:layout_constraintTop_toTopOf="@id/btnPlayHeader" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
     <TextView
         android:id="@+id/txtMobileGames"
         android:layout_width="0dp"
@@ -207,7 +212,7 @@
 
         />
 
-
+<!--
     <TextView
         android:id="@+id/txtBecauseUWatched"
         android:layout_width="0dp"
@@ -723,6 +728,7 @@
         app:layout_constraintEnd_toEndOf="@id/txtDocumentaries"
 
         />
+        -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
