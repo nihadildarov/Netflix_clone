@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentHomeBinding
 import com.example.myapplication.fragments.home.adapter.AdapterRecyclersBig
+import com.example.myapplication.fragments.home.adapter.AdapterRecyclersContinueWatching
 import com.example.myapplication.fragments.home.adapter.AdapterRecyclersMedium
 import com.example.myapplication.fragments.home.adapter.AdapterRecyclersSmall
 
@@ -70,6 +71,7 @@ class HomeFragment : Fragment() {
             "Besinci",
             "Altinci",
             "Yeddinci",
+            "Continue watching",
             "Sekkizinci",
             "Doqquzuncu",
             "Onuncu"
@@ -78,6 +80,7 @@ class HomeFragment : Fragment() {
         val adapterMedium = AdapterRecyclersMedium(itemList)
         val adapterBig = AdapterRecyclersBig(itemList)
         val adapterSmall = AdapterRecyclersSmall(itemList)
+        val adapterContinueWatching = AdapterRecyclersContinueWatching(itemList)
 
         var prevId = 1
 
@@ -122,17 +125,18 @@ class HomeFragment : Fragment() {
 
             //Recyclers constraints
             //Top
-            constraintSet.connect(recycler.id,ConstraintSet.TOP,textHeader.id,ConstraintSet.BOTTOM,10)
+            constraintSet.connect(recycler.id,ConstraintSet.TOP,textHeader.id,ConstraintSet.BOTTOM,)
             //Start
             constraintSet.connect(recycler.id,ConstraintSet.START,ConstraintSet.PARENT_ID,ConstraintSet.START)
             //End
             constraintSet.connect(recycler.id,ConstraintSet.END,ConstraintSet.PARENT_ID,ConstraintSet.END)
 
             prevId = recycler.id
-            when (i) {
-                4 -> recycler.adapter = adapterBig
-                1 -> recycler.adapter = adapterSmall
-                textList.size -> recycler.adapter = adapterBig
+            when  {
+                i==4 -> recycler.adapter = adapterBig
+                i==1 -> recycler.adapter = adapterSmall
+                i==textList.size -> recycler.adapter = adapterBig
+                textList[i]== "Continue watching" -> recycler.adapter = adapterContinueWatching
                 else -> recycler.adapter = adapterMedium
             }
 

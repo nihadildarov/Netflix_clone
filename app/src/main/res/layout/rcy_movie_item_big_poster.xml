@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="5dp"
     app:cardCornerRadius="10dp"
-    app:strokeWidth="0.5dp"
-    app:strokeColor="@color/gray"
+    app:strokeWidth="0dp"
     >
 
 
