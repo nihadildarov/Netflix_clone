@@ -1,5 +1,6 @@
 package com.example.myapplication.fragments.home.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -38,7 +39,7 @@ class HomeFragment : Fragment() {
 
     private fun setGamesAdapter (){
         binding.rcyMobileGames.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-        binding.rcyMobileGames.adapter = AdapterRecyclersMedium(
+        binding.rcyMobileGames.adapter = AdapterRecyclersSmall(
             listOf(
                 R.drawable.ic_netflix_short_logo,
                 R.drawable.img,

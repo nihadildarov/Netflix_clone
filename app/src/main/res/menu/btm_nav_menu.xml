@@ -5,21 +5,29 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="Home"
+        android:enabled="true"
+
+        />
 
 
     <item
         android:id="@+id/gamesFragment"
         android:icon="@drawable/ic_games"
-        android:title="Games" />
+        android:title="Games"
+        android:enabled="true"
+        />
     <item
         android:id="@+id/newHotFragment"
         android:icon="@drawable/ic_video_library"
-        android:title="New &amp; Hot" />
+        android:title="New &amp; Hot"
+        android:enabled="true"
+        />
 
     <item
         android:id="@+id/downloadsFragment"
         android:icon="@drawable/ic_download_circle"
         android:title="Downloads"
+        android:enabled="true"
         />
 </menu>

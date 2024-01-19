@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph1" />
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNav"
         android:layout_width="0dp"
@@ -27,6 +28,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/btm_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/gray"
+        app:itemTextColor="@color/gray"
+        app:itemIconSize="25dp"
+        app:itemActiveIndicatorStyle="@android:color/transparent"
         />
 
 

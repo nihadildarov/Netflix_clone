@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btmNav.background = null
+        binding.btmNav.setBackgroundColor(resources.getColor(R.color.dark_gray))
 
         initBottomNav()
     }
