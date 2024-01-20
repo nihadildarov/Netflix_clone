@@ -2,6 +2,7 @@ package com.example.myapplication.fragments.home.ui
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Layout.Alignment
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
@@ -33,22 +35,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setGamesAdapter()
+
         createRecyclers()
     }
 
 
-    private fun setGamesAdapter() {
-        binding.rcyMobileGames.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rcyMobileGames.adapter = AdapterRecyclersGames(
-            listOf(
-                R.drawable.ic_netflix_short_logo,
-                R.drawable.img,
-                R.drawable.logo_netflix
-            )
-        )
-    }
 
 
     private fun createRecyclers() {
@@ -126,8 +117,8 @@ class HomeFragment : Fragment() {
             textHeader.id = View.generateViewId()
             textHeader.setTextColor(resources.getColor(R.color.white))
             val paramsTxt = ConstraintLayout.LayoutParams(
-                ConstraintLayout.LayoutParams.WRAP_CONTENT,
-                ConstraintLayout.LayoutParams.WRAP_CONTENT
+                0,
+                -2
             )
             textHeader.layoutParams = paramsTxt
             textHeader.setTypeface(null, Typeface.BOLD)
@@ -156,7 +147,7 @@ class HomeFragment : Fragment() {
                 constraintSet.connect(
                     textHeader.id,
                     ConstraintSet.TOP,
-                    binding.rcyMobileGames.id,
+                    binding.cardViewPoster.id,
                     ConstraintSet.BOTTOM,
                     50
                 )
@@ -179,20 +170,26 @@ class HomeFragment : Fragment() {
                 30
             )
             //End
-            if (textList[i - 1] == "Mobile Games") {
+            if (textList[i - 1] == "Mobile Games" || textList[i - 1] == "My List" ) {
                 val txtMyList = TextView(requireContext())
-                txtMyList.text = "My List"
+                when (textList[i-1]){
+                    "Mobile Games" -> txtMyList.text = "My List"
+                    "My List" -> txtMyList.text = "See All"
+                }
+
                 txtMyList.id = View.generateViewId()
                 txtMyList.setTextColor(resources.getColor(R.color.white))
                 val paramsTxtMyList = ConstraintLayout.LayoutParams(
-                    ConstraintLayout.LayoutParams.WRAP_CONTENT,
-                    ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
+                    -2,
+                    -2
                 )
                 txtMyList.layoutParams = paramsTxtMyList
                 txtMyList.setTypeface(null, Typeface.BOLD)
                 txtMyList.textSize = 18f
-
-                textHeader.textSize = 27f
+                txtMyList.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+                txtMyList.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,
+                    ContextCompat.getDrawable(requireContext(),R.drawable.ic_chevron_right),null)
+                constraintLayout.addView(txtMyList)
 
                 //START
                 constraintSet.connect(
@@ -201,6 +198,7 @@ class HomeFragment : Fragment() {
                     textHeader.id,
                     ConstraintSet.END
                 )
+
                 //TOP
                 constraintSet.connect(
                     txtMyList.id,
