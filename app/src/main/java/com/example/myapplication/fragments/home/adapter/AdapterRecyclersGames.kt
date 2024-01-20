@@ -3,15 +3,15 @@ package com.example.myapplication.fragments.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.databinding.RcyMovieItemSmallPosterBinding
+import com.example.myapplication.databinding.RcyMovieItemGamesBinding
 
-class AdapterRecyclersSmall(
+class AdapterRecyclersGames(
     private val imgList : List<Int>
-):RecyclerView.Adapter<AdapterRecyclersSmall.RcyViewHolder>() {
+):RecyclerView.Adapter<AdapterRecyclersGames.RcyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RcyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = RcyMovieItemSmallPosterBinding.inflate(inflater,parent,false)
+        val binding = RcyMovieItemGamesBinding.inflate(inflater,parent,false)
 
         return RcyViewHolder(binding)
     }
@@ -25,7 +25,7 @@ class AdapterRecyclersSmall(
         holder.bind(currentText)
     }
 
-    inner class RcyViewHolder(private val binding:RcyMovieItemSmallPosterBinding):RecyclerView.ViewHolder(binding.root){
+    inner class RcyViewHolder(private val binding:RcyMovieItemGamesBinding):RecyclerView.ViewHolder(binding.root){
 
         fun bind(img:Int){
             binding.imgSmallPoster.setImageResource(img)
