@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentHomeBinding
+import com.example.myapplication.fragments.home.adapter.AdapterRecyclerDownloads
 import com.example.myapplication.fragments.home.adapter.AdapterRecyclersBig
 import com.example.myapplication.fragments.home.adapter.AdapterRecyclersContinueWatching
 import com.example.myapplication.fragments.home.adapter.AdapterRecyclersMedium
@@ -58,7 +59,7 @@ class HomeFragment : Fragment() {
 
         val textList = listOf<Any>(
             "Mobile Games",
-            "Downloads for you",
+            "Downloads For You",
             "Soapy TV Dramas",
             "Bingeworthy TV Shows",
             "Critically-acclaimed Dark US TV Shows",
@@ -102,6 +103,7 @@ class HomeFragment : Fragment() {
         val adapterBig = AdapterRecyclersBig(itemList)
         val adapterGames = AdapterRecyclersGames(itemList)
         val adapterContinueWatching = AdapterRecyclersContinueWatching(itemList)
+        val adapterDownloads = AdapterRecyclerDownloads(itemList)
 
         var prevId = 1
 
@@ -270,8 +272,9 @@ class HomeFragment : Fragment() {
             when {
                 textList[i - 1] == "Mobile Games" -> recycler.adapter = adapterGames
                 textList[i - 1] == "Only on Netflix" -> recycler.adapter = adapterBig
-                textList[i - 1] == "Continue watching" -> recycler.adapter =
-                    adapterContinueWatching
+                textList[i - 1] == "Continue watching" -> recycler.adapter = adapterContinueWatching
+                textList[i - 1] == "Downloads For You" -> recycler.adapter = adapterDownloads
+
 
                 else -> recycler.adapter = adapterMedium
 
