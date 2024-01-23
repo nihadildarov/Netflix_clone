@@ -1,10 +1,18 @@
 package com.example.myapplication.fragments.home.adapter
 
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
 import com.example.myapplication.databinding.RcyFirstItemDownloadsBinding
 import com.example.myapplication.databinding.RcyMovieItemMediumPosterBinding
+import com.google.android.material.color.ColorResourcesOverride
+import kotlinx.coroutines.withContext
 import java.lang.IllegalArgumentException
 
 class AdapterRecyclerDownloads(private val dataList: List<Int>) :
@@ -63,6 +71,16 @@ class AdapterRecyclerDownloads(private val dataList: List<Int>) :
             RecyclerView.ViewHolder(binding.root) {
             fun bind(image:Int){
                 binding.imgBackGround.setImageResource(image)
+                val message = binding.txtDesc.text.toString()
+
+                val spannableString = SpannableString(message)
+                val startIndex = message.indexOf("Downloads for You")
+                val endIndex = startIndex + "Downloads for You".length
+                val spanColor = ForegroundColorSpan(Color.WHITE)
+
+                spannableString.setSpan(spanColor,startIndex,endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+                binding.txtDesc.text = spannableString
             }
         }
 
