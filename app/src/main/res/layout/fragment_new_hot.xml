@@ -18,11 +18,24 @@
 
 
     <ImageView
+        android:id="@+id/imgNotifications"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:scaleType="fitCenter"
+        android:padding = "3dp"
+        android:src="@drawable/ic_notifications"
+        app:layout_constraintTop_toTopOf="@id/imgLogo"
+        app:layout_constraintBottom_toBottomOf="@id/imgLogo"
+        app:layout_constraintEnd_toStartOf="@id/imgSearch"
+        />
+
+    <ImageView
         android:id="@+id/imgSearch"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:src="@drawable/ic_search"
-        android:padding="10dp"
+        android:padding="3dp"
+        android:scaleType="fitCenter"
         app:layout_constraintTop_toTopOf="@id/imgLogo"
         app:layout_constraintBottom_toBottomOf="@id/imgLogo"
         app:layout_constraintEnd_toStartOf="@id/imgProfile"
@@ -33,12 +46,15 @@
         android:id="@+id/imgProfile"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:padding="10dp"
+        android:padding="3dp"
+        android:scaleType="fitXY"
         app:layout_constraintTop_toTopOf="@id/imgLogo"
         app:layout_constraintBottom_toBottomOf="@id/imgLogo"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/img"
         />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

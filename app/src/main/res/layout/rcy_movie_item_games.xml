@@ -6,7 +6,9 @@
     android:layout_marginHorizontal="5dp"
     app:cardCornerRadius="10dp"
     app:strokeWidth="0dp"
-    >
+    app:rippleColor="@color/gray"
+    android:clickable="true"
+    android:focusable="true">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -88,6 +88,7 @@ class AdapterRecyclerDownloads(private val dataList: List<Int>) :
             RecyclerView.ViewHolder(binding.root) {
             fun bind(image: Int){
                 binding.imgMediumPoster.setImageResource(image)
+
             }
         }
     }
