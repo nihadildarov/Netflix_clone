@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_netflix_short_logo"
-        android:padding="10dp"
+    <TextView
+        android:id="@+id/txtPageName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="New &amp; Hot"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
         android:id="@+id/imgNotifications"
         android:layout_width="45dp"
         android:layout_height="45dp"
+        android:padding="3dp"
         android:scaleType="fitCenter"
-        android:padding = "3dp"
         android:src="@drawable/ic_notifications"
-        app:layout_constraintTop_toTopOf="@id/imgLogo"
-        app:layout_constraintBottom_toBottomOf="@id/imgLogo"
+        app:layout_constraintBottom_toBottomOf="@id/txtPageName"
         app:layout_constraintEnd_toStartOf="@id/imgSearch"
-        />
+        app:layout_constraintTop_toTopOf="@id/txtPageName" />
 
     <ImageView
         android:id="@+id/imgSearch"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:src="@drawable/ic_search"
         android:padding="3dp"
         android:scaleType="fitCenter"
-        app:layout_constraintTop_toTopOf="@id/imgLogo"
-        app:layout_constraintBottom_toBottomOf="@id/imgLogo"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="@id/txtPageName"
         app:layout_constraintEnd_toStartOf="@id/imgProfile"
-        />
+        app:layout_constraintTop_toTopOf="@id/txtPageName" />
 
 
     <ImageView
@@ -48,14 +49,108 @@
         android:layout_height="45dp"
         android:padding="3dp"
         android:scaleType="fitXY"
-        app:layout_constraintTop_toTopOf="@id/imgLogo"
-        app:layout_constraintBottom_toBottomOf="@id/imgLogo"
-        app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/img"
-        />
+        app:layout_constraintBottom_toBottomOf="@id/txtPageName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtPageName" />
+
+    <HorizontalScrollView
+        android:id="@+id/scrollChips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtPageName">
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipComingSoon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:alpha="100"
+                android:text="Coming Soon"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/black"
+                app:chipCornerRadius="15dp"
+                app:chipIcon="@drawable/ic_notifications"
+                app:rippleColor="@color/gray" />
 
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipEveryoneWatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:alpha="100"
+                android:text="Everyone's Watching"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/black"
+                app:chipCornerRadius="15dp"
+                app:chipIcon="@drawable/ic_notifications"
+                app:rippleColor="@color/gray" />
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipGames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:alpha="100"
+                android:text="Games"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/black"
+                app:chipCornerRadius="15dp"
+                app:chipIcon="@drawable/ic_games"
+                app:rippleColor="@color/gray" />
 
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollChips"
+        tools:listitem="@layout/rcy_new_item_coming_soon">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcyComingSoon"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:listitem="@layout/rcy_new_item_coming_soon"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcyEveryonesWatching"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rcyComingSoon" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcyGames"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rcyEveryonesWatching" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
