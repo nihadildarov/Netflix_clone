@@ -59,7 +59,6 @@ class NewHotFragment : Fragment() {
 
     private fun chipsClick(){
         with(binding) {
-            
 
             chipComingSoon.setOnClickListener {
                 Toast.makeText(context,"chip1",Toast.LENGTH_SHORT).show()
@@ -74,11 +73,9 @@ class NewHotFragment : Fragment() {
             chipGames.setOnClickListener {
                 Toast.makeText(context,"chip3",Toast.LENGTH_SHORT).show()
                 scrollViewRcy.smoothScrollTo(0,rcyGames.top)
-
             }
+
         }
-
-
     }
 
 }
