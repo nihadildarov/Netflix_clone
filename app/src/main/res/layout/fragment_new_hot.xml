@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -75,7 +74,7 @@
                 android:alpha="100"
                 android:text="Coming Soon"
                 android:textColor="@color/white"
-                app:chipBackgroundColor="@color/black"
+                app:chipBackgroundColor="@color/chip_background_colortstate"
                 app:chipCornerRadius="15dp"
                 app:chipIcon="@drawable/ic_notifications"
                 app:rippleColor="@color/gray" />
@@ -88,8 +87,8 @@
                 android:layout_marginStart="5dp"
                 android:alpha="100"
                 android:text="Everyone's Watching"
+                app:chipBackgroundColor="@color/chip_background_colortstate"
                 android:textColor="@color/white"
-                app:chipBackgroundColor="@color/black"
                 app:chipCornerRadius="15dp"
                 app:chipIcon="@drawable/ic_notifications"
                 app:rippleColor="@color/gray" />
@@ -102,15 +101,18 @@
                 android:alpha="100"
                 android:text="Games"
                 android:textColor="@color/white"
-                app:chipBackgroundColor="@color/black"
+                app:chipBackgroundColor="@color/chip_background_colortstate"
                 app:chipCornerRadius="15dp"
                 app:chipIcon="@drawable/ic_games"
                 app:rippleColor="@color/gray" />
+
+
 
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
     <ScrollView
+        android:id="@+id/scrollViewRcy"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,34 +124,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcyComingSoon"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:nestedScrollingEnabled="false"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:listitem="@layout/rcy_new_item_coming_soon"
-            />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcyComingSoon"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/rcy_new_item_coming_soon" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcyEveryonesWatching"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:nestedScrollingEnabled="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rcyComingSoon" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcyEveryonesWatching"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rcyComingSoon" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcyGames"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:nestedScrollingEnabled="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rcyEveryonesWatching" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcyGames"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rcyEveryonesWatching" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

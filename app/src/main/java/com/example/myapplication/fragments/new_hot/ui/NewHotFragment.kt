@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentNewHotBinding
@@ -26,6 +27,10 @@ class NewHotFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclers()
+        chipsClick()
+
+
+
     }
 
 
@@ -49,6 +54,30 @@ class NewHotFragment : Fragment() {
             rcyEveryonesWatching.adapter = everyOnesWatchingAdapter
             rcyGames.adapter = gamesAdapter
         }
+    }
+
+
+    private fun chipsClick(){
+        with(binding) {
+            
+
+            chipComingSoon.setOnClickListener {
+                Toast.makeText(context,"chip1",Toast.LENGTH_SHORT).show()
+                scrollViewRcy.smoothScrollTo(0,rcyComingSoon.top)
+            }
+
+            chipEveryoneWatch.setOnClickListener {
+                Toast.makeText(context,"chip2",Toast.LENGTH_SHORT).show()
+                scrollViewRcy.smoothScrollTo(0,rcyEveryonesWatching.top)
+            }
+
+            chipGames.setOnClickListener {
+                Toast.makeText(context,"chip3",Toast.LENGTH_SHORT).show()
+                scrollViewRcy.smoothScrollTo(0,rcyGames.top)
+
+            }
+        }
+
 
     }
 
