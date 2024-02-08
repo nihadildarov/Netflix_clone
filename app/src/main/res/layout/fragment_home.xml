@@ -10,7 +10,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragments.home.ui.HomeFragment"
+    tools:context=".presentation.fragments.home.ui.HomeFragment"
     android:id="@+id/constraintHome">
 
 

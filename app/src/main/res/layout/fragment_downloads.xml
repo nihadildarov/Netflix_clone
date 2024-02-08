@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.downloads.ui.DownloadsFragment">
+    android:paddingHorizontal="4dp"
+    tools:context=".presentation.fragments.downloads.ui.DownloadsFragment">
 
 
     <TextView
@@ -12,9 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Downloads"
-        app:layout_constraintTop_toTopOf="parent"
         android:textSize="25sp"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgSearch"
@@ -25,19 +25,146 @@
         android:src="@drawable/ic_search"
         app:layout_constraintBottom_toBottomOf="@id/txtPageName"
         app:layout_constraintEnd_toStartOf="@id/imgProfile"
-        app:layout_constraintTop_toTopOf="@id/txtPageName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
         android:id="@+id/imgProfile"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:padding="3dp"
         android:scaleType="fitXY"
         android:src="@drawable/img"
         app:layout_constraintBottom_toBottomOf="@id/txtPageName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/txtPageName" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/txtSmartDownloads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="5dp"
+        android:padding="5dp"
+        android:text="Smart Downloads"
+        android:textColor="@color/divider"
+        android:textSize="16sp"
+        app:drawableEndCompat="@drawable/ic_edit"
+        app:drawableStartCompat="@drawable/ic_settings_outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtPageName" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtSmartDownloads">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgRcyHeader"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/img"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtRcyHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:padding="5dp"
+                android:text="Nihad"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@id/imgRcyHeader"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgRcyHeader"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcyDownloads"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgRcyHeader" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:dividerColor="@color/divider"
+                app:layout_constraintTop_toBottomOf="@id/rcyDownloads"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:id="@+id/txtTurnOn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Turn on Downloads for You"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <TextView
+                android:id="@+id/txtDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/txtTurnOn"
+                android:text="We'll download movies and shows just for you, so you'll always have something to watch"
+                android:textColor="@color/divider"
+                />
+
+            <ImageView
+                android:id="@+id/imgPosters"
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:scaleType="fitXY"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/img"
+                app:layout_constraintTop_toBottomOf="@id/txtDesc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSetUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cornerRadius="5dp"
+                app:backgroundTint="@color/blue"
+                android:text="Set Up"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/imgPosters"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFindMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Find More to Download"
+                app:backgroundTint="@color/dark_gray"
+                app:cornerRadius="5dp"
+                app:layout_constraintTop_toBottomOf="@id/btnSetUp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="15dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
