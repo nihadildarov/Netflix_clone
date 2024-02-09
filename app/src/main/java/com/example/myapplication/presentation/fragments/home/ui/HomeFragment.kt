@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
@@ -20,10 +21,16 @@ import com.example.myapplication.presentation.fragments.home.adapter.AdapterRecy
 import com.example.myapplication.presentation.fragments.home.adapter.AdapterRecyclersContinueWatching
 import com.example.myapplication.presentation.fragments.home.adapter.AdapterRecyclersMedium
 import com.example.myapplication.presentation.fragments.home.adapter.AdapterRecyclersGames
+import com.example.myapplication.presentation.fragments.home.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    private val viewModel by viewModels<HomeViewModel>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +47,15 @@ class HomeFragment : Fragment() {
     }
 
 
+
+
+    private fun observeViewModel(){
+        viewModel.popularMovieList.observe(viewLifecycleOwner){
+            val adapterBig = AdapterRecyclersBig()
+            adapterBig.submitList(it)
+
+        }
+    }
 
 
     private fun createRecyclers() {
@@ -98,12 +114,30 @@ class HomeFragment : Fragment() {
             "Watch In One Night"
         )
 
-        val adapterMedium = AdapterRecyclersMedium(itemList)
-        val adapterBig = AdapterRecyclersBig(itemList)
+
+
+        val adapterMedium = AdapterRecyclersMedium()
+        val adapterBig = AdapterRecyclersBig()
         val adapterGames = AdapterRecyclersGames(itemList)
-        val adapterContinueWatching = AdapterRecyclersContinueWatching(itemList)
+        val adapterContinueWatching = AdapterRecyclersContinueWatching()
         val adapterDownloads = AdapterRecyclerDownloads(itemList)
 
+        viewModel.popularMovieList.observe(viewLifecycleOwner){
+
+            adapterBig.submitList(it)
+
+        }
+
+
+        viewModel.upComingMovieList.observe(viewLifecycleOwner){
+            adapterContinueWatching.submitList(it)
+        }
+
+
+
+        viewModel.topRatedMovieList.observe(viewLifecycleOwner){
+            adapterMedium.submitList(it)
+        }
         var prevId = 1
 
 

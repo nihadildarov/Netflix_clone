@@ -16,9 +16,9 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val movieRemoteRepository: MovieRemoteRepository
 ) : ViewModel() {
-    private val popularMovieList = MutableLiveData<List<Result>>()
-    private val topRatedMovieList = MutableLiveData<List<Result>>()
-    private val upComingMovieList = MutableLiveData<List<Result>>()
+     val popularMovieList = MutableLiveData<List<Result>>()
+     val topRatedMovieList = MutableLiveData<List<Result>>()
+     val upComingMovieList = MutableLiveData<List<Result>>()
 
 
     init {

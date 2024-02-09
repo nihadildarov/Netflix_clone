@@ -2,12 +2,33 @@ package com.example.myapplication.presentation.fragments.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.data.remote.models.movie.Result
+import com.example.myapplication.data.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.RcyMovieItemBigPosterBinding
+import com.squareup.moshi.Moshi
+import com.squareup.picasso.Picasso
 
 class AdapterRecyclersBig(
-    private val imgList : List<Int>
+
 ):RecyclerView.Adapter<AdapterRecyclersBig.RcyViewHolder>() {
+
+
+    val onClick:(Result)->Unit ={}
+
+    private val itemCallBack = object : DiffUtil.ItemCallback<Result>(){
+        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+            return oldItem==newItem
+        }
+    }
+
+    private val diffUtil = AsyncListDiffer(this,itemCallBack)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RcyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -17,19 +38,24 @@ class AdapterRecyclersBig(
     }
 
     override fun getItemCount(): Int {
-        return imgList.size
+        return diffUtil.currentList.size
     }
 
     override fun onBindViewHolder(holder: RcyViewHolder, position: Int) {
-        val currentText = imgList[position]
+        val currentText = diffUtil.currentList[position]
         holder.bind(currentText)
     }
 
+    fun submitList(movieList:List<Result>){
+        diffUtil.submitList(movieList)
+    }
     inner class RcyViewHolder(private val binding:RcyMovieItemBigPosterBinding):RecyclerView.ViewHolder(binding.root){
 
-        fun bind(img:Int){
-            binding.imgBigPoster.setImageResource(img)
+        fun bind(movie:Result){
+            Picasso.get().load("$IMAGE_URL${movie.poster_path}").into(binding.imgBigPoster)
         }
     }
+
+
 
 }
