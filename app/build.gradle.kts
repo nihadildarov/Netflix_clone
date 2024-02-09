@@ -78,10 +78,7 @@ dependencies {
 
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
-
-
     //implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
-
 
 }
 
