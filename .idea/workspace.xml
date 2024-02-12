@@ -61,6 +61,11 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_movie_details.xml">
+        <config>
+          <theme>@style/Theme.MyApplication</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_hot.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
@@ -158,13 +163,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1878a53f-51cd-484c-9c5f-0526dd177420" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/movie_details/ui/MovieDetailsFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/movie_details/viewmodel/DetailsViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_movie_details.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/activities/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclersBig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclersBig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclersContinueWatching.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclersContinueWatching.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclersMedium.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclersMedium.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/data/local/dao/MovieDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/data/local/dao/MovieDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/data/local/repository/MovieRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/data/local/repository/MovieRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclerDownloads.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/adapters/MovieAdapterRecyclerDownloads.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclersBig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/adapters/MovieAdapterRecyclersBig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclersContinueWatching.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/adapters/MovieAdapterRecyclersContinueWatching.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclersGames.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/adapters/GamesAdapterRecyclersGames.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclersMedium.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/adapters/MovieAdapterRecyclersMedium.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/ui/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/ui/HomeFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/viewmodel/HomeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/viewmodel/HomeViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,30 +284,30 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ApkExportedModule&quot;: &quot;My_Application.app&quot;,
-    &quot;ExportApk.ApkPathForMy_Application.app&quot;: &quot;/Users/macbookair/Desktop/Android Projects/Netflix_clone/app&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/Toolbar.java_SELECTED&quot;: &quot;Toolbar&quot;,
-    &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/androidx.viewpager2/viewpager2/1.0.0/3c3569044e6969f1ee5c3aa03b08e6717a2d782f/viewpager2-1.0.0-sources.jar!/androidx/viewpager2/widget/ViewPager2.java_SELECTED&quot;: &quot;ViewPager2&quot;,
-    &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.11.0/47456a5ab79e72baca757532823ea1fa08e001d3/material-1.11.0-sources.jar!/com/google/android/material/chip/Chip.java_SELECTED&quot;: &quot;Chip&quot;,
-    &quot;android-custom-view/Users/macbookair/Library/Android/sdk/sources/android-34/android/view/ViewGroup.java_SELECTED&quot;: &quot;ViewGroup&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Architecture__creation&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/macbookair/Desktop/Android Projects/Netflix_clone/app/src/main/java/com/example/myapplication/data/remote/models/movie&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ApkExportedModule": "My_Application.app",
+    "ExportApk.ApkPathForMy_Application.app": "/Users/macbookair/Desktop/Android Projects/Netflix_clone/app",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/Toolbar.java_SELECTED": "Toolbar",
+    "android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/androidx.viewpager2/viewpager2/1.0.0/3c3569044e6969f1ee5c3aa03b08e6717a2d782f/viewpager2-1.0.0-sources.jar!/androidx/viewpager2/widget/ViewPager2.java_SELECTED": "ViewPager2",
+    "android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.11.0/47456a5ab79e72baca757532823ea1fa08e001d3/material-1.11.0-sources.jar!/com/google/android/material/chip/Chip.java_SELECTED": "Chip",
+    "android-custom-view/Users/macbookair/Library/Android/sdk/sources/android-34/android/view/ViewGroup.java_SELECTED": "ViewGroup",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "Architecture__creation",
+    "last_opened_file_path": "/Users/macbookair/Desktop/Android Projects/Netflix_clone/app/src/main/java/com/example/myapplication/data/remote/models/movie",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ExportApk.BuildVariants&quot;: [
-      &quot;release&quot;
+  "keyToStringList": {
+    "ExportApk.BuildVariants": [
+      "release"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/data/remote/models/movie" />
@@ -300,11 +326,11 @@
       <recent name="com.example.myapplication" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.myapplication.presentation.fragments.movie_details.ui" />
       <recent name="com.example.myapplication.fragments.finish_signup.ui" />
       <recent name="com.example.myapplication.fragments.verify_email.ui" />
       <recent name="com.example.myapplication.fragments.verify_email" />
       <recent name="com.example.myapplication.fragments.finish_signup" />
-      <recent name="com.example.myapplication.fragments.createa_account.ui" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.example.myapplication.fragments.home.adapter" />
@@ -663,11 +689,18 @@
       <option name="project" value="LOCAL" />
       <updated>1707464292146</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="ViewModel added to fragment and adapters edited to show data from api">
+      <option name="closed" value="true" />
+      <created>1707483582217</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1707483582217</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Tablayout added for viewpager indicators" />
     <MESSAGE value="Toolbar updated in GetStartedFragment" />
     <MESSAGE value="Three dot in GetStartedFragment changed to white" />
     <MESSAGE value="Project updated.&#10;Kotlin version updated from 1.9.0 to 1.9.20&#10;CreateAccountFragment added.&#10;Actions assigned to clicklisteners" />
@@ -692,15 +725,16 @@
     <MESSAGE value="Updated" />
     <MESSAGE value="packages, retrofit, roomDb, repositories, models, entities are created successfully" />
     <MESSAGE value="Created Home Viewmodel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Home Viewmodel" />
+    <MESSAGE value="ViewModel added to fragment and adapters edited to show data from api" />
+    <option name="LAST_COMMIT_MESSAGE" value="ViewModel added to fragment and adapters edited to show data from api" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-function">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapter/AdapterRecyclerDownloads.kt</url>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/adapters/MovieAdapterRecyclerDownloads.kt</url>
           <line>49</line>
-          <properties class="com.example.myapplication.presentation.fragments.home.adapter.AdapterRecyclerDownloads" method="onBindViewHolder">
+          <properties class="com.example.myapplication.presentation.adapters.MovieAdapterRecyclerDownloads">
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="1" />

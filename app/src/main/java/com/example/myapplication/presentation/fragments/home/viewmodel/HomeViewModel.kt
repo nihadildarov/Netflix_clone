@@ -1,6 +1,7 @@
 package com.example.myapplication.presentation.fragments.home.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,9 +17,14 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val movieRemoteRepository: MovieRemoteRepository
 ) : ViewModel() {
-     val popularMovieList = MutableLiveData<List<Result>>()
-     val topRatedMovieList = MutableLiveData<List<Result>>()
-     val upComingMovieList = MutableLiveData<List<Result>>()
+    private val _popularMovieList = MutableLiveData<List<Result>>()
+        val popularMovieList : LiveData<List<Result>> get() = _popularMovieList
+
+    private val _topRatedMovieList = MutableLiveData<List<Result>>()
+        val topRatedMovieList : LiveData<List<Result>> get() = _topRatedMovieList
+
+    private val _upComingMovieList = MutableLiveData<List<Result>>()
+        val upComingMovieList : LiveData<List<Result>> get() = _upComingMovieList
 
 
     init {
@@ -36,7 +42,7 @@ class HomeViewModel @Inject constructor(
                 if (response.isSuccessful) {
                     val body = response.body()
                     if (body != null) {
-                        topRatedMovieList.postValue(body.results)
+                        _topRatedMovieList.postValue(body.results)
                     }
                 }
             } catch (ex: Exception) {
@@ -53,7 +59,7 @@ class HomeViewModel @Inject constructor(
                 if (response.isSuccessful) {
                     val body = response.body()
                     if (body != null) {
-                        popularMovieList.postValue(body.results)
+                        _popularMovieList.postValue(body.results)
                     }
                 }
             } catch (ex: Exception) {
@@ -70,7 +76,7 @@ class HomeViewModel @Inject constructor(
                 if (response.isSuccessful) {
                     val body = response.body()
                     if (body != null) {
-                        upComingMovieList.postValue(body.results)
+                        _upComingMovieList.postValue(body.results)
                     }
                 }
             } catch (ex: Exception) {

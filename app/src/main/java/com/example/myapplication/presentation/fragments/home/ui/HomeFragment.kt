@@ -2,7 +2,6 @@ package com.example.myapplication.presentation.fragments.home.ui
 
 import android.graphics.Typeface
 import android.os.Bundle
-import android.text.Layout.Alignment
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,18 +11,19 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentHomeBinding
-import com.example.myapplication.presentation.fragments.home.adapter.AdapterRecyclerDownloads
-import com.example.myapplication.presentation.fragments.home.adapter.AdapterRecyclersBig
-import com.example.myapplication.presentation.fragments.home.adapter.AdapterRecyclersContinueWatching
-import com.example.myapplication.presentation.fragments.home.adapter.AdapterRecyclersMedium
-import com.example.myapplication.presentation.fragments.home.adapter.AdapterRecyclersGames
+import com.example.myapplication.presentation.adapters.MovieAdapterRecyclerDownloads
+import com.example.myapplication.presentation.adapters.MovieAdapterRecyclersBig
+import com.example.myapplication.presentation.adapters.MovieAdapterRecyclersContinueWatching
+import com.example.myapplication.presentation.adapters.MovieAdapterRecyclersMedium
+import com.example.myapplication.presentation.adapters.GamesAdapterRecyclersGames
+import com.example.myapplication.presentation.adapters.MovieClickListener
 import com.example.myapplication.presentation.fragments.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -47,15 +47,6 @@ class HomeFragment : Fragment() {
     }
 
 
-
-
-    private fun observeViewModel(){
-        viewModel.popularMovieList.observe(viewLifecycleOwner){
-            val adapterBig = AdapterRecyclersBig()
-            adapterBig.submitList(it)
-
-        }
-    }
 
 
     private fun createRecyclers() {
@@ -116,33 +107,45 @@ class HomeFragment : Fragment() {
 
 
 
-        val adapterMedium = AdapterRecyclersMedium()
-        val adapterBig = AdapterRecyclersBig()
-        val adapterGames = AdapterRecyclersGames(itemList)
-        val adapterContinueWatching = AdapterRecyclersContinueWatching()
-        val adapterDownloads = AdapterRecyclerDownloads(itemList)
+        val adapterBig = MovieAdapterRecyclersBig(object : MovieClickListener{
+            override fun movieClickListener(movieId: Long) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movieId))
+            }
+        })
+        val adapterGames = GamesAdapterRecyclersGames(itemList)
+        val adapterContinueWatching = MovieAdapterRecyclersContinueWatching()
+        val adapterDownloads = MovieAdapterRecyclerDownloads(itemList)
 
-        viewModel.popularMovieList.observe(viewLifecycleOwner){
 
+        viewModel.popularMovieList.observe(viewLifecycleOwner) {
             adapterBig.submitList(it)
-
         }
 
 
-        viewModel.upComingMovieList.observe(viewLifecycleOwner){
+        viewModel.upComingMovieList.observe(viewLifecycleOwner) {
             adapterContinueWatching.submitList(it)
         }
 
 
 
-        viewModel.topRatedMovieList.observe(viewLifecycleOwner){
-            adapterMedium.submitList(it)
+        binding.cardViewPoster.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_movieDetails)
         }
+
+
+
+
         var prevId = 1
 
 
 
         for (i in 1..textList.size) {
+            val adapterMedium = MovieAdapterRecyclersMedium()
+
+            viewModel.topRatedMovieList.observe(viewLifecycleOwner) {
+                adapterMedium.submitList(it.shuffled())
+            }
+
             val constraintLayout = binding.constraintHome
             val constraintSet = ConstraintSet()
 
@@ -205,9 +208,9 @@ class HomeFragment : Fragment() {
                 30
             )
             //End
-            if (textList[i - 1] == "Mobile Games" || textList[i - 1] == "My List" ) {
+            if (textList[i - 1] == "Mobile Games" || textList[i - 1] == "My List") {
                 val txtMyList = TextView(requireContext())
-                when (textList[i-1]){
+                when (textList[i - 1]) {
                     "Mobile Games" -> txtMyList.text = "My List"
                     "My List" -> txtMyList.text = "See All"
                 }
@@ -222,8 +225,10 @@ class HomeFragment : Fragment() {
                 txtMyList.setTypeface(null, Typeface.BOLD)
                 txtMyList.textSize = 18f
                 txtMyList.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
-                txtMyList.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,
-                    ContextCompat.getDrawable(requireContext(),R.drawable.ic_chevron_right),null)
+                txtMyList.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    null, null,
+                    ContextCompat.getDrawable(requireContext(), R.drawable.ic_chevron_right), null
+                )
                 constraintLayout.addView(txtMyList)
 
                 //START

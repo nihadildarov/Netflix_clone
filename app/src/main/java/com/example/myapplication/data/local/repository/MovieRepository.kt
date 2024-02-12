@@ -23,7 +23,7 @@ class MovieLocalRepository @Inject constructor(private val movieDao: MovieDao) {
         return movieDao.deleteFavoriteMovie(movie)
     }
 
-    suspend fun isMovieExists(movieId:Int):Boolean{
+    suspend fun isMovieExists(movieId:Long):Boolean{
         return movieDao.isMovieIdExists(movieId)
     }
 
