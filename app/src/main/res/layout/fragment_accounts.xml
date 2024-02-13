@@ -16,7 +16,8 @@
         android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="@id/imgLogo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/imgLogo" />
+        app:layout_constraintTop_toTopOf="@id/imgLogo"
+        android:contentDescription="@string/accounts_edit_ic_desc" />
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -26,7 +27,9 @@
         android:src="@drawable/logo_netflix"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/accounts_logo_desc"
+        />
 
     <TextView
         android:id="@+id/txtWhoIs"
@@ -34,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:text="Who's Watching?"
+        android:text="@string/accounts_who_s_watching"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/rcyAccounts"
         app:layout_constraintEnd_toEndOf="parent"

@@ -66,6 +66,9 @@
         <action
             android:id="@+id/action_finishSignUp_to_newHot"
             app:destination="@id/finishSignUpFragment" />
+        <action
+            android:id="@+id/action_newHotFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
     </fragment>
 
     <fragment

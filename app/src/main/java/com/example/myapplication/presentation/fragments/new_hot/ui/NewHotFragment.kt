@@ -6,15 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentNewHotBinding
+import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.example.myapplication.presentation.fragments.new_hot.adapter.AdapterRcyNewHotComingSoon
-import com.example.myapplication.presentation.fragments.new_hot.adapter.AdapterRcyNewHotEveryonesWatching
+import com.example.myapplication.presentation.fragments.new_hot.adapter.AdapterRcyNewHotEveryoneWatching
 import com.example.myapplication.presentation.fragments.new_hot.adapter.AdapterRcyNewHotGames
+import com.example.myapplication.presentation.fragments.new_hot.view_model.NewHotViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewHotFragment : Fragment() {
     private lateinit var binding:FragmentNewHotBinding
+    private val viewModel by viewModels<NewHotViewModel> ()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +34,8 @@ class NewHotFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecyclers()
         chipsClick()
-
+        viewModel.getUpComingMovies()
+        viewModel.getEveryOneWatchingMovies()
 
 
     }
@@ -45,8 +52,34 @@ class NewHotFragment : Fragment() {
 
 
     private fun setAdapters(){
-        val comingSoonAdapter = AdapterRcyNewHotComingSoon(listOf(R.drawable.img,R.drawable.img,R.drawable.img,))
-        val everyOnesWatchingAdapter = AdapterRcyNewHotEveryonesWatching(listOf(R.drawable.img,R.drawable.img,R.drawable.img,))
+
+
+        val comingSoonAdapter = AdapterRcyNewHotComingSoon(
+            object :MovieClickListener{
+                override fun movieClickListener(movieId: Long) {
+                    //findNavController().navigate(NewHotFragmentDirections.actionNewHotFragmentToMovieDetailsFragment(movieId))
+                }
+            }
+        )
+
+
+        viewModel.upComing.observe(viewLifecycleOwner){
+            comingSoonAdapter.submitList(it.sortedBy { it.release_date })
+        }
+
+
+        val everyOnesWatchingAdapter = AdapterRcyNewHotEveryoneWatching(
+            object : MovieClickListener{
+                override fun movieClickListener(movieId: Long) {
+                    //findNavController().navigate(NewHotFragmentDirections.actionNewHotFragmentToMovieDetailsFragment(movieId))
+                }
+            }
+        )
+
+        viewModel.everyOneWatching.observe(viewLifecycleOwner){
+            everyOnesWatchingAdapter.submitList(it.shuffled())
+        }
+
         val gamesAdapter = AdapterRcyNewHotGames(listOf(R.drawable.img,R.drawable.img,R.drawable.img,))
 
         with(binding){

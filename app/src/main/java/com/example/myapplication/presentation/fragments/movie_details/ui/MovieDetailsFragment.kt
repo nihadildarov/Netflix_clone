@@ -1,6 +1,7 @@
 package com.example.myapplication.presentation.fragments.movie_details.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,22 +36,21 @@ class MovieDetailsFragment : Fragment() {
         viewModel.getMovieById(movieId)
         viewModel.getMovieVideoById(movieId)
         viewModel.isMovieExists(movieId)
-        testPlayer ()
-
+        setPlayer ()
     }
 
-    private fun testPlayer () {
+    private fun setPlayer () {
 
         viewModel.movieVideo.observe(viewLifecycleOwner){
 
+
+            Log.e("VideoKey",it.toString())
             binding.player.addYouTubePlayerListener(object : AbstractYouTubePlayerListener(){
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     super.onReady(youTubePlayer)
                     youTubePlayer.cueVideo(it[0].key,0f)
                 }
             })
-
-
         }
 
     }

@@ -35,12 +35,10 @@ class ForNavigationFragment : Fragment() {
             signIn.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_signIn) }
             signUp.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_signUp) }
             verifyEmail.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_verifyEmail) }
-
-
-
         }
 
 
     }
+
 
 }

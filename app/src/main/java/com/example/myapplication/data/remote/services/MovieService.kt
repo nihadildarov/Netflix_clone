@@ -13,57 +13,70 @@ import retrofit2.http.Query
 
 interface MovieService {
 
-    @Headers("accept:application/json",
-        "Authorization: Bearer $ACCESS_TOKEN")
+    @Headers(
+        "accept:application/json",
+        "Authorization: Bearer $ACCESS_TOKEN"
+    )
     @GET("movie/popular")
     suspend fun getPopularMovies(
-        @Query("language") lang:String = "en-US",
-        @Query("page") page: Int = 1): Response<MovieResponse>
+        @Query("language") lang: String = "en-US",
+        @Query("page") page: Int = 1
+    ): Response<MovieResponse>
 
-    @Headers("accept:application/json",
-        "Authorization: Bearer $ACCESS_TOKEN")
+
+    @Headers(
+        "accept:application/json",
+        "Authorization: Bearer $ACCESS_TOKEN"
+    )
     @GET("movie/top_rated")
     suspend fun getTopRatedMovies(
         @Query("language") lang: String = "en-US",
         @Query("page") page: Int = 1
-    ):Response<MovieResponse>
+    ): Response<MovieResponse>
 
-    @Headers("accept:application/json",
-        "Authorization: Bearer $ACCESS_TOKEN")
+    @Headers(
+        "accept:application/json",
+        "Authorization: Bearer $ACCESS_TOKEN"
+    )
     @GET("movie/upcoming")
     suspend fun getUpComingMovies(
         @Query("language") lang: String = "en-US",
         @Query("page") page: Int = 1
-    ):Response<MovieResponse>
+    ): Response<MovieResponse>
 
-    @Headers("accept:application/json",
-        "Authorization: Bearer $ACCESS_TOKEN")
+    @Headers(
+        "accept:application/json",
+        "Authorization: Bearer $ACCESS_TOKEN"
+    )
     @GET("movie/{id}")
     suspend fun getMovieById(
-        @Path ("id") movieId:Long,
+        @Path("id") movieId: Long,
         @Query("language") lang: String = "en-US",
         @Query("page") page: Int = 1
-    ):Response<MovieResponseById>
+    ): Response<MovieResponseById>
 
 
-
-    @Headers("accept:application/json",
-        "Authorization: Bearer $ACCESS_TOKEN")
+    @Headers(
+        "accept:application/json",
+        "Authorization: Bearer $ACCESS_TOKEN"
+    )
     @GET("movie/{id}/videos")
     suspend fun getMovieVideosById(
-        @Path("id") movieId:Long,
+        @Path("id") movieId: Long,
         @Query("language") lang: String = "en-US",
         @Query("page") page: Int = 1
-    ):Response<MovieVideoResponseById>
+    ): Response<MovieVideoResponseById>
 
 
-    @Headers("accept:application/json",
-        "Authorization: Bearer $ACCESS_TOKEN")
+    @Headers(
+        "accept:application/json",
+        "Authorization: Bearer $ACCESS_TOKEN"
+    )
     @GET("movie/top_rated")
-    suspend fun getMovieSearched (
-        @Query ("query") query: String,
-        @Query ("include_adult") includeAdult: Boolean = false,
+    suspend fun getMovieSearched(
+        @Query("query") query: String,
+        @Query("include_adult") includeAdult: Boolean = false,
         @Query("language") lang: String = "en-US",
         @Query("page") page: Int = 1
-    ):Response<MovieResponse>
+    ): Response<MovieResponse>
 }

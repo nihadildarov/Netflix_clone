@@ -16,12 +16,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentHomeBinding
-import com.example.myapplication.presentation.adapters.MovieAdapterRecyclerDownloads
-import com.example.myapplication.presentation.adapters.MovieAdapterRecyclersBig
-import com.example.myapplication.presentation.adapters.MovieAdapterRecyclersContinueWatching
-import com.example.myapplication.presentation.adapters.MovieAdapterRecyclersMedium
-import com.example.myapplication.presentation.adapters.GamesAdapterRecyclersGames
-import com.example.myapplication.presentation.adapters.MovieClickListener
+import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclerDownloads
+import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersBig
+import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersContinueWatching
+import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersMedium
+import com.example.myapplication.presentation.fragments.home.adapters.GamesAdapterRecyclersGames
+import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.example.myapplication.presentation.fragments.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -107,13 +107,21 @@ class HomeFragment : Fragment() {
 
 
 
-        val adapterBig = MovieAdapterRecyclersBig(object : MovieClickListener{
+        val adapterBig = MovieAdapterRecyclersBig(object : MovieClickListener {
             override fun movieClickListener(movieId: Long) {
                 findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movieId))
             }
         })
+
         val adapterGames = GamesAdapterRecyclersGames(itemList)
-        val adapterContinueWatching = MovieAdapterRecyclersContinueWatching()
+
+        val adapterContinueWatching = MovieAdapterRecyclersContinueWatching(object :
+            MovieClickListener {
+            override fun movieClickListener(movieId: Long) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movieId))
+            }
+
+        })
         val adapterDownloads = MovieAdapterRecyclerDownloads(itemList)
 
 
@@ -140,7 +148,12 @@ class HomeFragment : Fragment() {
 
 
         for (i in 1..textList.size) {
-            val adapterMedium = MovieAdapterRecyclersMedium()
+            val adapterMedium = MovieAdapterRecyclersMedium(object: MovieClickListener {
+                override fun movieClickListener(movieId: Long) {
+                    findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movieId))
+                }
+
+            })
 
             viewModel.topRatedMovieList.observe(viewLifecycleOwner) {
                 adapterMedium.submitList(it.shuffled())

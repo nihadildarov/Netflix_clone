@@ -40,13 +40,14 @@ class HomeViewModel @Inject constructor(
             try {
 
                 if (response.isSuccessful) {
+                    Log.i("RESPONSES_HOME","getPopularMovies status is (isSuccessful):${response.isSuccessful}")
                     val body = response.body()
                     if (body != null) {
                         _topRatedMovieList.postValue(body.results)
                     }
                 }
             } catch (ex: Exception) {
-                Log.e("TOP_RATED_ERROR", response.errorBody().toString())
+                Log.e("RESPONSES_HOME", "getTopRated status : ${response.errorBody().toString()}")
             }
         }
     }
@@ -57,13 +58,14 @@ class HomeViewModel @Inject constructor(
             val response = movieRemoteRepository.getPopularMovies()
             try {
                 if (response.isSuccessful) {
+                    Log.i("RESPONSES_HOME","getPopularMovies status is (isSuccessful):${response.isSuccessful}")
                     val body = response.body()
                     if (body != null) {
                         _popularMovieList.postValue(body.results)
                     }
                 }
             } catch (ex: Exception) {
-                Log.e("POPULAR_ERROR", response.errorBody().toString())
+                Log.e("RESPONSES_HOME", "getPopularMovies status : ${response.errorBody().toString()}")
             }
         }
     }
@@ -74,13 +76,14 @@ class HomeViewModel @Inject constructor(
             val response = movieRemoteRepository.getUpComingMovies()
             try {
                 if (response.isSuccessful) {
+                    Log.i("RESPONSES_HOME","getUpComingMovies status is (isSuccessful):${response.isSuccessful}")
                     val body = response.body()
                     if (body != null) {
                         _upComingMovieList.postValue(body.results)
                     }
                 }
             } catch (ex: Exception) {
-                Log.e("UP_COMING_ERROR", response.errorBody().toString())
+                Log.e("RESPONSES_HOME", "getUpComingMovies status is (isSuccessful):${response.errorBody().toString()}")
             }
         }
     }
