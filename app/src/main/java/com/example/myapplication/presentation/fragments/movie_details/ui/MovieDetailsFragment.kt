@@ -12,7 +12,6 @@ import com.example.myapplication.databinding.FragmentMovieDetailsBinding
 import com.example.myapplication.presentation.fragments.movie_details.viewmodel.DetailsViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -35,11 +34,12 @@ class MovieDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val movieId = args.movieId
 
+
         viewModel.getMovieById(movieId)
         viewModel.getMovieVideoById(movieId)
         viewModel.isMovieExists(movieId)
         setPlayer()
-
+        setDetails()
 
     }
 
@@ -56,6 +56,17 @@ class MovieDetailsFragment : Fragment() {
                 }
             )
         }
+    }
+
+
+    private fun setDetails(){
+                viewModel.movieDetail.observe(viewLifecycleOwner){
+                    binding.txtMovieName.text = it.title
+                    binding.txtDescription.text = it.overview
+                    binding.txtReleaseDate.text = it.release_date.substring(0,4)
+                    binding.txtAgeRestriction.text = if(it.adult){ "18+ "}else{"18-"}
+                    binding.txtSeasonInfo.text = it.original_language
+                }
     }
 
 
