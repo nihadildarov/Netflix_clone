@@ -1,188 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".presentation.fragments.home.ui.HomeFragment"
-    android:id="@+id/constraintHome">
-
-
-    <ImageView
-        android:id="@+id/imgLogoShort"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:src="@drawable/ic_netflix_short_logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imgSearch"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_search"
-        app:layout_constraintBottom_toBottomOf="@id/imgLogoShort"
-        app:layout_constraintEnd_toStartOf="@id/imgAvatar"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <ImageView
-        android:id="@+id/imgAvatar"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/ic_chevron_right"
-        app:layout_constraintBottom_toBottomOf="@id/imgLogoShort"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chipTvShows"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:chipBackgroundColor="@color/black"
-        android:alpha="100"
-        app:rippleColor="@color/gray"
-        android:text="TV Shows"
-        android:textColor="@color/white"
-        app:chipCornerRadius="40dp"
-        app:chipStrokeColor="@color/white"
-        app:chipStrokeWidth="0.5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgLogoShort" />
-
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chipMovies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:chipBackgroundColor="@color/black"
-        android:alpha="100"
-        app:rippleColor="@color/gray"
-        android:text="Movies"
-        android:textColor="@color/white"
-        app:chipCornerRadius="40dp"
-        app:chipStrokeColor="@color/white"
-        app:chipStrokeWidth="0.5dp"
-        app:layout_constraintBottom_toBottomOf="@id/chipTvShows"
-        app:layout_constraintStart_toEndOf="@id/chipTvShows"
-        app:layout_constraintTop_toTopOf="@id/chipTvShows" />
-
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chipCategories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:chipBackgroundColor="@color/black"
-        android:alpha="100"
-        app:rippleColor="@color/gray"
-        android:text="Categories"
-        android:textColor="@color/white"
-        app:chipCornerRadius="40dp"
-        app:chipStrokeColor="@color/white"
-        app:chipStrokeWidth="0.5dp"
-        app:closeIcon="@drawable/ic_arrow_down"
-        app:closeIconEnabled="true"
-        app:closeIconTint="@color/white"
-        app:closeIconVisible="true"
-        app:layout_constraintBottom_toBottomOf="@id/chipTvShows"
-        app:layout_constraintStart_toEndOf="@id/chipMovies"
-        app:layout_constraintTop_toTopOf="@id/chipTvShows" />
-
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardViewPoster"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintHome"
         android:layout_width="match_parent"
-        android:layout_height="460dp"
-        android:layout_marginHorizontal="18dp"
-        app:cardCornerRadius="10dp"
-        android:layout_marginVertical="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chipTvShows"
-        >
+        android:layout_height="wrap_content"
+        tools:context=".presentation.fragments.home.ui.HomeFragment">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/semiTransparent7"
             >
 
+            <ImageView
+                android:id="@+id/imgLogoShort"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_netflix_short_logo" />
+
+            <ImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:src="@drawable/ic_chevron_right" />
 
 
-           <ImageView
-               android:id="@+id/imgPosterHeader"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:minHeight="360dp"
-               android:scaleType="fitXY"
-               android:src="@drawable/img"
-               android:padding="1dp"
-               app:layout_constraintBottom_toBottomOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:src="@drawable/ic_search" />
+        </com.google.android.material.appbar.MaterialToolbar>
 
-            <TextView
-                android:id="@+id/txtCategoriesHeader"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            android:background="@color/semiTransparent5"
+            >
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTvShows"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:alpha="100"
+                android:text="TV Shows"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/black"
+                app:chipCornerRadius="40dp"
+                app:chipStrokeColor="@color/white"
+                app:chipStrokeWidth="0.5dp"
+                android:layout_marginStart="5dp"
+                app:rippleColor="@color/gray" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMovies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:alpha="100"
+                android:text="Movies"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/black"
+                app:chipCornerRadius="40dp"
+                app:chipStrokeColor="@color/white"
+                app:chipStrokeWidth="0.5dp"
+                app:rippleColor="@color/gray" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCategories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:alpha="100"
+                android:text="Categories"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/black"
+                app:chipCornerRadius="40dp"
+                app:chipStrokeColor="@color/white"
+                app:chipStrokeWidth="0.5dp"
+                app:closeIcon="@drawable/ic_arrow_down"
+                app:closeIconEnabled="true"
+                app:closeIconTint="@color/white"
+                app:closeIconVisible="true"
+                app:rippleColor="@color/gray" />
+        </com.google.android.material.chip.ChipGroup>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewPoster"
+            android:layout_width="match_parent"
+            android:layout_height="460dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginVertical="15dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chipGroup">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="categoryName "
-
-                app:layout_constraintBottom_toTopOf="@id/btnPlayHeader"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPlayHeader"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Play"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/gray"
-                app:cornerRadius="5dp"
-                app:icon="@drawable/ic_play"
-                app:iconGravity="textStart"
-                app:iconSize="25sp"
-                app:iconTint="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btnAddMyListHeader"
-                app:layout_constraintStart_toStartOf="parent"
-                app:rippleColor="@color/divider" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAddMyListHeader"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:backgroundTint="@color/bottom_sheet_bg"
-                android:text="My List"
-                app:backgroundTint="@color/semiTransparent"
-                app:cornerRadius="5dp"
-                app:icon="@drawable/ic_add"
-                app:iconGravity="textStart"
-                app:iconSize="25dp"
-                app:layout_constraintBottom_toBottomOf="@id/btnPlayHeader"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btnPlayHeader"
-                app:layout_constraintTop_toTopOf="@id/btnPlayHeader" />
+                android:layout_height="match_parent">
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <ImageView
+                    android:id="@+id/imgPosterHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="1dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtCategoriesHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="categoryName "
+
+                    app:layout_constraintBottom_toTopOf="@id/btnPlayHeader"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPlayHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Play"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@color/gray"
+                    app:cornerRadius="5dp"
+                    app:icon="@drawable/ic_play"
+                    app:iconGravity="textStart"
+                    app:iconSize="25sp"
+                    app:iconTint="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnAddMyListHeader"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:rippleColor="@color/divider" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddMyListHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/semiTransparent5"
+                    android:text="My List"
+                    app:backgroundTint="@color/semiTransparent7"
+                    app:cornerRadius="5dp"
+                    app:icon="@drawable/ic_add"
+                    app:iconGravity="textStart"
+                    app:iconSize="25dp"
+                    app:layout_constraintBottom_toBottomOf="@id/btnPlayHeader"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnPlayHeader"
+                    app:layout_constraintTop_toTopOf="@id/btnPlayHeader" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

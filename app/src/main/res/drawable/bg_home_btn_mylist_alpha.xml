@@ -3,7 +3,7 @@
 
 
     <corners android:radius="10dp"/>
-    <solid android:color="@color/semiTransparent" /> <!-- Semi-transparent black color -->
+    <solid android:color="@color/semiTransparent7" /> <!-- Semi-transparent black color -->
 
 
 </shape>

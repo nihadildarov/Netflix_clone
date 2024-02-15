@@ -1,20 +1,28 @@
 package com.example.myapplication.presentation.fragments.home.ui
 
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.data.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.FragmentHomeBinding
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclerDownloads
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersBig
@@ -23,6 +31,8 @@ import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapt
 import com.example.myapplication.presentation.fragments.home.adapters.GamesAdapterRecyclersGames
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.example.myapplication.presentation.fragments.home.viewmodel.HomeViewModel
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,11 +52,79 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setBigPoster()
         createRecyclers()
+
     }
 
 
+    private fun setBigPoster() {
+
+        viewModel.popularMovieList.observe(viewLifecycleOwner) {
+            val movie = it.random()
+            val url = "$IMAGE_URL${movie.poster_path}"
+
+
+            loadBitmapFromUrl(url, onSuccess = { dominantColors ->
+                val color1 = dominantColors.firstOrNull() ?: Color.WHITE
+                val color2 = Color.BLACK
+                Log.i("setBigPoster", color1.toString())
+                val gradientDrawable = GradientDrawable(
+                    GradientDrawable.Orientation.TOP_BOTTOM,
+                    intArrayOf(color1, color2)
+                )
+                binding.constraintHome.background = gradientDrawable
+            }, onError = {
+                Log.e("setBigPoster", "Error")
+                //binding.constraintHome.setBackgroundResource(R.drawable.placeholder)
+            }
+            )
+
+
+            Log.i("setBigPoster", "Done")
+            Picasso.get().load(url).into(binding.imgPosterHeader)
+            binding.imgPosterHeader.setOnClickListener {
+                Toast.makeText(context, movie.title, Toast.LENGTH_SHORT).show()
+                findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movie.id.toLong()))
+            }
+        }
+    }
+
+
+    private fun loadBitmapFromUrl(
+        url: String,
+        onSuccess: (List<Int>) -> Unit,
+        onError: () -> Unit
+    ) {
+        Picasso.get().load(url).into(object : Target {
+            override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
+
+                Log.i("setBigPoster", bitmap.hashCode().toString())
+                if (bitmap != null) {
+                    Log.i("setBigPoster", "onPrepareLoaded")
+                    // Extract dominant colors from the bitmap
+                    Palette.from(bitmap).generate { palette ->
+                        val dominantColors = mutableListOf<Int>()
+                        palette?.dominantSwatch?.let {
+                            dominantColors.add(it.rgb)
+                        }
+                        onSuccess(dominantColors)
+                    }
+                } else {
+                    onError()
+                }
+            }
+
+            override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
+                Log.i("setBigPoster", e.toString())
+                onError()
+            }
+
+            override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+                Log.i("setBigPoster", "onPrepareLoad")
+            }
+        })
+    }
 
 
     private fun createRecyclers() {
@@ -61,7 +139,6 @@ class HomeFragment : Fragment() {
             R.drawable.img,
             R.drawable.img
         )
-
 
         val textList = listOf<Any>(
             "Mobile Games",
@@ -106,7 +183,6 @@ class HomeFragment : Fragment() {
         )
 
 
-
         val adapterBig = MovieAdapterRecyclersBig(object : MovieClickListener {
             override fun movieClickListener(movieId: Long) {
                 findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movieId))
@@ -141,16 +217,18 @@ class HomeFragment : Fragment() {
         }
 
 
-
-
         var prevId = 1
 
 
 
         for (i in 1..textList.size) {
-            val adapterMedium = MovieAdapterRecyclersMedium(object: MovieClickListener {
+            val adapterMedium = MovieAdapterRecyclersMedium(object : MovieClickListener {
                 override fun movieClickListener(movieId: Long) {
-                    findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movieId))
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionHomeToMovieDetails(
+                            movieId
+                        )
+                    )
                 }
 
             })

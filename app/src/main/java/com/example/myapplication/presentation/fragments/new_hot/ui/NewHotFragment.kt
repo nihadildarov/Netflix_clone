@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
@@ -57,21 +58,22 @@ class NewHotFragment : Fragment() {
         val comingSoonAdapter = AdapterRcyNewHotComingSoon(
             object :MovieClickListener{
                 override fun movieClickListener(movieId: Long) {
-                    //findNavController().navigate(NewHotFragmentDirections.actionNewHotFragmentToMovieDetailsFragment(movieId))
+                    findNavController().navigate(NewHotFragmentDirections.actionNewHotToMovieDetails(movieId))
                 }
             }
         )
 
 
         viewModel.upComing.observe(viewLifecycleOwner){
-            comingSoonAdapter.submitList(it.sortedBy { it.release_date })
+            comingSoonAdapter.submitList(it.sortedBy {movie->
+                movie.release_date })
         }
 
 
         val everyOnesWatchingAdapter = AdapterRcyNewHotEveryoneWatching(
             object : MovieClickListener{
                 override fun movieClickListener(movieId: Long) {
-                    //findNavController().navigate(NewHotFragmentDirections.actionNewHotFragmentToMovieDetailsFragment(movieId))
+                    findNavController().navigate(NewHotFragmentDirections.actionNewHotToMovieDetails(movieId))
                 }
             }
         )
@@ -80,7 +82,7 @@ class NewHotFragment : Fragment() {
             everyOnesWatchingAdapter.submitList(it.shuffled())
         }
 
-        val gamesAdapter = AdapterRcyNewHotGames(listOf(R.drawable.img,R.drawable.img,R.drawable.img,))
+        val gamesAdapter = AdapterRcyNewHotGames(listOf(R.drawable.img,R.drawable.img,R.drawable.img))
 
         with(binding){
             rcyComingSoon.adapter = comingSoonAdapter

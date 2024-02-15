@@ -74,8 +74,9 @@ class AdapterRcyNewHotComingSoon(
 
 
             binding.txtGenres.text = movie.genre_ids.toString()
-            movieClickListener.movieClickListener(movie.id.toLong())
-
+            binding.imgVideo.setOnClickListener {
+                movieClickListener.movieClickListener(movie.id.toLong())
+            }
         }
     }
 

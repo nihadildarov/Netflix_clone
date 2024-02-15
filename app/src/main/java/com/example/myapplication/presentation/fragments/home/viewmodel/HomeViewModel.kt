@@ -40,7 +40,6 @@ class HomeViewModel @Inject constructor(
             try {
 
                 if (response.isSuccessful) {
-                    Log.i("RESPONSES_HOME","getPopularMovies status is (isSuccessful):${response.isSuccessful}")
                     val body = response.body()
                     if (body != null) {
                         _topRatedMovieList.postValue(body.results)

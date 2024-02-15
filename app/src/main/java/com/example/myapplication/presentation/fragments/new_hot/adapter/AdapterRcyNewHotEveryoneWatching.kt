@@ -53,7 +53,9 @@ class AdapterRcyNewHotEveryoneWatching (
 
             fun bind(movie:Result) {
                 Picasso.get().load("$IMAGE_URL${movie.backdrop_path}").into(binding.videoPlayer)
-                movieClickListener.movieClickListener(movie.id.toLong())
+                binding.videoPlayer.setOnClickListener {
+                    movieClickListener.movieClickListener(movie.id.toLong())
+                }
             }
 
     }

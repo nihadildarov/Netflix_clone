@@ -46,7 +46,8 @@ android {
 }
 
 dependencies {
-    val nav_version = "2.7.6"
+    implementation("androidx.palette:palette-ktx:1.0.0")
+    val nav_version = "2.7.7"
     val room_version = "2.6.1"
 
     //Hilt
