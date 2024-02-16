@@ -127,22 +127,39 @@ class HomeFragment : Fragment() {
     }
 
 
+
+    private fun setViewModelData(
+        adapterBig:MovieAdapterRecyclersBig,
+        adapterContinueWatching:MovieAdapterRecyclersContinueWatching
+    ){
+        viewModel.popularMovieList.observe(viewLifecycleOwner) {
+            adapterBig.submitList(it)
+        }
+
+
+        viewModel.upComingMovieList.observe(viewLifecycleOwner) {
+            adapterContinueWatching.submitList(it)
+        }
+    }
+
+
+    private fun setTopRatedMovieFromViewModel(
+        adapterMedium:MovieAdapterRecyclersMedium
+    ){
+        viewModel.topRatedMovieList.observe(viewLifecycleOwner) {
+            adapterMedium.submitList(it.shuffled())
+        }
+    }
+
+
+
+
     private fun createRecyclers() {
-        val itemList = listOf(
-            R.drawable.img,
-            R.drawable.img,
-            R.drawable.img,
-            R.drawable.img,
-            R.drawable.img,
-            R.drawable.img,
-            R.drawable.img,
-            R.drawable.img,
-            R.drawable.img
-        )
+
 
         val textList = listOf<Any>(
-            "Mobile Games",
-            "Downloads For You",
+            //"Mobile Games",
+            //"Downloads For You",
             "Soapy TV Dramas",
             "Bingeworthy TV Shows",
             "Critically-acclaimed Dark US TV Shows",
@@ -189,7 +206,7 @@ class HomeFragment : Fragment() {
             }
         })
 
-        val adapterGames = GamesAdapterRecyclersGames(itemList)
+        //val adapterGames = GamesAdapterRecyclersGames(itemList)
 
         val adapterContinueWatching = MovieAdapterRecyclersContinueWatching(object :
             MovieClickListener {
@@ -198,17 +215,11 @@ class HomeFragment : Fragment() {
             }
 
         })
-        val adapterDownloads = MovieAdapterRecyclerDownloads(itemList)
+        //val adapterDownloads = MovieAdapterRecyclerDownloads(itemList)
 
 
-        viewModel.popularMovieList.observe(viewLifecycleOwner) {
-            adapterBig.submitList(it)
-        }
 
-
-        viewModel.upComingMovieList.observe(viewLifecycleOwner) {
-            adapterContinueWatching.submitList(it)
-        }
+        setViewModelData(adapterBig,adapterContinueWatching)
 
 
 
@@ -233,9 +244,7 @@ class HomeFragment : Fragment() {
 
             })
 
-            viewModel.topRatedMovieList.observe(viewLifecycleOwner) {
-                adapterMedium.submitList(it.shuffled())
-            }
+            setTopRatedMovieFromViewModel(adapterMedium)
 
             val constraintLayout = binding.constraintHome
             val constraintSet = ConstraintSet()
@@ -399,10 +408,10 @@ class HomeFragment : Fragment() {
 
             //Setting recyclers adapters
             when {
-                textList[i - 1] == "Mobile Games" -> recycler.adapter = adapterGames
+                //textList[i - 1] == "Mobile Games" -> recycler.adapter = adapterGames
                 textList[i - 1] == "Only on Netflix" -> recycler.adapter = adapterBig
                 textList[i - 1] == "Continue watching" -> recycler.adapter = adapterContinueWatching
-                textList[i - 1] == "Downloads For You" -> recycler.adapter = adapterDownloads
+                //textList[i - 1] == "Downloads For You" -> recycler.adapter = adapterDownloads
 
                 else -> recycler.adapter = adapterMedium
 

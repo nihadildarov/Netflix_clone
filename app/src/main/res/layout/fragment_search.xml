@@ -1,14 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.fragments.search.ui.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:src="@drawable/ic_back_arrow" />
+
+        <ImageButton
+            android:id="@+id/imgProfile"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@android:color/transparent"
+            android:src="@drawable/img" />
+
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtSearchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:endIconMode="clear_text"
+        app:endIconDrawable="@drawable/quantum_ic_clear_white_24"
+        android:background="@color/dark_gray"
+        app:boxStrokeWidth="0dp"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
+        app:boxStrokeColor="@android:color/transparent"
+        app:expandedHintEnabled="false"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/edtSearchBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="8dp"
+            android:inputType="text|textImeMultiLine"
+            android:drawableTint="@color/divider"
+            android:hint="Search games, shows, movies..."
+            android:minHeight="48dp"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/divider"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtSearchLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtRecommendedGames"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Recommended Mobile Games"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcyRecommendedGames"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/txtRecommendedGames"
+                app:layout_constraintStart_toStartOf="@id/txtRecommendedGames"
+                app:layout_constraintTop_toBottomOf="@id/txtRecommendedGames"
+                tools:listitem="@layout/rcy_movie_item_games" />
+
+            <TextView
+                android:id="@+id/txtRecommendedMovies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Recommended TV Shows &amp; Movies"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rcyRecommendedGames" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcyRecommendedMovies"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@id/txtRecommendedMovies"
+                app:layout_constraintStart_toStartOf="@id/txtRecommendedMovies"
+                app:layout_constraintTop_toBottomOf="@id/txtRecommendedMovies"
+                tools:listitem="@layout/rcy_recommended_movies" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
