@@ -1,5 +1,7 @@
 package com.example.myapplication.data.remote.models.movie
 
+import com.example.myapplication.data.remote.models.movie.Result
+
 data class Result(
     val adult: Boolean,
     val backdrop_path: String,
@@ -16,3 +18,5 @@ data class Result(
     val vote_average: Double,
     val vote_count: Int
 )
+
+fun Result.toResponse(){}

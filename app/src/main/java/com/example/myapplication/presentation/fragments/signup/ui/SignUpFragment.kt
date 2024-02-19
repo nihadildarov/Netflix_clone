@@ -23,7 +23,7 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnXClick()
         btnGetStartedClick()
-        //methods will be called here
+
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.myapplication.data.di
+package com.example.myapplication.di
 
 import android.content.Context
 import androidx.room.Room
@@ -6,11 +6,15 @@ import com.example.myapplication.data.local.dao.MovieDao
 import com.example.myapplication.data.local.db.MovieDatabase
 import com.example.myapplication.data.local.repository.MovieLocalRepository
 import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
+import com.example.myapplication.data.remote.services.MovieService
+import com.example.myapplication.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -25,7 +29,6 @@ object AppModule {
             MovieDatabase::class.java,
             "movie_database"
         ).build()
-
     }
 
 
@@ -44,8 +47,21 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRemoteRepository(): MovieRemoteRepository {
-        return MovieRemoteRepository()
+    fun provideRemoteRepository(movieService: MovieService): MovieRemoteRepository {
+        return MovieRemoteRepository(movieService)
     }
 
+
+    @Provides
+    @Singleton
+    fun provideRetrofitClient(): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+
+
+    @Provides
+    @Singleton
+    fun provideMovieService(retrofit:Retrofit):MovieService = retrofit.create(MovieService::class.java)
 }

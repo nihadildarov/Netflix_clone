@@ -3,35 +3,38 @@ package com.example.myapplication.data.remote.repositories.movie
 import com.example.myapplication.data.remote.models.movie.MovieResponse
 import com.example.myapplication.data.remote.models.movie.MovieResponseById
 import com.example.myapplication.data.remote.models.movie.MovieVideoResponseById
-import com.example.myapplication.data.util.ApiUtils
+import com.example.myapplication.data.remote.services.MovieService
 import retrofit2.Response
+import javax.inject.Inject
 
-class MovieRemoteRepository {
-    private val api by lazy { ApiUtils.instance }
+class MovieRemoteRepository @Inject constructor(
+    private val movieService: MovieService
+){
+
 
     suspend fun getPopularMovies(): Response<MovieResponse> {
-        return api.getPopularMovies()
+        return movieService.getPopularMovies()
     }
 
     suspend fun getTopRatedMovies(): Response<MovieResponse> {
-        return api.getTopRatedMovies()
+        return movieService.getTopRatedMovies()
     }
 
     suspend fun getUpComingMovies(): Response<MovieResponse> {
-        return api.getUpComingMovies()
+        return movieService.getUpComingMovies()
     }
 
     suspend fun getMovieById(movieId:Long):Response<MovieResponseById>{
-        return api.getMovieById(movieId)
+        return movieService.getMovieById(movieId)
     }
 
     suspend fun getMovieVideosById(movieId: Long):Response<MovieVideoResponseById>{
-        return api.getMovieVideosById(movieId)
+        return movieService.getMovieVideosById(movieId)
 
     }
 
     suspend fun getMovieSearched (query:String):Response<MovieResponse>{
-        return api.getMovieSearched(query)
+        return movieService.getMovieSearched(query)
     }
 
 

@@ -54,4 +54,11 @@
         <item name="colorPrimary">@color/red</item>
     </style>
 
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textColorHint">@color/divider</item>
+        <item name="textFillColor">@color/red</item>
+    </style>
+
 </resources>

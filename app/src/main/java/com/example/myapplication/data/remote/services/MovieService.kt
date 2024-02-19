@@ -3,8 +3,8 @@ package com.example.myapplication.data.remote.services
 import com.example.myapplication.data.remote.models.movie.MovieResponse
 import com.example.myapplication.data.remote.models.movie.MovieResponseById
 import com.example.myapplication.data.remote.models.movie.MovieVideoResponseById
-import com.example.myapplication.data.util.Constants.ACCESS_TOKEN
-import com.example.myapplication.data.util.Constants.API_KEY
+import com.example.myapplication.util.Constants.ACCESS_TOKEN
+import com.example.myapplication.util.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -40,8 +40,8 @@ interface MovieService {
     )
     @GET("movie/upcoming")
     suspend fun getUpComingMovies(
-        @Query("language") lang: String = "en-US",
-        @Query("page") page: Int = 1
+        //@Query("language") lang: String = "en-US",
+        //@Query("page") page: Int = 1
     ): Response<MovieResponse>
 
     @Headers(
@@ -72,11 +72,11 @@ interface MovieService {
         "accept:application/json",
         "Authorization: Bearer $ACCESS_TOKEN"
     )
-    @GET("movie/top_rated")
+    @GET("search/movie")
     suspend fun getMovieSearched(
         @Query("query") query: String,
-        @Query("include_adult") includeAdult: Boolean = false,
-        @Query("language") lang: String = "en-US",
-        @Query("page") page: Int = 1
+        //@Query("include_adult") includeAdult: Boolean = false,
+        //@Query("language") lang: String = "en-US",
+        //@Query("page") page: Int = 1
     ): Response<MovieResponse>
 }

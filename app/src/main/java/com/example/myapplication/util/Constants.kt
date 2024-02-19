@@ -1,4 +1,4 @@
-package com.example.myapplication.data.util
+package com.example.myapplication.util
 
 object Constants {
     const val BASE_URL = "https://api.themoviedb.org/3/"

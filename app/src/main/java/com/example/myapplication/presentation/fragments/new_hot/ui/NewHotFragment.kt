@@ -35,6 +35,7 @@ class NewHotFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecyclers()
         chipsClick()
+        searchBtnClick()
         viewModel.getUpComingMovies()
         viewModel.getEveryOneWatchingMovies()
 
@@ -110,6 +111,13 @@ class NewHotFragment : Fragment() {
                 scrollViewRcy.smoothScrollTo(0,rcyGames.top)
             }
 
+        }
+    }
+
+
+    private fun searchBtnClick(){
+        binding.imgSearch.setOnClickListener {
+            findNavController().navigate(NewHotFragmentDirections.actionNewHotToSearch())
         }
     }
 

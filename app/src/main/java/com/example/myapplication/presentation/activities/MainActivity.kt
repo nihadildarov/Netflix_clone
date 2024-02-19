@@ -22,10 +22,12 @@ class MainActivity : AppCompatActivity() {
         binding.btmNav.setBackgroundColor(resources.getColor(R.color.dark_gray))
 
         initBottomNav()
+
     }
 
 
     private fun initBottomNav(){
+
         val navController = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navHost = navController.navController
         binding.btmNav.setupWithNavController(navHost)

@@ -22,7 +22,7 @@ import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.data.util.Constants.IMAGE_URL
+import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.FragmentHomeBinding
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclerDownloads
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersBig
@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setBigPoster()
         createRecyclers()
+        searchBtnClick()
 
     }
 
@@ -421,6 +422,12 @@ class HomeFragment : Fragment() {
         }
     }
 
+
+    private fun searchBtnClick(){
+        binding.imgSearch.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeToSearch())
+        }
+    }
 
 }
 

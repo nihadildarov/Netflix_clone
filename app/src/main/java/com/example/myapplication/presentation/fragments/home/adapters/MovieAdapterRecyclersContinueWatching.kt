@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.remote.models.movie.Result
-import com.example.myapplication.data.util.Constants.IMAGE_URL
+import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.RcyItemContinueWatchingBinding
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.squareup.picasso.Picasso

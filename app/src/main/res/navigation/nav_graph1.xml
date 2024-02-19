@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_home_to_movieDetails"
             app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/action_home_to_search"
+            app:destination="@id/searchFragment" />
     </fragment>
 
     <fragment
@@ -69,6 +72,9 @@
         <action
             android:id="@+id/action_newHot_to_movieDetails"
             app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/action_newHot_to_search"
+            app:destination="@id/searchFragment" />
     </fragment>
 
     <fragment
@@ -85,7 +91,11 @@
         android:id="@+id/downloadsFragment"
         android:name="com.example.myapplication.presentation.fragments.downloads.ui.DownloadsFragment"
         android:label="fragment_downloads"
-        tools:layout="@layout/fragment_downloads" />
+        tools:layout="@layout/fragment_downloads" >
+        <action
+            android:id="@+id/action_downloads_to_search"
+            app:destination="@id/searchFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createAccountFragment"
         android:name="com.example.myapplication.presentation.fragments.create_account.ui.CreateAccountFragment"
@@ -165,6 +175,9 @@
         <argument
             android:name="movieId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_movieDetails_to_search"
+            app:destination="@id/searchFragment" />
     </fragment>
 
 

@@ -70,8 +70,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="666" />
-                            <option name="y" value="368" />
+                            <option name="x" value="494" />
+                            <option name="y" value="367" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -206,7 +206,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_homeFragment_to_movieDetailsFragment">
+                            <entry key="action_home_to_movieDetails">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -244,6 +244,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_newHot_to_movieDetails">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -254,9 +259,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="448" />
-                            <option name="y" value="368" />
+                            <option name="x" value="455" />
+                            <option name="y" value="748" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_search_to_movieDetails">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

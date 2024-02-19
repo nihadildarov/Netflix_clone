@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myapplication.databinding.FragmentMovieDetailsBinding
 import com.example.myapplication.presentation.fragments.movie_details.viewmodel.DetailsViewModel
@@ -32,22 +33,27 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViewModel()
+        setPlayer()
+        setDetails()
+        searchBtnClick()
+
+    }
+
+
+    private fun initViewModel(){
         val movieId = args.movieId
 
 
         viewModel.getMovieById(movieId)
         viewModel.getMovieVideoById(movieId)
         viewModel.isMovieExists(movieId)
-        setPlayer()
-        setDetails()
-
     }
-
     private fun setPlayer() {
 
         viewModel.movieVideo.observe(viewLifecycleOwner) {
 
-            Log.e("VideoKey", it.toString())
+            Log.e("VideoKey", it[0].key)
             binding.player.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     super.onReady(youTubePlayer)
@@ -70,6 +76,11 @@ class MovieDetailsFragment : Fragment() {
     }
 
 
+    private fun searchBtnClick(){
+        binding.btnSearch.setOnClickListener {
+            findNavController().navigate(MovieDetailsFragmentDirections.actionMovieDetailsToSearch())
+        }
+    }
 
 
 }
