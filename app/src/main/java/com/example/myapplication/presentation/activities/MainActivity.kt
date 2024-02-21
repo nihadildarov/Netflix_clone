@@ -1,13 +1,18 @@
 package com.example.myapplication.presentation.activities
 
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.util.NetworkCallBack
+import com.example.myapplication.util.NetworkMonitor
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,13 +31,27 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+    private fun networkListener():Boolean{
+        val networkMonitor = NetworkMonitor(applicationContext)
+        networkMonitor.registerNetworkCallback(NetworkCallBack)
+
+        return networkMonitor.isNetworkAvailable()
+    }
+
     private fun initBottomNav(){
 
         val navController = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navHost = navController.navController
         binding.btmNav.setupWithNavController(navHost)
         btmNavVisibilityControl(navHost)
+
+
     }
+
+
+
+
     private fun btmNavVisibilityControl(navController: NavController) {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
