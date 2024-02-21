@@ -31,7 +31,7 @@
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@color/gray"
         app:itemTextColor="@color/gray"
-        app:itemIconSize="25dp"
+        app:itemIconSize="24dp"
         app:itemActiveIndicatorStyle="@android:color/transparent"
         />
 

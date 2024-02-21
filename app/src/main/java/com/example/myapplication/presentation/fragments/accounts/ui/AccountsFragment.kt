@@ -36,7 +36,7 @@ class AccountsFragment : Fragment() {
     }
 
     private fun setAdapter (){
-        val img = listOf<Int>(
+        val img = listOf(
             R.drawable.img,
             R.drawable.img,
             R.drawable.img,
@@ -44,7 +44,7 @@ class AccountsFragment : Fragment() {
             R.drawable.img,
             )
 
-        val name = listOf<String>(
+        val name = listOf(
             "Martin",
             "John",
             "Bob",

@@ -23,7 +23,17 @@
         android:id="@+id/signInFragment"
         android:name="com.example.myapplication.presentation.fragments.signin.ui.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signIn_to_accounts"
+            app:destination="@id/accountsFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/signUpFragment"
@@ -35,7 +45,9 @@
             app:destination="@id/createAccountFragment" />
         <action
             android:id="@+id/action_signInMainFragment_to_signInEmailFragment"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -113,6 +125,9 @@
         <action
             android:id="@+id/action_createAccount_to_newHot"
             app:destination="@id/newHotFragment" />
+        <argument
+            android:name="email"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/verifyEmailFragment"

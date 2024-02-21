@@ -75,8 +75,8 @@ interface MovieService {
     @GET("search/movie")
     suspend fun getMovieSearched(
         @Query("query") query: String,
-        //@Query("include_adult") includeAdult: Boolean = false,
-        //@Query("language") lang: String = "en-US",
-        //@Query("page") page: Int = 1
+        @Query("include_adult") includeAdult: Boolean = false,
+        @Query("language") lang: String = "en-US",
+        @Query("page") page: Int = 1
     ): Response<MovieResponse>
 }
