@@ -24,20 +24,18 @@ class ForNavigationFragment : Fragment() {
 
 
         with(binding){
-            accounts.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_accounts) }
-            createAccount.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_createAccount) }
-            downloads.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_downloads)}
-            finishSignUp.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_finishSignUp) }
-            getStarted.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_getStarted) }
-            home.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_home) }
-            newHot.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_newHot) }
-            search.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_search) }
-            signIn.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_signIn) }
-            signUp.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_signUp) }
-            verifyEmail.setOnClickListener { findNavController().navigate(R.id.f_action_forNavigation_to_verifyEmail) }
+            accounts.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToAccounts()) }
+            createAccount.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToCreateAccount("")) }
+            downloads.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToDownloads())}
+            finishSignUp.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToFinishSignUp()) }
+            getStarted.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToGetStarted()) }
+            home.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToHome()) }
+            newHot.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToNewHot()) }
+            search.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToSearch()) }
+            signIn.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToSignIn("")) }
+            signUp.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToSignUp()) }
+            verifyEmail.setOnClickListener { findNavController().navigate(ForNavigationFragmentDirections.fActionForNavigationToVerifyEmail()) }
         }
-
-
     }
 
 

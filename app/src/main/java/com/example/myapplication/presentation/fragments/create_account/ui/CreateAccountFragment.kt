@@ -1,33 +1,24 @@
 package com.example.myapplication.presentation.fragments.create_account.ui
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.InputType
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentCreateAccountBinding
-import com.example.myapplication.presentation.fragments.signin.ui.SignInFragmentArgs
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
-import java.lang.Exception
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 
 
 class CreateAccountFragment : Fragment() {
@@ -47,37 +38,36 @@ class CreateAccountFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
         auth.signOut()
-        val email =  navArgs.email
+        val email = navArgs.email
 
 
         getEmailValue(email)
         setEdtFocus()
         requestFocus()
-        spannableClickText()
+        spannableTextClick()
         hideMenuItems()
         checkEmptyFields()
-        goToAccounts()
 
     }
 
 
     private fun createAccount(
-        email:String,
-        password:String
+        email: String,
+        password: String
     ) {
 
-        auth.createUserWithEmailAndPassword(email.toString(), password.toString())
-            .addOnSuccessListener {
-                Log.i("CreateAccount", "Success")
-                Toast.makeText(context, "Registered Successfully!", Toast.LENGTH_LONG).show()
-
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Log.i("CreateAccount", "Success")
+                    Toast.makeText(context, "Registered Successfully!", Toast.LENGTH_LONG).show()
+                } else if (it.exception is FirebaseAuthUserCollisionException) {
+                    binding.txtAccountExists.visibility = View.VISIBLE
+                } else {
+                    Log.e("CreateAccount", it.exception.toString())
+                    Toast.makeText(context, it.exception.toString(), Toast.LENGTH_LONG).show()
+                }
             }
-            .addOnFailureListener {
-                Log.e("CreateAccount", it.localizedMessage!!)
-                Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
-            }
-
-
     }
 
 
@@ -86,26 +76,43 @@ class CreateAccountFragment : Fragment() {
     }
 
 
-    private fun spannableClickText() {
+    //Textin içindən bir və ya bir neçə sözə click event qoşmaq üçün istifadə edilir
+
+    private fun spannableTextClick() {
         val message = binding.txtAccountExists.text.toString()
 
         val spannable = SpannableString(message)
 
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                findNavController().navigate(R.id.action_createAccount_to_signIn)
+                //clickListener
+                findNavController().navigate(
+                    CreateAccountFragmentDirections.actionCreateAccountToSignIn(
+                        binding.edtEmail.text.toString()
+                    )
+                )
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             }
         }
         val startIndex = message.indexOf("Sign into that account")
         val endIndex = startIndex + "Sign into that account".length
 
+        val whiteColor = resources.getColor(android.R.color.white, null)
+
+
+        //Click eventi tətbiq edir
         spannable.setSpan(clickableSpan, startIndex, endIndex, 0)
+        //Font rəngini dəyişir
+        spannable.setSpan(ForegroundColorSpan(whiteColor), startIndex, endIndex, 0)
+        //Text style dəyişir
+        spannable.setSpan(StyleSpan(Typeface.BOLD), startIndex, endIndex, 0)
 
 
         binding.txtAccountExists.text = spannable
         binding.txtAccountExists.movementMethod = LinkMovementMethod.getInstance()
     }
+
+
 
 
     private fun hideMenuItems() {
@@ -119,11 +126,8 @@ class CreateAccountFragment : Fragment() {
     private fun checkEmptyFields() {
 
 
-
-
         with(binding) {
             binding.btnCreateAccount.setOnClickListener {
-
 
 
                 Log.i("CreateAccount", "clicked")
@@ -138,9 +142,9 @@ class CreateAccountFragment : Fragment() {
                     }
 
                     //2
-                    edtEmail.inputType == InputType.TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS ->{
+                    edtEmail.inputType == InputType.TYPE_TEXT_VARIATION_WEB_EMAIL_ADDRESS -> {
                         emailTil.error = "Not a valid email address"
-                        Log.i("checkEmptyFields",emailTil.error.toString())
+                        Log.i("checkEmptyFields", emailTil.error.toString())
                     }
 
                     //3
@@ -159,12 +163,11 @@ class CreateAccountFragment : Fragment() {
 
                     else -> {
                         Log.i("checkEmptyFields", "CASE: createAccount")
-                        createAccount(edtEmail.text.toString(),edtpassword.text.toString())
+                        createAccount(edtEmail.text.toString(), edtpassword.text.toString())
                     }
 
                 }
 
-                showWarningIfAccExist()
 
             }
         }
@@ -191,25 +194,7 @@ class CreateAccountFragment : Fragment() {
     }
 
 
-    private fun showWarningIfAccExist() {
-
-        //not settled yet
-        auth.pendingAuthResult?.result
-        if (binding.edtEmail.text.toString() == "nihad") {
-            binding.txtAccountExists.visibility = View.VISIBLE
-        } else {
-            binding.txtAccountExists.visibility = View.GONE
-        }
-    }
-
-
-    private fun goToAccounts() {
-        binding.txtTitleCreateAccount.setOnClickListener {
-            findNavController().navigate(R.id.action_createAccounts_to_accounts)
-        }
-    }
-
-    private fun getEmailValue(email: String){
+    private fun getEmailValue(email: String) {
         binding.edtEmail.setText(email)
     }
 }
