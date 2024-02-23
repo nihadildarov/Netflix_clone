@@ -207,8 +207,6 @@ class HomeFragment : Fragment() {
             }
         })
 
-        //val adapterGames = GamesAdapterRecyclersGames(itemList)
-
         val adapterContinueWatching = MovieAdapterRecyclersContinueWatching(object :
             MovieClickListener {
             override fun movieClickListener(movieId: Long) {
@@ -216,9 +214,6 @@ class HomeFragment : Fragment() {
             }
 
         })
-        //val adapterDownloads = MovieAdapterRecyclerDownloads(itemList)
-
-
 
         setViewModelData(adapterBig,adapterContinueWatching)
 
@@ -409,11 +404,8 @@ class HomeFragment : Fragment() {
 
             //Setting recyclers adapters
             when {
-                //textList[i - 1] == "Mobile Games" -> recycler.adapter = adapterGames
                 textList[i - 1] == "Only on Netflix" -> recycler.adapter = adapterBig
                 textList[i - 1] == "Continue watching" -> recycler.adapter = adapterContinueWatching
-                //textList[i - 1] == "Downloads For You" -> recycler.adapter = adapterDownloads
-
                 else -> recycler.adapter = adapterMedium
 
             }

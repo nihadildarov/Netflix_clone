@@ -13,8 +13,11 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -56,6 +59,7 @@ object AppModule {
     @Singleton
     fun provideRetrofitClient(): Retrofit =
         Retrofit.Builder()
+            .client(client(interceptor()))
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
@@ -64,4 +68,19 @@ object AppModule {
     @Provides
     @Singleton
     fun provideMovieService(retrofit:Retrofit):MovieService = retrofit.create(MovieService::class.java)
+
+    @Provides
+    @Singleton
+    fun client(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+        OkHttpClient.Builder()
+            .addInterceptor(httpLoggingInterceptor)
+            .connectTimeout(3,TimeUnit.SECONDS)
+            .readTimeout(20,TimeUnit.SECONDS)
+            .writeTimeout(25,TimeUnit.SECONDS)
+            .build()
+
+    @Provides
+    @Singleton
+    fun interceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor()
+
 }

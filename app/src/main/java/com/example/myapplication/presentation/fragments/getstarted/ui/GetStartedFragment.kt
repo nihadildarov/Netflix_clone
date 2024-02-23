@@ -1,5 +1,7 @@
 package com.example.myapplication.presentation.fragments.getstarted.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentGetStartedBinding
 import com.example.myapplication.presentation.fragments.getstarted.adapter.ViewPagerAdapterGetStartedBG
+import com.example.myapplication.util.Constants.HELP
+import com.example.myapplication.util.Constants.PRIVACY
 import com.google.android.material.tabs.TabLayoutMediator
 
 class GetStartedFragment : Fragment() {
@@ -33,14 +37,28 @@ class GetStartedFragment : Fragment() {
 
 
 
+
+    private fun openPage(url:String){
+
+        val intent = Intent(Intent.ACTION_VIEW,Uri.parse(url))
+            startActivity(intent)
+    }
+
+
+
     private fun menuItemClick() {
+
 
         binding.toolbar.overflowIcon?.setTint(resources.getColor(R.color.gray))
         binding.toolbar.setOnMenuItemClickListener {
             when (it.title) {
-                "Privacy" -> Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
-                "Login" -> findNavController().navigate(R.id.action_getStarted_to_signIn)
-                "HELP" -> Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
+                "Privacy" -> {
+                    openPage(PRIVACY)
+                }
+                "Login" -> findNavController().navigate(GetStartedFragmentDirections.actionGetStartedToSignIn(""))
+                "HELP" -> {
+                    openPage(HELP)
+                }
                 "FAQs" -> Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
             }
             true
@@ -85,7 +103,7 @@ class GetStartedFragment : Fragment() {
 
     private fun btnGetStartedClick(){
         binding.btnGetStarted.setOnClickListener {
-            findNavController().navigate(R.id.action_getStarted_to_signInMain)
+            findNavController().navigate(GetStartedFragmentDirections.actionGetStartedToSignInMain())
         }
     }
 

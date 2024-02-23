@@ -282,6 +282,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="pinDialogFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-742" />
+                            <option name="y" value="-888" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="searchFragment">
                     <value>
                       <LayoutPositions>
@@ -335,12 +347,12 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_signInMainFragment_to_signInEmailFragment">
+                            <entry key="action_signInMain_to_createAccount">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_signInMain_to_createAccount">
+                            <entry key="action_signUp_to_signIn">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -358,6 +370,15 @@
                             <option name="x" value="222" />
                             <option name="y" value="-755" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_verifyEmailFragment_to_signInFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

@@ -200,6 +200,11 @@
             android:id="@+id/action_movieDetails_to_search"
             app:destination="@id/searchFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/pinDialogFragment"
+        android:name="com.example.myapplication.PinDialogFragment"
+        android:label="fragment_pin_dialog"
+        tools:layout="@layout/fragment_pin_dialog" />
 
 
 </navigation>

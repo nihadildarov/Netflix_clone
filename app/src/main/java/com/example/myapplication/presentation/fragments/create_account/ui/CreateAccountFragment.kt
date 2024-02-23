@@ -61,6 +61,7 @@ class CreateAccountFragment : Fragment() {
                 if (it.isSuccessful) {
                     Log.i("CreateAccount", "Success")
                     Toast.makeText(context, "Registered Successfully!", Toast.LENGTH_LONG).show()
+                    goToVerifyAccount()
                 } else if (it.exception is FirebaseAuthUserCollisionException) {
                     binding.txtAccountExists.visibility = View.VISIBLE
                 } else {
@@ -76,7 +77,6 @@ class CreateAccountFragment : Fragment() {
     }
 
 
-    //Textin içindən bir və ya bir neçə sözə click event qoşmaq üçün istifadə edilir
 
     private fun spannableTextClick() {
         val message = binding.txtAccountExists.text.toString()
@@ -85,7 +85,6 @@ class CreateAccountFragment : Fragment() {
 
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                //clickListener
                 findNavController().navigate(
                     CreateAccountFragmentDirections.actionCreateAccountToSignIn(
                         binding.edtEmail.text.toString()
@@ -100,16 +99,14 @@ class CreateAccountFragment : Fragment() {
         val whiteColor = resources.getColor(android.R.color.white, null)
 
 
-        //Click eventi tətbiq edir
         spannable.setSpan(clickableSpan, startIndex, endIndex, 0)
-        //Font rəngini dəyişir
         spannable.setSpan(ForegroundColorSpan(whiteColor), startIndex, endIndex, 0)
-        //Text style dəyişir
         spannable.setSpan(StyleSpan(Typeface.BOLD), startIndex, endIndex, 0)
 
 
         binding.txtAccountExists.text = spannable
         binding.txtAccountExists.movementMethod = LinkMovementMethod.getInstance()
+
     }
 
 
@@ -184,6 +181,7 @@ class CreateAccountFragment : Fragment() {
             }
 
 
+
             edtpassword.setOnFocusChangeListener { _, hasFocus ->
                 if (hasFocus) {
                     passwordTil.error = null
@@ -197,4 +195,9 @@ class CreateAccountFragment : Fragment() {
     private fun getEmailValue(email: String) {
         binding.edtEmail.setText(email)
     }
+
+    private fun goToVerifyAccount(){
+        findNavController().navigate(CreateAccountFragmentDirections.actionCreateAccountToVerifyEmail())
+    }
+
 }

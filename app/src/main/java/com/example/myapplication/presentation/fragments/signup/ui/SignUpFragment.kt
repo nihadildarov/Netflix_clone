@@ -66,8 +66,10 @@ class SignUpFragment : Fragment() {
     private fun checkEmailIfExist(email:String){
         isEmailRegistered(binding.edtEmail.text.toString()){
             if (it){
+
                 findNavController().navigate(SignUpFragmentDirections.actionSignUpToSignIn(email))
             }else{
+                auth.currentUser?.delete()
                 findNavController().navigate(SignUpFragmentDirections.actionSignInMainToCreateAccount(email))
             }
         }
@@ -88,14 +90,19 @@ class SignUpFragment : Fragment() {
         binding.btnGetStarted.setOnClickListener {
             if (!binding.edtEmail.text.isNullOrEmpty()) {
                 checkEmailIfExist(binding.edtEmail.text.toString())
+
             } else{
                 binding.emailTil.error = "Email is required!"
             }
         }
     }
 
-
-
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        auth.currentUser?.delete()
+//    }
+//
 
 
 
