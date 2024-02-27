@@ -77,7 +77,14 @@ class AdapterRcyNewHotComingSoon(
                 movieClickListener.movieClickListener(movie.id.toLong())
             }
         }
+
+
+
+
     }
+
+
+
 
     fun submitList(movieList:List<Result>){
         diffUtil.submitList(movieList)

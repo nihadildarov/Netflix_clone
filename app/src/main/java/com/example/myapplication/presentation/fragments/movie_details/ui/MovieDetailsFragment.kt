@@ -1,5 +1,6 @@
 package com.example.myapplication.presentation.fragments.movie_details.ui
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,16 +34,20 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViewModel()
+        val movieId = args.movieId
+
+
+        initViewModel(movieId)
+        btnPlayClick(movieId)
         setPlayer()
         setDetails()
         searchBtnClick()
-
+        btnBackClick()
     }
 
 
-    private fun initViewModel(){
-        val movieId = args.movieId
+    private fun initViewModel(movieId:Long){
+
 
 
         viewModel.getMovieById(movieId)
@@ -79,6 +84,20 @@ class MovieDetailsFragment : Fragment() {
     private fun searchBtnClick(){
         binding.btnSearch.setOnClickListener {
             findNavController().navigate(MovieDetailsFragmentDirections.actionMovieDetailsToSearch())
+        }
+    }
+
+
+
+    private fun btnBackClick(){
+        binding.imgBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun btnPlayClick(movieId: Long){
+        binding.btnPlay.setOnClickListener {
+            findNavController().navigate(MovieDetailsFragmentDirections.actionMovieDetailsFragmentToFullScreenFragment(movieId))
         }
     }
 

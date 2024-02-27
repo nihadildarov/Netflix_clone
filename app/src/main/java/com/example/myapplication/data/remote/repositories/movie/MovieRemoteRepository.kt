@@ -32,10 +32,10 @@ class MovieRemoteRepository @Inject constructor(
         return movieService.getMovieVideosById(movieId)
 
     }
-
-    suspend fun getMovieSearched (query:String):Response<MovieResponse>{
-        return movieService.getMovieSearched(query)
-    }
+//
+//    suspend fun getMovieSearched (query:String):Response<MovieResponse>{
+//        return movieService.getMovieSearched(query)
+//    }
 
 
 }

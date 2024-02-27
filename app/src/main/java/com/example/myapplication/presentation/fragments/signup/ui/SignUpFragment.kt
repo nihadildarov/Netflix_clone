@@ -36,7 +36,6 @@ class SignUpFragment : Fragment() {
         btnXClick()
         btnGetStartedClick()
 
-
     }
 
 
@@ -58,6 +57,8 @@ class SignUpFragment : Fragment() {
                         Log.e("isEmailRegistered",it.exception.toString())
                     }
             }
+
+
     }
 
 
@@ -66,7 +67,6 @@ class SignUpFragment : Fragment() {
     private fun checkEmailIfExist(email:String){
         isEmailRegistered(binding.edtEmail.text.toString()){
             if (it){
-
                 findNavController().navigate(SignUpFragmentDirections.actionSignUpToSignIn(email))
             }else{
                 auth.currentUser?.delete()
@@ -96,15 +96,6 @@ class SignUpFragment : Fragment() {
             }
         }
     }
-
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        auth.currentUser?.delete()
-//    }
-//
-
-
 
 
 

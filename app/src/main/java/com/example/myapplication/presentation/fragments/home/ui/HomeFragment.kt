@@ -31,6 +31,7 @@ import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapt
 import com.example.myapplication.presentation.fragments.home.adapters.GamesAdapterRecyclersGames
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.example.myapplication.presentation.fragments.home.viewmodel.HomeViewModel
+import com.example.myapplication.util.Resource
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,31 +63,42 @@ class HomeFragment : Fragment() {
     private fun setBigPoster() {
 
         viewModel.popularMovieList.observe(viewLifecycleOwner) {
-            val movie = it.random()
-            val url = "$IMAGE_URL${movie.poster_path}"
+            when (it) {
+                Resource.Loading -> {
+                    //Set progressbar visible
+                }
 
+                is Resource.Success -> {
+                    val movie = it.data.random()
+                    val url = "$IMAGE_URL${movie.poster_path}"
 
-            loadBitmapFromUrl(url, onSuccess = { dominantColors ->
-                val color1 = dominantColors.firstOrNull() ?: Color.WHITE
-                val color2 = Color.BLACK
-                Log.i("setBigPoster", color1.toString())
-                val gradientDrawable = GradientDrawable(
-                    GradientDrawable.Orientation.TOP_BOTTOM,
-                    intArrayOf(color1, color2)
-                )
-                binding.constraintHome.background = gradientDrawable
-            }, onError = {
-                Log.e("setBigPoster", "Error")
-                //binding.constraintHome.setBackgroundResource(R.drawable.placeholder)
-            }
-            )
+                    loadBitmapFromUrl(url, onSuccess = { dominantColors ->
+                        val color1 = dominantColors.firstOrNull() ?: Color.WHITE
+                        val color2 = Color.BLACK
+                        Log.i("setBigPoster", color1.toString())
+                        val gradientDrawable = GradientDrawable(
+                            GradientDrawable.Orientation.TOP_BOTTOM,
+                            intArrayOf(color1, color2)
+                        )
+                        binding.constraintHome.background = gradientDrawable
+                    }, onError = {
+                        Log.e("setBigPoster", "Error")
+                        //binding.constraintHome.setBackgroundResource(R.drawable.placeholder)
+                    }
+                    )
+                    Log.i("setBigPoster", "Done")
+                    Picasso.get().load(url).into(binding.imgPosterHeader)
+                    binding.imgPosterHeader.setOnClickListener {
+                        Toast.makeText(context, movie.title, Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movie.id.toLong()))
+                    }
 
+                }
 
-            Log.i("setBigPoster", "Done")
-            Picasso.get().load(url).into(binding.imgPosterHeader)
-            binding.imgPosterHeader.setOnClickListener {
-                Toast.makeText(context, movie.title, Toast.LENGTH_SHORT).show()
-                findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movie.id.toLong()))
+                is Resource.Error -> {
+                    Toast.makeText(context, "Error Occurred", Toast.LENGTH_LONG).show()
+                    Log.e("upComingMovieListObserve", "Error occurred: ${it.exception}")
+                }
             }
         }
     }
@@ -128,31 +140,69 @@ class HomeFragment : Fragment() {
     }
 
 
-
     private fun setViewModelData(
-        adapterBig:MovieAdapterRecyclersBig,
-        adapterContinueWatching:MovieAdapterRecyclersContinueWatching
-    ){
+        adapterBig: MovieAdapterRecyclersBig,
+        adapterContinueWatching: MovieAdapterRecyclersContinueWatching
+    ) {
         viewModel.popularMovieList.observe(viewLifecycleOwner) {
-            adapterBig.submitList(it)
+            when (it) {
+                Resource.Loading -> {
+                    //Set progressbar visible
+                }
+
+                is Resource.Success -> {
+                    adapterBig.submitList(it.data)
+                }
+
+                is Resource.Error -> {
+                    Toast.makeText(context, "Error Occurred", Toast.LENGTH_LONG).show()
+                    Log.e("popularMovieListObserve", "Error occurred: ${it.exception}")
+                }
+
+            }
+
         }
 
 
         viewModel.upComingMovieList.observe(viewLifecycleOwner) {
-            adapterContinueWatching.submitList(it)
+            when (it) {
+                Resource.Loading -> {
+                    //Set progressbar visible
+                }
+
+                is Resource.Success -> {
+                    adapterContinueWatching.submitList(it.data)
+                }
+
+                is Resource.Error -> {
+                    Toast.makeText(context, "Error Occurred", Toast.LENGTH_LONG).show()
+                    Log.e("upComingMovieListObserve", "Error occurred: ${it.exception}")
+                }
+            }
         }
     }
 
 
     private fun setTopRatedMovieFromViewModel(
-        adapterMedium:MovieAdapterRecyclersMedium
-    ){
+        adapterMedium: MovieAdapterRecyclersMedium
+    ) {
         viewModel.topRatedMovieList.observe(viewLifecycleOwner) {
-            adapterMedium.submitList(it.shuffled())
+            when (it) {
+                Resource.Loading -> {
+                    //Set progressbar visible
+                }
+
+                is Resource.Success -> {
+                    adapterMedium.submitList(it.data.shuffled())
+                }
+
+                is Resource.Error -> {
+                    Toast.makeText(context, "Error Occurred", Toast.LENGTH_LONG).show()
+                    Log.e("topRatedMovieListObserve", "Error occurred: ${it.exception}")
+                }
+            }
         }
     }
-
-
 
 
     private fun createRecyclers() {
@@ -215,7 +265,7 @@ class HomeFragment : Fragment() {
 
         })
 
-        setViewModelData(adapterBig,adapterContinueWatching)
+        setViewModelData(adapterBig, adapterContinueWatching)
 
 
 
@@ -415,7 +465,7 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun searchBtnClick(){
+    private fun searchBtnClick() {
         binding.imgSearch.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeToSearch())
         }

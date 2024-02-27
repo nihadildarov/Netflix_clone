@@ -9,6 +9,7 @@ import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.RcyNewItemEveryonesWatchingBinding
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 
 class AdapterRcyNewHotEveryoneWatching (

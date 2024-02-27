@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
+import com.example.myapplication.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -16,48 +17,61 @@ import javax.inject.Inject
 @HiltViewModel
 class NewHotViewModel @Inject constructor(
     private val movieRemoteRepository: MovieRemoteRepository
-) : ViewModel(){
+) : ViewModel() {
 
-    private val _upComing = MutableLiveData<List<Result>> ()
-    val upComing : LiveData<List<Result>> get() = _upComing
-
-
-    private val _everyOneWatching = MutableLiveData<List<Result>> ()
-    val everyOneWatching : LiveData<List<Result>> get() = _everyOneWatching
+    private val _upComing = MutableLiveData<Resource<List<Result>>>()
+    val upComing: LiveData<Resource<List<Result>>> get() = _upComing
 
 
+    private val _everyOneWatching = MutableLiveData<Resource<List<Result>>>()
+    val everyOneWatching: LiveData<Resource<List<Result>>> get() = _everyOneWatching
 
 
-    fun getUpComingMovies(){
+    fun getUpComingMovies() {
         viewModelScope.launch(IO) {
-            val response = movieRemoteRepository.getUpComingMovies()
             try {
-                if (response.isSuccessful){
-                    Log.i("RESPONSES_NEW_HOT","getUpComingMovies status is (isSuccessful):${response.isSuccessful}")
+                _upComing.postValue(Resource.Loading)
+                val response = movieRemoteRepository.getUpComingMovies()
+                if (response.isSuccessful) {
+                    Log.i(
+                        "RESPONSES_NEW_HOT",
+                        "getUpComingMovies status is (isSuccessful):${response.isSuccessful}"
+                    )
                     response.body()?.let {
-                        _upComing.postValue(it.results)
+                        _upComing.postValue(Resource.Success(it.results))
                     }
                 }
-            } catch (ex:Exception){
-                Log.e("RESPONSES_NEW_HOT","getUpComingMovies status is : ${response.errorBody()}")
+            } catch (ex: Exception) {
+                Log.e("RESPONSES_NEW_HOT", "getUpComingMovies status is : ${Resource.Error(ex)}")
             }
         }
     }
 
 
-    fun getEveryOneWatchingMovies(){
+
+    fun getEveryOneWatchingMovies() {
         viewModelScope.launch(IO) {
-            val response = movieRemoteRepository.getPopularMovies()
             try {
-                if (response.isSuccessful){
-                    Log.i("RESPONSES_NEW_HOT","getEveryOneWatchingMovies status is (isSuccessful):${response.isSuccessful}")
+                _everyOneWatching.postValue(Resource.Loading)
+                val response = movieRemoteRepository.getPopularMovies()
+                if (response.isSuccessful) {
+                    Log.i(
+                        "RESPONSES_NEW_HOT",
+                        "getEveryOneWatchingMovies status is (isSuccessful):${response.isSuccessful}"
+                    )
                     response.body()?.let {
-                        _everyOneWatching.postValue(it.results)
+                        _everyOneWatching.postValue(Resource.Success(it.results))
                     }
                 }
-            } catch (ex:Exception){
-                Log.e("RESPONSES_NEW_HOT","getEveryOneWatchingMovies status is : ${response.errorBody()}")
+            } catch (ex: Exception) {
+                Log.e(
+                    "RESPONSES_NEW_HOT",
+                    "getEveryOneWatchingMovies status is : ${Resource.Error(ex)}"
+                )
             }
         }
     }
+
+
+
 }

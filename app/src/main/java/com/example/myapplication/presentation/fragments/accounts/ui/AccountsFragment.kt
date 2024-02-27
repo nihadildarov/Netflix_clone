@@ -39,32 +39,33 @@ class AccountsFragment : Fragment() {
     }
 
 
-
-    private fun popUpDialog():Dialog{
+    private fun popUpDialog(): Dialog {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Enter Pin").setPositiveButton("OK"){
-            dialog,_->
-            Toast.makeText(context,"Okay clicked",Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }.setNegativeButton("Cancel"){
-            dialog,_->
-            Toast.makeText(context,"Cancel clicked",Toast.LENGTH_SHORT).show()
-            dialog.cancel()
-        }.setView(R.layout.fragment_pin_dialog)
+        builder
+            .setTitle("Enter Pin")
+            .setPositiveButton("OK") { dialog, _ ->
+                Toast.makeText(context, "Okay clicked", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                Toast.makeText(context, "Cancel clicked", Toast.LENGTH_SHORT).show()
+                dialog.cancel()
+            }
+
+            .setView(R.layout.fragment_pin_dialog)
 
         return builder.create()
     }
 
+
     private fun setAdapter() {
-        val members = listOf<MembersProfiles>(
-            MembersProfiles(R.drawable.netflix_avatar1,"Martin"),
-            MembersProfiles(R.drawable.netflix_avatar2,"John"),
-            MembersProfiles(R.drawable.netflix_avatar3,"Bob"),
-            MembersProfiles(R.drawable.netflix_avatar4,"Julia"),
-            MembersProfiles(R.drawable.netflix_avatar5,"Elizabeth"),
+        val members = listOf(
+            MembersProfiles(R.drawable.netflix_avatar1, "Martin"),
+            MembersProfiles(R.drawable.netflix_avatar2, "John"),
+            MembersProfiles(R.drawable.netflix_avatar3, "Bob"),
+            MembersProfiles(R.drawable.netflix_avatar4, "Julia"),
+            MembersProfiles(R.drawable.netflix_avatar5, "Elizabeth"),
         )
-
-
 
 
         val accountsAdapter = AccountsRcyAdapter(members) {
@@ -76,13 +77,11 @@ class AccountsFragment : Fragment() {
     }
 
 
-
     private fun goHome() {
         binding.imgEdit.setOnClickListener {
             findNavController().navigate(R.id.action_accounts_to_home)
         }
     }
-
 
 
 }

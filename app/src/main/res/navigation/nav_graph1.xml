@@ -13,10 +13,14 @@
         tools:layout="@layout/fragment_get_started" >
         <action
             android:id="@+id/action_getStarted_to_signIn"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_getStarted_to_signInMain"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -27,6 +31,8 @@
         <action
             android:id="@+id/action_signIn_to_accounts"
             app:destination="@id/accountsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:launchSingleTop="false"
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true" />
@@ -42,10 +48,14 @@
         tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signInMain_to_createAccount"
-            app:destination="@id/createAccountFragment" />
+            app:destination="@id/createAccountFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_signUp_to_signIn"
             app:destination="@id/signInFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/signUpFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -57,7 +67,9 @@
         tools:layout="@layout/fragment_accounts" >
         <action
             android:id="@+id/action_accounts_to_home"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -67,10 +79,14 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home_to_movieDetails"
-            app:destination="@id/movieDetailsFragment" />
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_home_to_search"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -80,13 +96,19 @@
         tools:layout="@layout/fragment_new_hot" >
         <action
             android:id="@+id/action_finishSignUp_to_newHot"
-            app:destination="@id/finishSignUpFragment" />
+            app:destination="@id/finishSignUpFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_newHot_to_movieDetails"
-            app:destination="@id/movieDetailsFragment" />
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_newHot_to_search"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -96,7 +118,9 @@
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_search_to_movieDetails"
-            app:destination="@id/movieDetailsFragment" />
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -106,7 +130,9 @@
         tools:layout="@layout/fragment_downloads" >
         <action
             android:id="@+id/action_downloads_to_search"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/createAccountFragment"
@@ -115,16 +141,24 @@
         tools:layout="@layout/fragment_create_account" >
         <action
             android:id="@+id/action_createAccount_to_signIn"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_createAccounts_to_accounts"
-            app:destination="@id/accountsFragment" />
+            app:destination="@id/accountsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_createAccount_to_verifyEmail"
-            app:destination="@id/verifyEmailFragment" />
+            app:destination="@id/verifyEmailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_createAccount_to_newHot"
-            app:destination="@id/newHotFragment" />
+            app:destination="@id/newHotFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <argument
             android:name="email"
             app:argType="string" />
@@ -137,6 +171,8 @@
         <action
             android:id="@+id/action_verifyEmailFragment_to_signInFragment"
             app:destination="@id/signInFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/verifyEmailFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -147,7 +183,9 @@
         tools:layout="@layout/fragment_finish_sign_up" >
         <action
             android:id="@+id/action_newHot_to_finishSignUp"
-            app:destination="@id/newHotFragment" />
+            app:destination="@id/newHotFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/forNavigationFragment"
@@ -159,7 +197,9 @@
             app:destination="@id/getStartedFragment" />
         <action
             android:id="@+id/f_action_forNavigation_to_signIn"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/f_action_forNavigation_to_createAccount"
             app:destination="@id/createAccountFragment" />
@@ -168,7 +208,9 @@
             app:destination="@id/verifyEmailFragment" />
         <action
             android:id="@+id/f_action_forNavigation_to_finishSignUp"
-            app:destination="@id/finishSignUpFragment" />
+            app:destination="@id/finishSignUpFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/f_action_forNavigation_to_accounts"
             app:destination="@id/accountsFragment" />
@@ -198,13 +240,29 @@
             app:argType="long" />
         <action
             android:id="@+id/action_movieDetails_to_search"
-            app:destination="@id/searchFragment" />
+            app:destination="@id/searchFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_fullScreenFragment"
+            app:destination="@id/fullScreenFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/pinDialogFragment"
         android:name="com.example.myapplication.PinDialogFragment"
         android:label="fragment_pin_dialog"
         tools:layout="@layout/fragment_pin_dialog" />
+    <fragment
+        android:id="@+id/fullScreenFragment"
+        android:name="com.example.myapplication.presentation.fragments.fullscreen.FullScreenFragment"
+        android:label="fragment_full_screen"
+        tools:layout="@layout/fragment_full_screen" >
+        <argument
+            android:name="movieId"
+            app:argType="long" />
+    </fragment>
 
 
 </navigation>

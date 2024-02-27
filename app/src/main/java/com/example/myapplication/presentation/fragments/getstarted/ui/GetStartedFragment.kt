@@ -41,6 +41,7 @@ class GetStartedFragment : Fragment() {
     private fun openPage(url:String){
 
         val intent = Intent(Intent.ACTION_VIEW,Uri.parse(url))
+
             startActivity(intent)
     }
 

@@ -76,6 +76,10 @@ class CreateAccountFragment : Fragment() {
         binding.emailTil.requestFocus()
     }
 
+    private fun menuItemClick(){
+        binding.toolbar.menu.toString()
+    }
+
 
 
     private fun spannableTextClick() {

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
+import com.example.myapplication.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -17,14 +18,14 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val movieRemoteRepository: MovieRemoteRepository
 ) : ViewModel() {
-    private val _popularMovieList = MutableLiveData<List<Result>>()
-        val popularMovieList : LiveData<List<Result>> get() = _popularMovieList
+    private val _popularMovieList = MutableLiveData<Resource<List<Result>>>()
+    val popularMovieList: LiveData<Resource<List<Result>>> get() = _popularMovieList
 
-    private val _topRatedMovieList = MutableLiveData<List<Result>>()
-        val topRatedMovieList : LiveData<List<Result>> get() = _topRatedMovieList
+    private val _topRatedMovieList = MutableLiveData<Resource<List<Result>>>()
+    val topRatedMovieList: LiveData<Resource<List<Result>>> get() = _topRatedMovieList
 
-    private val _upComingMovieList = MutableLiveData<List<Result>>()
-        val upComingMovieList : LiveData<List<Result>> get() = _upComingMovieList
+    private val _upComingMovieList = MutableLiveData<Resource<List<Result>>>()
+    val upComingMovieList: LiveData<Resource<List<Result>>> get() = _upComingMovieList
 
 
     init {
@@ -36,17 +37,20 @@ class HomeViewModel @Inject constructor(
 
     private fun getTopRatedMovies() {
         viewModelScope.launch(IO) {
-            val response = movieRemoteRepository.getTopRatedMovies()
             try {
+                _topRatedMovieList.postValue(Resource.Loading)
+                val response = movieRemoteRepository.getTopRatedMovies()
 
                 if (response.isSuccessful) {
                     val body = response.body()
-                    if (body != null) {
-                        _topRatedMovieList.postValue(body.results)
+                    body?.let {
+                        _topRatedMovieList.postValue(Resource.Success(it.results))
                     }
                 }
+
             } catch (ex: Exception) {
-                Log.e("RESPONSES_HOME", "getTopRated status : ${response.errorBody().toString()}")
+                _topRatedMovieList.postValue(Resource.Error(ex))
+                Log.e("RESPONSES_HOME", "getTopRated status : $ex")
             }
         }
     }
@@ -54,35 +58,51 @@ class HomeViewModel @Inject constructor(
 
     private fun getPopularMovies() {
         viewModelScope.launch(IO) {
-            val response = movieRemoteRepository.getPopularMovies()
             try {
+                _popularMovieList.postValue(Resource.Loading)
+                val response = movieRemoteRepository.getPopularMovies()
                 if (response.isSuccessful) {
-                    Log.i("RESPONSES_HOME","getPopularMovies status is (isSuccessful):${response.isSuccessful}")
+                    Log.i(
+                        "RESPONSES_HOME",
+                        "getPopularMovies status is (isSuccessful):${response.isSuccessful}"
+                    )
                     val body = response.body()
-                    if (body != null) {
-                        _popularMovieList.postValue(body.results)
+                    body?.let {
+                        _popularMovieList.postValue(Resource.Success(it.results))
                     }
                 }
             } catch (ex: Exception) {
-                Log.e("RESPONSES_HOME", "getPopularMovies status : ${response.errorBody().toString()}")
+                _popularMovieList.postValue(Resource.Error(ex))
+                Log.e(
+                    "RESPONSES_HOME",
+                    "getPopularMovies status : $ex"
+                )
             }
         }
     }
 
 
-    private fun getUpComingMovies () {
+    private fun getUpComingMovies() {
         viewModelScope.launch(IO) {
-            val response = movieRemoteRepository.getUpComingMovies()
             try {
+                _upComingMovieList.postValue(Resource.Loading)
+                val response = movieRemoteRepository.getUpComingMovies()
                 if (response.isSuccessful) {
-                    Log.i("RESPONSES_HOME","getUpComingMovies status is (isSuccessful):${response.isSuccessful}")
+                    Log.i(
+                        "RESPONSES_HOME",
+                        "getUpComingMovies status is (isSuccessful):${response.isSuccessful}"
+                    )
                     val body = response.body()
-                    if (body != null) {
-                        _upComingMovieList.postValue(body.results)
+                    body?.let {
+                        _upComingMovieList.postValue(Resource.Success(it.results))
                     }
                 }
             } catch (ex: Exception) {
-                Log.e("RESPONSES_HOME", "getUpComingMovies status is (isSuccessful):${response.errorBody().toString()}")
+                _upComingMovieList.postValue(Resource.Error(ex))
+                Log.e(
+                    "RESPONSES_HOME",
+                    "getUpComingMovies status is (isSuccessful):$ex"
+                )
             }
         }
     }

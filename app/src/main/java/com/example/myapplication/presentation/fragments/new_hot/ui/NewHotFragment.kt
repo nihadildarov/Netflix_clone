@@ -16,18 +16,19 @@ import com.example.myapplication.presentation.fragments.new_hot.adapter.AdapterR
 import com.example.myapplication.presentation.fragments.new_hot.adapter.AdapterRcyNewHotEveryoneWatching
 import com.example.myapplication.presentation.fragments.new_hot.adapter.AdapterRcyNewHotGames
 import com.example.myapplication.presentation.fragments.new_hot.view_model.NewHotViewModel
+import com.example.myapplication.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NewHotFragment : Fragment() {
-    private lateinit var binding:FragmentNewHotBinding
-    private val viewModel by viewModels<NewHotViewModel> ()
+    private lateinit var binding: FragmentNewHotBinding
+    private val viewModel by viewModels<NewHotViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentNewHotBinding.inflate(inflater,container,false)
+        binding = FragmentNewHotBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,8 +44,8 @@ class NewHotFragment : Fragment() {
     }
 
 
-    private fun setRecyclers(){
-        with(binding){
+    private fun setRecyclers() {
+        with(binding) {
             rcyComingSoon.layoutManager = LinearLayoutManager(requireContext())
             rcyEveryonesWatching.layoutManager = LinearLayoutManager(requireContext())
             rcyGames.layoutManager = LinearLayoutManager(requireContext())
@@ -53,39 +54,61 @@ class NewHotFragment : Fragment() {
     }
 
 
-    private fun setAdapters(){
+    private fun setAdapters() {
 
 
         val comingSoonAdapter = AdapterRcyNewHotComingSoon(
-            object :MovieClickListener{
+            object : MovieClickListener {
                 override fun movieClickListener(movieId: Long) {
-                    findNavController().navigate(NewHotFragmentDirections.actionNewHotToMovieDetails(movieId))
+                    findNavController().navigate(
+                        NewHotFragmentDirections.actionNewHotToMovieDetails(
+                            movieId
+                        )
+                    )
                 }
             }
         )
 
 
-        viewModel.upComing.observe(viewLifecycleOwner){
-            comingSoonAdapter.submitList(it.sortedBy {movie->
-                movie.release_date })
+        viewModel.upComing.observe(viewLifecycleOwner) {
+            when (it) {
+                Resource.Loading -> {}
+                is Resource.Error -> {}
+                is Resource.Success -> {
+                    comingSoonAdapter.submitList(it.data.sortedBy { movie ->
+                        movie.release_date
+                    })
+                }
+            }
         }
 
 
         val everyOnesWatchingAdapter = AdapterRcyNewHotEveryoneWatching(
-            object : MovieClickListener{
+            object : MovieClickListener {
                 override fun movieClickListener(movieId: Long) {
-                    findNavController().navigate(NewHotFragmentDirections.actionNewHotToMovieDetails(movieId))
+                    findNavController().navigate(
+                        NewHotFragmentDirections.actionNewHotToMovieDetails(
+                            movieId
+                        )
+                    )
                 }
             }
         )
 
-        viewModel.everyOneWatching.observe(viewLifecycleOwner){
-            everyOnesWatchingAdapter.submitList(it.shuffled())
+        viewModel.everyOneWatching.observe(viewLifecycleOwner) {
+            when (it) {
+                Resource.Loading -> {}
+                is Resource.Error -> {}
+                is Resource.Success -> {
+                    everyOnesWatchingAdapter.submitList(it.data.shuffled())
+                }
+            }
         }
 
-        val gamesAdapter = AdapterRcyNewHotGames(listOf(R.drawable.img,R.drawable.img,R.drawable.img))
+        val gamesAdapter =
+            AdapterRcyNewHotGames(listOf(R.drawable.img, R.drawable.img, R.drawable.img))
 
-        with(binding){
+        with(binding) {
             rcyComingSoon.adapter = comingSoonAdapter
             rcyEveryonesWatching.adapter = everyOnesWatchingAdapter
             rcyGames.adapter = gamesAdapter
@@ -93,29 +116,29 @@ class NewHotFragment : Fragment() {
     }
 
 
-    private fun chipsClick(){
+    private fun chipsClick() {
         with(binding) {
 
             chipComingSoon.setOnClickListener {
-                Toast.makeText(context,"chip1",Toast.LENGTH_SHORT).show()
-                scrollViewRcy.smoothScrollTo(0,rcyComingSoon.top)
+                Toast.makeText(context, "chip1", Toast.LENGTH_SHORT).show()
+                scrollViewRcy.smoothScrollTo(0, rcyComingSoon.top)
             }
 
             chipEveryoneWatch.setOnClickListener {
-                Toast.makeText(context,"chip2",Toast.LENGTH_SHORT).show()
-                scrollViewRcy.smoothScrollTo(0,rcyEveryonesWatching.top)
+                Toast.makeText(context, "chip2", Toast.LENGTH_SHORT).show()
+                scrollViewRcy.smoothScrollTo(0, rcyEveryonesWatching.top)
             }
 
             chipGames.setOnClickListener {
-                Toast.makeText(context,"chip3",Toast.LENGTH_SHORT).show()
-                scrollViewRcy.smoothScrollTo(0,rcyGames.top)
+                Toast.makeText(context, "chip3", Toast.LENGTH_SHORT).show()
+                scrollViewRcy.smoothScrollTo(0, rcyGames.top)
             }
 
         }
     }
 
 
-    private fun searchBtnClick(){
+    private fun searchBtnClick() {
         binding.imgSearch.setOnClickListener {
             findNavController().navigate(NewHotFragmentDirections.actionNewHotToSearch())
         }
