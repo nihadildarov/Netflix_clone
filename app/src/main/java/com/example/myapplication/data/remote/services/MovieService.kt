@@ -20,7 +20,7 @@ interface MovieService {
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("language") lang: String = "en-US",
-        @Query("page") page: Int = 1
+        @Query("page") page: Int = 5
     ): Response<MovieResponse>
 
 

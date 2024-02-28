@@ -86,12 +86,15 @@ class HomeFragment : Fragment() {
                         //binding.constraintHome.setBackgroundResource(R.drawable.placeholder)
                     }
                     )
+
                     Log.i("setBigPoster", "Done")
                     Picasso.get().load(url).into(binding.imgPosterHeader)
                     binding.imgPosterHeader.setOnClickListener {
                         Toast.makeText(context, movie.title, Toast.LENGTH_SHORT).show()
                         findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movie.id.toLong()))
+
                     }
+                    btnPlayClickBigPoster(movie.id.toLong())
 
                 }
 
@@ -468,6 +471,12 @@ class HomeFragment : Fragment() {
     private fun searchBtnClick() {
         binding.imgSearch.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeToSearch())
+        }
+    }
+
+    private fun btnPlayClickBigPoster(movieId:Long){
+        binding.btnPlayHeader.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFullScreenFragment(movieId))
         }
     }
 

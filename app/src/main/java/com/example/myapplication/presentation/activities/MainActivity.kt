@@ -1,24 +1,23 @@
 package com.example.myapplication.presentation.activities
 
-import android.net.ConnectivityManager
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.util.NetworkCallBack
-import com.example.myapplication.util.NetworkMonitor
+import com.example.myapplication.util.NetworkManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var observer: NetworkManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,25 +25,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.btmNav.setBackgroundColor(resources.getColor(R.color.dark_gray))
 
-        initBottomNav()
-
+        networkStatus()
+        initNav()
     }
 
 
 
-    private fun networkListener():Boolean{
-        val networkMonitor = NetworkMonitor(applicationContext)
-        networkMonitor.registerNetworkCallback(NetworkCallBack)
 
-        return networkMonitor.isNetworkAvailable()
-    }
 
-    private fun initBottomNav(){
+
+    private fun initNav(){
 
         val navController = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navHost = navController.navController
         binding.btmNav.setupWithNavController(navHost)
+
         btmNavVisibilityControl(navHost)
+        setOrientation(navHost)
 
 
     }
@@ -57,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.movieDetailsFragment -> binding.btmNav.visibility = View.GONE
+                R.id.verifyEmailFragment -> binding.btmNav.visibility = View.GONE
                 R.id.getStartedFragment -> binding.btmNav.visibility = View.GONE
                 R.id.signUpFragment -> binding.btmNav.visibility = View.GONE
                 R.id.signInFragment -> binding.btmNav.visibility = View.GONE
@@ -69,6 +67,31 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+    private fun setOrientation(navController: NavController){
+        navController.addOnDestinationChangedListener{_,destination,_ ->
+            when(destination.id){
+
+                R.id.fullScreenFragment -> this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                else -> this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
+            }
+
+        }
+
+    }
+
+
+    private fun networkStatus(){
+
+        val networkManager = NetworkManager(this)
+        networkManager.observe(this){
+            if(!it){
+                Toast.makeText(this,"No internet connection!",Toast.LENGTH_LONG).show()
+            }
+        }
+
+
+    }
 
 
 

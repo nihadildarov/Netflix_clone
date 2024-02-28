@@ -1,13 +1,18 @@
 package com.example.myapplication.presentation.fragments.fullscreen
 
 import android.content.pm.ActivityInfo
+import android.gesture.Gesture
 import android.os.Bundle
+import android.view.GestureDetector
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myapplication.databinding.FragmentFullScreenBinding
 import com.example.myapplication.util.Resource
@@ -35,7 +40,7 @@ class FullScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val movieId = args.movieId
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        swipeDown()
 
         observe(movieId)
 
@@ -61,6 +66,60 @@ class FullScreenFragment : Fragment() {
                 }
             }
         }
+
+    }
+
+
+    private fun swipeDown(){
+        val swipeDownGestureDetector = object : GestureDetector.OnGestureListener{
+            override fun onDown(e: MotionEvent): Boolean {
+                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+                findNavController().popBackStack()
+                return true
+            }
+
+            override fun onShowPress(e: MotionEvent) {
+                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onSingleTapUp(e: MotionEvent): Boolean {
+                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+                return true
+            }
+
+            override fun onScroll(
+                e1: MotionEvent?,
+                e2: MotionEvent,
+                distanceX: Float,
+                distanceY: Float
+            ): Boolean {
+                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+                return true
+            }
+
+            override fun onLongPress(e: MotionEvent) {
+                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+            }
+
+            override fun onFling(
+                e1: MotionEvent?,
+                e2: MotionEvent,
+                velocityX: Float,
+                velocityY: Float
+            ): Boolean {
+                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+                return true
+            }
+
+
+
+
+        }
+
+        fun onSwipeDown(){
+
+        }
+
 
     }
 

@@ -178,6 +178,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="fullScreenFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-21" />
+                            <option name="y" value="1195" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="getStartedFragment">
                     <value>
                       <LayoutPositions>

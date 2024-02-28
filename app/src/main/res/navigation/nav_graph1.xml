@@ -87,6 +87,9 @@
             app:destination="@id/searchFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_fullScreenFragment"
+            app:destination="@id/fullScreenFragment" />
     </fragment>
 
     <fragment
