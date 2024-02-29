@@ -2,6 +2,8 @@ package com.example.myapplication.presentation.fragments.home.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -15,6 +17,7 @@ import com.squareup.picasso.Picasso
 class MovieAdapterRecyclersMedium(
     private val movieClickListener: MovieClickListener
 ):RecyclerView.Adapter<MovieAdapterRecyclersMedium.RcyViewHolder>() {
+    private var isLoaded = false
 
     private val itemCallback = object : DiffUtil.ItemCallback<Result>(){
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
@@ -54,6 +57,14 @@ class MovieAdapterRecyclersMedium(
 
         fun bind(movie: Result){
 
+            if (isLoaded){
+                binding.progressBar.visibility = GONE
+                binding.imgMediumPoster.visibility = VISIBLE
+            }else {
+                binding.progressBar.visibility = VISIBLE
+                binding.imgMediumPoster.visibility = GONE
+            }
+
             val img = "$IMAGE_URL${movie.poster_path}"
             Picasso.get().load("$IMAGE_URL${movie.poster_path}").into(binding.imgMediumPoster)
 
@@ -73,6 +84,16 @@ class MovieAdapterRecyclersMedium(
     fun updateMovieList(newList:List<Result>) {
         diffUtil.submitList(newList)
         diffUtil.currentList
+    }
+
+    fun hideProgress(){
+        isLoaded = true
+        notifyDataSetChanged()
+    }
+
+    fun showProgress (){
+        isLoaded = false
+        notifyDataSetChanged()
     }
 
 }

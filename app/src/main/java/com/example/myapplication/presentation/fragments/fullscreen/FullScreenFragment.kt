@@ -2,6 +2,7 @@ package com.example.myapplication.presentation.fragments.fullscreen
 
 import android.content.pm.ActivityInfo
 import android.gesture.Gesture
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.GestureDetector
 import android.view.LayoutInflater
@@ -32,7 +33,7 @@ class FullScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFullScreenBinding.inflate(inflater,container,false)
+        binding = FragmentFullScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -46,23 +47,34 @@ class FullScreenFragment : Fragment() {
 
     }
 
-    private fun observe(movieId: Long){
+    private fun observe(movieId: Long) {
         viewModel.getMovieVideoById(movieId)
 
 
-        viewModel.movie.observe(viewLifecycleOwner){video->
+        viewModel.movie.observe(viewLifecycleOwner) { video ->
 
-            when (video){
-                Resource.Loading ->{}
-                is Resource.Error ->{}
-                is Resource.Success ->{
-
-            binding.videoPlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener(){
-                override fun onReady(youTubePlayer: YouTubePlayer) {
-                    super.onReady(youTubePlayer)
-                    youTubePlayer.cueVideo(video.data[0].key,0f)
+            when (video) {
+                Resource.Loading -> {
+                    binding.videoPlayer.visibility = View.GONE
+                    binding.progressBar.visibility = View.VISIBLE
                 }
-            })
+
+                is Resource.Error -> {
+
+                }
+
+                is Resource.Success -> {
+
+                    binding.videoPlayer.visibility = View.VISIBLE
+                    binding.progressBar.visibility = View.GONE
+
+                    binding.videoPlayer.addYouTubePlayerListener(object :
+                        AbstractYouTubePlayerListener() {
+                        override fun onReady(youTubePlayer: YouTubePlayer) {
+                            super.onReady(youTubePlayer)
+                            youTubePlayer.cueVideo(video.data[0].key, 0f)
+                        }
+                    })
                 }
             }
         }
@@ -70,20 +82,20 @@ class FullScreenFragment : Fragment() {
     }
 
 
-    private fun swipeDown(){
-        val swipeDownGestureDetector = object : GestureDetector.OnGestureListener{
+    private fun swipeDown() {
+        val swipeDownGestureDetector = object : GestureDetector.OnGestureListener {
             override fun onDown(e: MotionEvent): Boolean {
-                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
                 findNavController().popBackStack()
                 return true
             }
 
             override fun onShowPress(e: MotionEvent) {
-                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
             }
 
             override fun onSingleTapUp(e: MotionEvent): Boolean {
-                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
                 return true
             }
 
@@ -93,12 +105,12 @@ class FullScreenFragment : Fragment() {
                 distanceX: Float,
                 distanceY: Float
             ): Boolean {
-                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
                 return true
             }
 
             override fun onLongPress(e: MotionEvent) {
-                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
             }
 
             override fun onFling(
@@ -107,16 +119,14 @@ class FullScreenFragment : Fragment() {
                 velocityX: Float,
                 velocityY: Float
             ): Boolean {
-                Toast.makeText(context,"onDoubleTapEvent",Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
                 return true
             }
 
 
-
-
         }
 
-        fun onSwipeDown(){
+        fun onSwipeDown() {
 
         }
 

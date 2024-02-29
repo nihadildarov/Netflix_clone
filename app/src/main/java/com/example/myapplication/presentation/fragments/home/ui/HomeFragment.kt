@@ -10,6 +10,8 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
@@ -65,10 +67,18 @@ class HomeFragment : Fragment() {
         viewModel.popularMovieList.observe(viewLifecycleOwner) {
             when (it) {
                 Resource.Loading -> {
-                    //Set progressbar visible
+                    binding.progressBar.visibility = VISIBLE
+                    binding.imgPosterHeader.visibility = GONE
+                    binding.btnPlayHeader.visibility = GONE
+                    binding.btnAddMyListHeader.visibility = GONE
                 }
 
                 is Resource.Success -> {
+                    binding.progressBar.visibility = GONE
+                    binding.imgPosterHeader.visibility = VISIBLE
+                    binding.btnPlayHeader.visibility = VISIBLE
+                    binding.btnAddMyListHeader.visibility = VISIBLE
+
                     val movie = it.data.random()
                     val url = "$IMAGE_URL${movie.poster_path}"
 
@@ -83,7 +93,6 @@ class HomeFragment : Fragment() {
                         binding.constraintHome.background = gradientDrawable
                     }, onError = {
                         Log.e("setBigPoster", "Error")
-                        //binding.constraintHome.setBackgroundResource(R.drawable.placeholder)
                     }
                     )
 
@@ -150,10 +159,11 @@ class HomeFragment : Fragment() {
         viewModel.popularMovieList.observe(viewLifecycleOwner) {
             when (it) {
                 Resource.Loading -> {
-                    //Set progressbar visible
+                    adapterBig.showProgress()
                 }
 
                 is Resource.Success -> {
+                    adapterBig.hideProgress()
                     adapterBig.submitList(it.data)
                 }
 
@@ -192,14 +202,16 @@ class HomeFragment : Fragment() {
         viewModel.topRatedMovieList.observe(viewLifecycleOwner) {
             when (it) {
                 Resource.Loading -> {
-                    //Set progressbar visible
+                    adapterMedium.showProgress()
                 }
 
                 is Resource.Success -> {
+                    adapterMedium.hideProgress()
                     adapterMedium.submitList(it.data.shuffled())
                 }
 
                 is Resource.Error -> {
+                    adapterMedium.showProgress()
                     Toast.makeText(context, "Error Occurred", Toast.LENGTH_LONG).show()
                     Log.e("topRatedMovieListObserve", "Error occurred: ${it.exception}")
                 }

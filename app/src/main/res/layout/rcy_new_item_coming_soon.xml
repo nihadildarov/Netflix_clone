@@ -5,6 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        style="?android:attr/progressBarStyleLarge"
+        app:indicatorColor="@color/red"
+        app:layout_constraintTop_toTopOf="@+id/cardViewVideo"
+        app:layout_constraintBottom_toBottomOf="@+id/cardViewVideo"
+        app:layout_constraintStart_toStartOf="@+id/cardViewVideo"
+        app:layout_constraintEnd_toEndOf="@+id/cardViewVideo"/>
+
     <TextView
         android:id="@+id/txtMonth"
         android:layout_width="wrap_content"

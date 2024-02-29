@@ -13,11 +13,10 @@ import com.squareup.picasso.Picasso
 
 class MovieAdapterRecyclersContinueWatching(
     private val movieClickListener: MovieClickListener
-
 ) : RecyclerView.Adapter<MovieAdapterRecyclersContinueWatching.RcyViewHolder>() {
 
 
-
+    private var isLoaded = false
     private val itemCallBack = object : DiffUtil.ItemCallback<Result>() {
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
             return oldItem.id == newItem.id
@@ -54,11 +53,27 @@ class MovieAdapterRecyclersContinueWatching(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movie: Result) {
-            Picasso.get().load("$IMAGE_URL${movie.poster_path}").into(binding.imgWatched)
-            binding.imgWatched.setOnClickListener {
+
+
+
+
+
+
+
+            binding.videoPlayer.setOnClickListener {
                 movieClickListener.movieClickListener(movie.id.toLong())
             }
         }
+    }
+
+    fun hideProgress(){
+        isLoaded = true
+        notifyDataSetChanged()
+    }
+
+    fun showProgress (){
+        isLoaded = false
+        notifyDataSetChanged()
     }
 
 }

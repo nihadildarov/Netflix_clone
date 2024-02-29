@@ -4,6 +4,20 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        style="?android:attr/progressBarStyleLarge"
+        app:indicatorColor="@color/red"
+        app:layout_constraintTop_toTopOf="@id/cardViewPoster"
+        app:layout_constraintBottom_toBottomOf="@id/cardViewPoster"
+        app:layout_constraintStart_toStartOf="@id/cardViewPoster"
+        app:layout_constraintEnd_toEndOf="@id/cardViewPoster"/>
+
+
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardViewPoster"
         android:layout_width="160dp"

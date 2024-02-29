@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.remote.models.movie.Result
+import com.example.myapplication.data.remote.models.movie.Video
 import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
 import com.example.myapplication.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

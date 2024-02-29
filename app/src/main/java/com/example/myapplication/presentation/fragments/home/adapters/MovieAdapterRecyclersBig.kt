@@ -1,6 +1,8 @@
 package com.example.myapplication.presentation.fragments.home.adapters
 
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -16,6 +18,7 @@ class MovieAdapterRecyclersBig(
 ) : RecyclerView.Adapter<MovieAdapterRecyclersBig.RcyViewHolder>() {
 
 
+    private var isLoaded = false
     private val itemCallBack = object : DiffUtil.ItemCallback<Result>() {
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
             return oldItem.id == newItem.id
@@ -52,11 +55,31 @@ class MovieAdapterRecyclersBig(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movie: Result) {
+
+            if (isLoaded){
+                binding.imgBigPoster.visibility = VISIBLE
+                binding.progressBar.visibility = GONE
+            }else{
+                binding.imgBigPoster.visibility = GONE
+                binding.progressBar.visibility = VISIBLE
+            }
+
             Picasso.get().load("$IMAGE_URL${movie.poster_path}").into(binding.imgBigPoster)
             binding.imgBigPoster.setOnClickListener {
                 movieClickListener.movieClickListener(movie.id.toLong())
             }
         }
+    }
+
+
+    fun hideProgress(){
+        isLoaded = true
+        notifyDataSetChanged()
+    }
+
+    fun showProgress (){
+        isLoaded = false
+        notifyDataSetChanged()
     }
 
 }

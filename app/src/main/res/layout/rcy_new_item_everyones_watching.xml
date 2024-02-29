@@ -6,6 +6,18 @@
     >
 
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        style="?android:attr/progressBarStyle"
+        app:indicatorColor="@color/red"
+        app:layout_constraintTop_toTopOf="@id/cardViewPlayer"
+        app:layout_constraintBottom_toBottomOf="@id/cardViewPlayer"
+        app:layout_constraintStart_toStartOf="@id/cardViewPlayer"
+        app:layout_constraintEnd_toEndOf="@id/cardViewPlayer"/>
+
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardViewPlayer"
         android:layout_width="match_parent"

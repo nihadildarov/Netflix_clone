@@ -77,6 +77,13 @@ dependencies {
     //FireBase
     implementation("com.google.firebase:firebase-auth:22.3.1")
 
+    //YoutubeVideoPlayer
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
+
+
+    //
+    implementation("androidx.window:window-core:1.2.0")
+
 
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
@@ -90,7 +97,6 @@ dependencies {
 
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
-    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
 
 }
 
