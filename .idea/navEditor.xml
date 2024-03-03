@@ -227,6 +227,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_homeFragment_to_fullScreenFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_home_to_movieDetails">
                               <value>
                                 <LayoutPositions />
@@ -253,6 +258,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_movieDetailsFragment_to_fullScreenFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_movieDetails_to_search">
                               <value>
                                 <LayoutPositions />
@@ -391,6 +401,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="youtubePlayerFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1612" />
+                            <option name="y" value="-176" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

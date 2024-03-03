@@ -15,10 +15,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentFullScreenBinding
 import com.example.myapplication.util.Resource
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -41,8 +44,6 @@ class FullScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val movieId = args.movieId
-        swipeDown()
-
         observe(movieId)
 
     }
@@ -68,68 +69,31 @@ class FullScreenFragment : Fragment() {
                     binding.videoPlayer.visibility = View.VISIBLE
                     binding.progressBar.visibility = View.GONE
 
-                    binding.videoPlayer.addYouTubePlayerListener(object :
-                        AbstractYouTubePlayerListener() {
-                        override fun onReady(youTubePlayer: YouTubePlayer) {
-                            super.onReady(youTubePlayer)
-                            youTubePlayer.cueVideo(video.data[0].key, 0f)
-                        }
-                    })
+
+                    with(binding.videoPlayer) {
+
+                        initialize(object : AbstractYouTubePlayerListener() {
+                            override fun onReady(youTubePlayer: YouTubePlayer) {
+                                super.onReady(youTubePlayer)
+                            }
+                        })
+                        addYouTubePlayerListener(object :
+                            AbstractYouTubePlayerListener() {
+                            override fun onReady(youTubePlayer: YouTubePlayer) {
+                                super.onReady(youTubePlayer)
+                                youTubePlayer.cueVideo(video.data[0].key, 0f)
+                            }
+
+
+                        })
+                    }
+
+
+                    binding.videoPlayer
+                    binding.videoPlayer.enableAutomaticInitialization = true
                 }
             }
         }
-
-    }
-
-
-    private fun swipeDown() {
-        val swipeDownGestureDetector = object : GestureDetector.OnGestureListener {
-            override fun onDown(e: MotionEvent): Boolean {
-                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
-                findNavController().popBackStack()
-                return true
-            }
-
-            override fun onShowPress(e: MotionEvent) {
-                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onSingleTapUp(e: MotionEvent): Boolean {
-                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
-                return true
-            }
-
-            override fun onScroll(
-                e1: MotionEvent?,
-                e2: MotionEvent,
-                distanceX: Float,
-                distanceY: Float
-            ): Boolean {
-                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
-                return true
-            }
-
-            override fun onLongPress(e: MotionEvent) {
-                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onFling(
-                e1: MotionEvent?,
-                e2: MotionEvent,
-                velocityX: Float,
-                velocityY: Float
-            ): Boolean {
-                Toast.makeText(context, "onDoubleTapEvent", Toast.LENGTH_LONG).show()
-                return true
-            }
-
-
-        }
-
-        fun onSwipeDown() {
-
-        }
-
 
     }
 
