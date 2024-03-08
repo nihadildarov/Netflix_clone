@@ -266,11 +266,6 @@
             android:name="movieId"
             app:argType="long" />
     </fragment>
-    <fragment
-        android:id="@+id/youtubePlayerFragment"
-        android:name="com.example.myapplication.YoutubePlayerFragment"
-        android:label="fragment_youtube_player"
-        tools:layout="@layout/fragment_youtube_player" />
 
 
 </navigation>

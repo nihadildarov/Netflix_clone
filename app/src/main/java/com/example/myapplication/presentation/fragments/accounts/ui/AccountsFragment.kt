@@ -51,9 +51,7 @@ class AccountsFragment : Fragment() {
                 Toast.makeText(context, "Cancel clicked", Toast.LENGTH_SHORT).show()
                 dialog.cancel()
             }
-
             .setView(R.layout.fragment_pin_dialog)
-
         return builder.create()
     }
 

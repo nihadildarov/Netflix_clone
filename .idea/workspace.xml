@@ -112,11 +112,6 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_youtube_player.xml">
-        <config>
-          <theme>@style/Theme.MyApplication</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/gs_item_page.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
@@ -187,28 +182,26 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/navigation/nav_graph_getstarted.xml">
+        <config>
+          <theme>@style/Theme.MyApplication</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1878a53f-51cd-484c-9c5f-0526dd177420" name="Changes" comment="CheckNetworkConnectivity established for main fragment">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+    <list default="true" id="1878a53f-51cd-484c-9c5f-0526dd177420" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph_getstarted.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/activities/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/YoutubePlayerFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/accounts/ui/AccountsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/accounts/ui/AccountsFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/fullscreen/FullScreenFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/fullscreen/FullScreenFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_full_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_full_screen.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rcy_movie_item_medium_poster.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rcy_movie_item_medium_poster.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_youtube_player.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph1.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +259,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="navigationResourceFile" />
         <option value="Kotlin Enum" />
         <option value="Kotlin Object" />
         <option value="Kotlin Data Class" />
@@ -274,6 +266,7 @@
         <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
         <option value="layoutResourceFile" />
+        <option value="navigationResourceFile" />
       </list>
     </option>
   </component>
@@ -286,7 +279,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Creating_Downloads_Fragment" />
+        <entry key="$PROJECT_DIR$" value="Architecture_creation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -304,34 +297,34 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ApkExportedModule&quot;: &quot;My_Application.app&quot;,
-    &quot;ExportApk.ApkPathForMy_Application.app&quot;: &quot;/Users/macbookair/Desktop/Android Projects/Netflix_clone/app&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/Toolbar.java_SELECTED&quot;: &quot;Toolbar&quot;,
-    &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/androidx.viewpager2/viewpager2/1.0.0/3c3569044e6969f1ee5c3aa03b08e6717a2d782f/viewpager2-1.0.0-sources.jar!/androidx/viewpager2/widget/ViewPager2.java_SELECTED&quot;: &quot;ViewPager2&quot;,
-    &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.11.0/47456a5ab79e72baca757532823ea1fa08e001d3/material-1.11.0-sources.jar!/com/google/android/material/button/MaterialButton.java_SELECTED&quot;: &quot;MaterialButton&quot;,
-    &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.11.0/47456a5ab79e72baca757532823ea1fa08e001d3/material-1.11.0-sources.jar!/com/google/android/material/chip/Chip.java_SELECTED&quot;: &quot;Chip&quot;,
-    &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/com.pierfrancescosoffritti.androidyoutubeplayer/core/12.0.0/bb1615c8151102b789785ea29e3221ede2c3160c/core-12.0.0-sources.jar!/com/pierfrancescosoffritti/androidyoutubeplayer/core/player/views/YouTubePlayerView.kt_SELECTED&quot;: &quot;YouTubePlayerView&quot;,
-    &quot;android-custom-view/Users/macbookair/Library/Android/sdk/sources/android-34/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
-    &quot;android-custom-view/Users/macbookair/Library/Android/sdk/sources/android-34/android/view/ViewGroup.java_SELECTED&quot;: &quot;ViewGroup&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Architecture__creation&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/macbookair/Desktop/Android Projects/Netflix_clone/app/src/main/res/drawable&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ApkExportedModule": "My_Application.app",
+    "ExportApk.ApkPathForMy_Application.app": "/Users/macbookair/Desktop/Android Projects/Netflix_clone/app",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/Toolbar.java_SELECTED": "Toolbar",
+    "android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/androidx.viewpager2/viewpager2/1.0.0/3c3569044e6969f1ee5c3aa03b08e6717a2d782f/viewpager2-1.0.0-sources.jar!/androidx/viewpager2/widget/ViewPager2.java_SELECTED": "ViewPager2",
+    "android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.11.0/47456a5ab79e72baca757532823ea1fa08e001d3/material-1.11.0-sources.jar!/com/google/android/material/button/MaterialButton.java_SELECTED": "MaterialButton",
+    "android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.11.0/47456a5ab79e72baca757532823ea1fa08e001d3/material-1.11.0-sources.jar!/com/google/android/material/chip/Chip.java_SELECTED": "Chip",
+    "android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/com.pierfrancescosoffritti.androidyoutubeplayer/core/12.0.0/bb1615c8151102b789785ea29e3221ede2c3160c/core-12.0.0-sources.jar!/com/pierfrancescosoffritti/androidyoutubeplayer/core/player/views/YouTubePlayerView.kt_SELECTED": "YouTubePlayerView",
+    "android-custom-view/Users/macbookair/Library/Android/sdk/sources/android-34/android/view/View.java_SELECTED": "View",
+    "android-custom-view/Users/macbookair/Library/Android/sdk/sources/android-34/android/view/ViewGroup.java_SELECTED": "ViewGroup",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "Creating__localDB",
+    "last_opened_file_path": "/Users/macbookair/Desktop/Android Projects/Netflix_clone/app/src/main/res/drawable",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ExportApk.BuildVariants&quot;: [
-      &quot;release&quot;
+  "keyToStringList": {
+    "ExportApk.BuildVariants": [
+      "release"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -834,7 +827,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709241475216</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Picture in picture mode established correctly">
+      <option name="closed" value="true" />
+      <created>1709490975934</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1709490975934</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -850,7 +851,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Downloads For You recyclers adapter changed. New adapter created in order to set first item differently" />
     <MESSAGE value="Changed spannable string in downloads for you adapter class." />
     <MESSAGE value="Finished Home fragment design" />
     <MESSAGE value="New&amp;Hot fragment recyclers settled properly" />
@@ -875,7 +875,8 @@
     <MESSAGE value="FullScreen view added successfully" />
     <MESSAGE value="CheckNetworkConnectivity established for main fragment" />
     <MESSAGE value="Picture in Picture mode settled but worker for every fragments. Need to develop" />
-    <option name="LAST_COMMIT_MESSAGE" value="Picture in Picture mode settled but worker for every fragments. Need to develop" />
+    <MESSAGE value="Picture in picture mode established correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Picture in picture mode established correctly" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

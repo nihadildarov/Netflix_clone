@@ -83,8 +83,6 @@ class FullScreenFragment : Fragment() {
                                 super.onReady(youTubePlayer)
                                 youTubePlayer.cueVideo(video.data[0].key, 0f)
                             }
-
-
                         })
                     }
 
