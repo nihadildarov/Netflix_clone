@@ -15,9 +15,14 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAccountsBinding
 import com.example.myapplication.presentation.fragments.accounts.MembersProfiles
 import com.example.myapplication.presentation.fragments.accounts.adapter.AccountsRcyAdapter
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 class AccountsFragment : Fragment() {
     private lateinit var binding: FragmentAccountsBinding
+    private lateinit var fireStore: FirebaseFirestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,6 +33,21 @@ class AccountsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        fireStore = Firebase.firestore
+
+
+        fireStore.collection("members").add(
+            hashMapOf(
+                "name" to "Murad",
+                "password" to "mumumu123",
+                "avatarPath" to "https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCar&psig=AOvVaw2_eiaWnvfQaRndIgXRXjhA&ust=1710791946059000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCJjBleOK_IQDFQAAAAAdAAAAABAE"
+            )
+        ).addOnSuccessListener {
+            Toast.makeText(context,"Success",Toast.LENGTH_LONG).show()
+        }.addOnFailureListener{
+            Toast.makeText(context,it.localizedMessage,Toast.LENGTH_LONG).show()
+        }
+
         setRcy()
         setAdapter()
         goHome()
@@ -68,10 +88,11 @@ class AccountsFragment : Fragment() {
         )
 
 
-        val accountsAdapter = AccountsRcyAdapter(members) {
+        val accountsAdapter = AccountsRcyAdapter {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             popUpDialog().show()
         }
+        accountsAdapter.submitList(members)
         binding.rcyAccounts.adapter = accountsAdapter
 
     }

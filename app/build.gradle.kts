@@ -75,7 +75,12 @@ dependencies {
     implementation("androidx.palette:palette-ktx:1.0.0")
 
     //FireBase
-    implementation("com.google.firebase:firebase-auth:22.3.1")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-storage")
+
 
     //YoutubeVideoPlayer
     implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")

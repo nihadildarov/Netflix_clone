@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.RcyNewItemComingSoonBinding
+import com.example.myapplication.domain.remote.models.MovieResult
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.squareup.picasso.Picasso
 
@@ -17,12 +18,12 @@ class AdapterRcyNewHotComingSoon(
 ):RecyclerView.Adapter<AdapterRcyNewHotComingSoon.ViewHolderRcyNewHotComingSoon>() {
 
 
-    private val itemCallback = object : DiffUtil.ItemCallback<Result>(){
-        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+    private val itemCallback = object : DiffUtil.ItemCallback<MovieResult>(){
+        override fun areItemsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem.id==newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+        override fun areContentsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem==newItem
         }
     }
@@ -49,14 +50,14 @@ class AdapterRcyNewHotComingSoon(
     }
 
     inner class ViewHolderRcyNewHotComingSoon (private val binding: RcyNewItemComingSoonBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(movie:Result){
-            Picasso.get().load("$IMAGE_URL${movie.backdrop_path}").into(binding.imgVideo)
-            Picasso.get().load("$IMAGE_URL${movie.poster_path}").into(binding.imgPosterFilmName)
-            binding.txtComingDate.text = "Coming in ${movie.release_date}"
-            binding.txtDesc.text = movie.overview
-            binding.txtDay.text = movie.release_date.substring(8,10)
+        fun bind(movie:MovieResult){
+            Picasso.get().load("$IMAGE_URL${movie.backDropPath}").into(binding.imgVideo)
+            Picasso.get().load("$IMAGE_URL${movie.posterPath}").into(binding.imgPosterFilmName)
+            binding.txtComingDate.text = "Coming in ${movie.releaseDate}"
+            binding.txtDesc.text = movie.overView
+            binding.txtDay.text = movie.releaseDate.substring(8,10)
             binding.txtMonth.text =
-                when (movie.release_date.substring(5,7).toInt()){
+                when (movie.releaseDate.substring(5,7).toInt()){
                     1 -> {"JAN"}
                     2 -> {"FEB"}
                     3 -> {"MAR"}
@@ -72,7 +73,7 @@ class AdapterRcyNewHotComingSoon(
                 }
 
 
-            binding.txtGenres.text = movie.genre_ids.toString()
+            binding.txtGenres.text = movie.genreId.toString()
             binding.imgVideo.setOnClickListener {
                 movieClickListener.movieClickListener(movie.id.toLong())
             }
@@ -86,7 +87,7 @@ class AdapterRcyNewHotComingSoon(
 
 
 
-    fun submitList(movieList:List<Result>){
+    fun submitList(movieList:List<MovieResult>){
         diffUtil.submitList(movieList)
     }
 }

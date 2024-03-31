@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.data.remote.models.movie.Genre
 import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.RcyNewItemEveryonesWatchingBinding
+import com.example.myapplication.domain.remote.models.MovieResult
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
@@ -17,12 +19,12 @@ class AdapterRcyNewHotEveryoneWatching (
 ):
     RecyclerView.Adapter<AdapterRcyNewHotEveryoneWatching.ViewHolderRcyNewHotEveryoneWatching>() {
 
-        private val itemCallback = object : DiffUtil.ItemCallback<Result>(){
-            override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+        private val itemCallback = object : DiffUtil.ItemCallback<MovieResult>(){
+            override fun areItemsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+            override fun areContentsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
                 return oldItem == newItem
             }
 
@@ -52,8 +54,18 @@ class AdapterRcyNewHotEveryoneWatching (
     inner class ViewHolderRcyNewHotEveryoneWatching(private val binding: RcyNewItemEveryonesWatchingBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(movie:Result) {
-                Picasso.get().load("$IMAGE_URL${movie.backdrop_path}").into(binding.videoPlayer)
+            fun bind(movie:MovieResult) {
+
+//
+//                val genreList = movie.genreId.mapNotNull {genre->
+//                    genres.find { it.id == genre }?.name
+//                }
+//                binding.txtCategories.text = genreList.joinToString { ", " }
+
+                //binding.txtCategories.text = genres.substring(1,genres.length-1)
+                Picasso.get().load("$IMAGE_URL${movie.backDropPath}").into(binding.videoPlayer)
+                Picasso.get().load("$IMAGE_URL${movie.posterPath}").into(binding.imgGameName)
+                binding.txtDescription.text = movie.overView
                 binding.videoPlayer.setOnClickListener {
                     movieClickListener.movieClickListener(movie.id.toLong())
                 }
@@ -61,7 +73,7 @@ class AdapterRcyNewHotEveryoneWatching (
 
     }
 
-    fun submitList(movieList:List<Result>){
+    fun submitList(movieList:List<MovieResult>){
         diffUtil.submitList(movieList)
     }
 

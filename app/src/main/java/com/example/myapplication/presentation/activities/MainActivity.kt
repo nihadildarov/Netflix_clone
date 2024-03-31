@@ -143,12 +143,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.newHotFragment -> binding.btmNav.visibility = View.VISIBLE
                 R.id.pinDialogFragment -> binding.btmNav.visibility = View.GONE
                 R.id.finishSignUpFragment -> binding.btmNav.visibility = View.GONE
-
+                R.id.profilesAndMoreFragment -> binding.btmNav.visibility = View.GONE
+                R.id.accountSettingsFragment -> binding.btmNav.visibility = View.GONE
             }
         }
-
-
-
     }
 
 
@@ -177,9 +175,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "No internet connection!", Toast.LENGTH_LONG).show()
             }
         }
-
-
     }
+
+
 
 
 }

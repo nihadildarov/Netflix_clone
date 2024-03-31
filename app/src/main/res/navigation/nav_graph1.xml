@@ -70,6 +70,10 @@
             app:destination="@id/homeFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_accountsFragment_to_accountSettingsFragment"
+            app:destination="@id/accountSettingsFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
 
     <fragment
@@ -90,6 +94,10 @@
         <action
             android:id="@+id/action_homeFragment_to_fullScreenFragment"
             app:destination="@id/fullScreenFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profilesAndMoreFragment"
+            app:destination="@id/profilesAndMoreFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
 
     <fragment
@@ -112,6 +120,10 @@
             app:destination="@id/searchFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_newHotFragment_to_profilesAndMoreFragment"
+            app:destination="@id/profilesAndMoreFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
 
     <fragment
@@ -124,6 +136,10 @@
             app:destination="@id/movieDetailsFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_searchFragment_to_profilesAndMoreFragment"
+            app:destination="@id/profilesAndMoreFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
 
     <fragment
@@ -136,6 +152,10 @@
             app:destination="@id/searchFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_downloadsFragment_to_profilesAndMoreFragment"
+            app:destination="@id/profilesAndMoreFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/createAccountFragment"
@@ -251,6 +271,10 @@
             app:destination="@id/fullScreenFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:popEnterAnim="@android:anim/fade_in" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_profilesAndMoreFragment"
+            app:destination="@id/profilesAndMoreFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/pinDialogFragment"
@@ -271,6 +295,21 @@
         android:name="com.example.myapplication.YoutubePlayerFragment"
         android:label="fragment_youtube_player"
         tools:layout="@layout/fragment_youtube_player" />
+    <fragment
+        android:id="@+id/accountSettingsFragment"
+        android:name="com.example.myapplication.presentation.fragments.account_settings.AccountSettingsFragment"
+        android:label="fragment_account_settings"
+        tools:layout="@layout/fragment_account_settings" />
+    <fragment
+        android:id="@+id/profilesAndMoreFragment"
+        android:name="com.example.myapplication.presentation.fragments.profiles_and_more.ProfilesAndMoreFragment"
+        android:label="fragment_profiles_and_more"
+        tools:layout="@layout/fragment_profiles_and_more" >
+        <action
+            android:id="@+id/action_profilesAndMoreFragment_to_accountSettingsFragment"
+            app:destination="@id/accountSettingsFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
+    </fragment>
 
 
 </navigation>

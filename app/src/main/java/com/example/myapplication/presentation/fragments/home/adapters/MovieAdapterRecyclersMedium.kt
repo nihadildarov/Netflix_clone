@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.RcyMovieItemMediumPosterBinding
+import com.example.myapplication.domain.remote.models.MovieResult
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.squareup.picasso.Picasso
 
@@ -19,12 +20,12 @@ class MovieAdapterRecyclersMedium(
 ):RecyclerView.Adapter<MovieAdapterRecyclersMedium.RcyViewHolder>() {
     private var isLoaded = false
 
-    private val itemCallback = object : DiffUtil.ItemCallback<Result>(){
-        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+    private val itemCallback = object : DiffUtil.ItemCallback<MovieResult>(){
+        override fun areItemsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+        override fun areContentsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem==newItem
         }
     }
@@ -55,7 +56,7 @@ class MovieAdapterRecyclersMedium(
 
     inner class RcyViewHolder(private val binding:RcyMovieItemMediumPosterBinding):RecyclerView.ViewHolder(binding.root){
 
-        fun bind(movie: Result){
+        fun bind(movie: MovieResult){
 
             if (isLoaded){
                 binding.progressBar.visibility = GONE
@@ -65,8 +66,8 @@ class MovieAdapterRecyclersMedium(
                 binding.imgMediumPoster.visibility = GONE
             }
 
-            val img = "$IMAGE_URL${movie.poster_path}"
-            Picasso.get().load("$IMAGE_URL${movie.poster_path}").into(binding.imgMediumPoster)
+            val img = "$IMAGE_URL${movie.posterPath}"
+            Picasso.get().load(img).into(binding.imgMediumPoster)
 
             binding.imgMediumPoster.setOnClickListener {
                 movieClickListener.movieClickListener(movie.id.toLong())
@@ -77,11 +78,11 @@ class MovieAdapterRecyclersMedium(
 
 
 
-    fun submitList(movieList:List<Result>){
+    fun submitList(movieList:List<MovieResult>){
         diffUtil.submitList(movieList)
     }
 
-    fun updateMovieList(newList:List<Result>) {
+    fun updateMovieList(newList:List<MovieResult>) {
         diffUtil.submitList(newList)
         diffUtil.currentList
     }

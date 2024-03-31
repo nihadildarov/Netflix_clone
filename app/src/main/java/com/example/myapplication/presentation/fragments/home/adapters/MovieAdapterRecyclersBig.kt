@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.RcyMovieItemBigPosterBinding
+import com.example.myapplication.domain.remote.models.MovieResult
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.squareup.picasso.Picasso
 
@@ -19,12 +20,12 @@ class MovieAdapterRecyclersBig(
 
 
     private var isLoaded = false
-    private val itemCallBack = object : DiffUtil.ItemCallback<Result>() {
-        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+    private val itemCallBack = object : DiffUtil.ItemCallback<MovieResult>() {
+        override fun areItemsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+        override fun areContentsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem == newItem
         }
     }
@@ -47,14 +48,14 @@ class MovieAdapterRecyclersBig(
         holder.bind(currentItem)
     }
 
-    fun submitList(movieList: List<Result>) {
+    fun submitList(movieList: List<MovieResult>) {
         diffUtil.submitList(movieList)
     }
 
     inner class RcyViewHolder(private val binding: RcyMovieItemBigPosterBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: Result) {
+        fun bind(movie: MovieResult) {
 
             if (isLoaded){
                 binding.imgBigPoster.visibility = VISIBLE
@@ -64,7 +65,7 @@ class MovieAdapterRecyclersBig(
                 binding.progressBar.visibility = VISIBLE
             }
 
-            Picasso.get().load("$IMAGE_URL${movie.poster_path}").into(binding.imgBigPoster)
+            Picasso.get().load("$IMAGE_URL${movie.posterPath}").into(binding.imgBigPoster)
             binding.imgBigPoster.setOnClickListener {
                 movieClickListener.movieClickListener(movie.id.toLong())
             }

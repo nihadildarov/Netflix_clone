@@ -8,11 +8,14 @@ import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myapplication.R
@@ -23,6 +26,9 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -45,7 +51,7 @@ class FullScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val movieId = args.movieId
         observe(movieId)
-
+        setBtnBack()
     }
 
     private fun observe(movieId: Long) {
@@ -96,6 +102,16 @@ class FullScreenFragment : Fragment() {
         }
 
     }
+
+
+    private fun setBtnBack(){
+        binding.btnBack.setOnClickListener{
+            findNavController().popBackStack()
+        }
+    }
+
+
+
 
 
 }

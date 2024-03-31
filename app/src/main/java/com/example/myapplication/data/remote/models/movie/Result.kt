@@ -19,4 +19,3 @@ data class Result(
     val vote_count: Int
 )
 
-fun Result.toResponse(){}

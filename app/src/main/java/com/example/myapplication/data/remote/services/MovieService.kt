@@ -1,5 +1,6 @@
 package com.example.myapplication.data.remote.services
 
+import com.example.myapplication.data.remote.models.movie.Genre
 import com.example.myapplication.data.remote.models.movie.MovieResponse
 import com.example.myapplication.data.remote.models.movie.MovieResponseById
 import com.example.myapplication.data.remote.models.movie.MovieVideoResponseById
@@ -79,4 +80,9 @@ interface MovieService {
         @Query("language") lang: String = "en-US",
         @Query("page") page: Int = 1
     ): Response<MovieResponse>
+
+
+    @GET("genre/movie/list")
+    suspend fun getMovieGenres(): Response<Genre>
+
 }

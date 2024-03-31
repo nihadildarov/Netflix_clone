@@ -40,7 +40,7 @@ class MovieDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val movieId = args.movieId
 
-
+        btnProfileClick()
         initViewModel(movieId)
         btnPlayClick(movieId)
         setPlayer()
@@ -115,5 +115,11 @@ class MovieDetailsFragment : Fragment() {
         super.onPictureInPictureModeChanged(isInPictureInPictureMode)
     }
 
+
+    private fun btnProfileClick(){
+        binding.imgProfile.setOnClickListener{
+            findNavController().navigate(MovieDetailsFragmentDirections.actionMovieDetailsFragmentToProfilesAndMoreFragment())
+        }
+    }
 }
 

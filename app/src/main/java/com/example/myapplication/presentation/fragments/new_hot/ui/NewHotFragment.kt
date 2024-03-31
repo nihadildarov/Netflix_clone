@@ -10,7 +10,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
+import com.example.myapplication.data.remote.models.movie.Genre
 import com.example.myapplication.databinding.FragmentNewHotBinding
+import com.example.myapplication.domain.remote.Mapper.toMovieResult
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.example.myapplication.presentation.fragments.new_hot.adapter.AdapterRcyNewHotComingSoon
 import com.example.myapplication.presentation.fragments.new_hot.adapter.AdapterRcyNewHotEveryoneWatching
@@ -34,13 +36,32 @@ class NewHotFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getMovieGenres()
         setRecyclers()
+        btnProfileClick()
         chipsClick()
         searchBtnClick()
         viewModel.getUpComingMovies()
         viewModel.getEveryOneWatchingMovies()
 
+    }
 
+
+    private fun observeGenres(): List<Genre> {
+
+        var genres = listOf<Genre>()
+
+        viewModel.movieGenres.observe(viewLifecycleOwner) {
+            when (it) {
+                Resource.Loading -> {}
+                is Resource.Success -> {
+                    genres = it.data
+                }
+
+                is Resource.Error -> {}
+            }
+        }
+        return genres
     }
 
 
@@ -75,8 +96,8 @@ class NewHotFragment : Fragment() {
                 Resource.Loading -> {}
                 is Resource.Error -> {}
                 is Resource.Success -> {
-                    comingSoonAdapter.submitList(it.data.sortedBy { movie ->
-                        movie.release_date
+                    comingSoonAdapter.submitList(it.data.toMovieResult().sortedBy { movie ->
+                        movie.releaseDate
                     })
                 }
             }
@@ -84,6 +105,7 @@ class NewHotFragment : Fragment() {
 
 
         val everyOnesWatchingAdapter = AdapterRcyNewHotEveryoneWatching(
+           // observeGenres(),
             object : MovieClickListener {
                 override fun movieClickListener(movieId: Long) {
                     findNavController().navigate(
@@ -100,7 +122,7 @@ class NewHotFragment : Fragment() {
                 Resource.Loading -> {}
                 is Resource.Error -> {}
                 is Resource.Success -> {
-                    everyOnesWatchingAdapter.submitList(it.data.shuffled())
+                    everyOnesWatchingAdapter.submitList(it.data.toMovieResult().shuffled())
                 }
             }
         }
@@ -144,4 +166,10 @@ class NewHotFragment : Fragment() {
         }
     }
 
+
+    private fun btnProfileClick(){
+        binding.imgProfile.setOnClickListener {
+            findNavController().navigate(NewHotFragmentDirections.actionNewHotFragmentToProfilesAndMoreFragment())
+        }
+    }
 }

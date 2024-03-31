@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.RcyItemContinueWatchingBinding
+import com.example.myapplication.domain.remote.models.MovieResponse
+import com.example.myapplication.domain.remote.models.MovieResult
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.squareup.picasso.Picasso
 
@@ -17,12 +19,12 @@ class MovieAdapterRecyclersContinueWatching(
 
 
     private var isLoaded = false
-    private val itemCallBack = object : DiffUtil.ItemCallback<Result>() {
-        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+    private val itemCallBack = object : DiffUtil.ItemCallback<MovieResult>() {
+        override fun areItemsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+        override fun areContentsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem == newItem
         }
     }
@@ -45,19 +47,14 @@ class MovieAdapterRecyclersContinueWatching(
         holder.bind(currentText)
     }
 
-    fun submitList(movieList: List<Result>) {
+    fun submitList(movieList: List<MovieResult>) {
         diffUtil.submitList(movieList)
     }
 
     inner class RcyViewHolder(private val binding: RcyItemContinueWatchingBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: Result) {
-
-
-
-
-
+        fun bind(movie: MovieResult) {
 
 
             binding.videoPlayer.setOnClickListener {

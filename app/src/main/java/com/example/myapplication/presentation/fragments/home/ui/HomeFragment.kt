@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.FragmentHomeBinding
+import com.example.myapplication.domain.remote.Mapper.toMovieResult
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclerDownloads
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersBig
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersContinueWatching
@@ -58,6 +59,8 @@ class HomeFragment : Fragment() {
         setBigPoster()
         createRecyclers()
         searchBtnClick()
+        btnProfileClick()
+
 
     }
 
@@ -164,7 +167,7 @@ class HomeFragment : Fragment() {
 
                 is Resource.Success -> {
                     adapterBig.hideProgress()
-                    adapterBig.submitList(it.data)
+                    adapterBig.submitList(it.data.toMovieResult())
                 }
 
                 is Resource.Error -> {
@@ -184,7 +187,7 @@ class HomeFragment : Fragment() {
                 }
 
                 is Resource.Success -> {
-                    adapterContinueWatching.submitList(it.data)
+                    adapterContinueWatching.submitList(it.data.toMovieResult())
                 }
 
                 is Resource.Error -> {
@@ -207,7 +210,7 @@ class HomeFragment : Fragment() {
 
                 is Resource.Success -> {
                     adapterMedium.hideProgress()
-                    adapterMedium.submitList(it.data.shuffled())
+                    adapterMedium.submitList(it.data.toMovieResult().shuffled())
                 }
 
                 is Resource.Error -> {
@@ -489,6 +492,12 @@ class HomeFragment : Fragment() {
     private fun btnPlayClickBigPoster(movieId:Long){
         binding.btnPlayHeader.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFullScreenFragment(movieId))
+        }
+    }
+
+    private fun btnProfileClick(){
+        binding.imgAvatar.setOnClickListener{
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfilesAndMoreFragment())
         }
     }
 

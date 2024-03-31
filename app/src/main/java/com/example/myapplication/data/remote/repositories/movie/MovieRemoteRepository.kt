@@ -1,5 +1,7 @@
 package com.example.myapplication.data.remote.repositories.movie
 
+import androidx.lifecycle.LiveData
+import com.example.myapplication.data.remote.models.movie.Genre
 import com.example.myapplication.data.remote.models.movie.MovieResponse
 import com.example.myapplication.data.remote.models.movie.MovieResponseById
 import com.example.myapplication.data.remote.models.movie.MovieVideoResponseById
@@ -38,4 +40,7 @@ class MovieRemoteRepository @Inject constructor(
 //    }
 
 
+    suspend fun getMovieGenres():Response<Genre>{
+        return movieService.getMovieGenres()
+    }
 }

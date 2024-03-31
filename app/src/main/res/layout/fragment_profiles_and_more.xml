@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fragments.profiles_and_more.ProfilesAndMoreFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:src="@drawable/ic_back_arrow" />
+
+        <TextView
+            android:id="@+id/txtHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profiles &amp; More"
+            android:textSize="20sp"/>
+
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcyMembers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/rcy_item_accounts"
+        android:orientation="horizontal"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnManageProfiles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_edit"
+        app:iconGravity="textStart"
+        android:text="Manage Profiles"
+        app:layout_constraintTop_toBottomOf="@id/rcyMembers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewMyList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnManageProfiles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/divider"
+        app:cardCornerRadius="3dp"
+        android:layout_margin="5dp"
+        app:strokeWidth="0dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMyList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My List"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            app:icon="@drawable/ic_my_list"
+            app:iconSize="35dp"
+            app:iconGravity="textStart"
+            android:background="@color/black_transparent"
+            />
+
+        <ImageButton
+            android:id="@+id/btnRightMyList"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_chevron_right"
+            android:backgroundTint="@color/trans"
+            android:layout_gravity="end"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewAppSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cardViewMyList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/divider"
+        app:cardCornerRadius="3dp"
+        android:layout_margin="5dp"
+        app:strokeWidth="0dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAppSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="App Settings"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            app:icon="@drawable/ic_settings_outline"
+            app:iconGravity="textStart"
+            app:iconSize="35dp"
+            android:background="@color/black_transparent"
+            />
+
+        <ImageButton
+            android:id="@+id/btnRightAppSettings"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_chevron_right"
+            android:backgroundTint="@color/trans"
+            android:layout_gravity="end"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cardViewAppSettings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/divider"
+        app:cardCornerRadius="3dp"
+        android:layout_margin="5dp"
+        app:strokeWidth="0dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            app:icon="@drawable/ic_person_outline"
+            app:iconGravity="textStart"
+            app:iconSize="35dp"
+            android:background="@color/black_transparent"
+            />
+
+        <ImageButton
+            android:id="@+id/btnRightAccount"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_chevron_right"
+            android:backgroundTint="@color/trans"
+            android:layout_gravity="end"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewHelp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cardViewAccount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/divider"
+        app:cardCornerRadius="3dp"
+        android:layout_margin="5dp"
+        app:strokeWidth="0dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Help"
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            app:icon="@drawable/ic_help_outline"
+            app:iconGravity="textStart"
+            app:iconSize="35dp"
+            android:background="@color/black_transparent"
+            />
+
+        <ImageButton
+            android:id="@+id/btnRightHelp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_chevron_right"
+            android:backgroundTint="@color/trans"
+            android:layout_gravity="end"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/cardViewHelp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@android:color/transparent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

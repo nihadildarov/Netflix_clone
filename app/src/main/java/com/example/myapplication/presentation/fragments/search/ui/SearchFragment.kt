@@ -13,11 +13,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.FragmentSearchBinding
+import com.example.myapplication.domain.remote.Mapper.toMovieResult
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersMedium
 import com.example.myapplication.presentation.fragments.search.adapter.AdapterSearchGames
 import com.example.myapplication.presentation.fragments.search.adapter.AdapterSearchMovie
 import com.example.myapplication.presentation.fragments.search.viewmodel.SearchViewModel
+import com.example.myapplication.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -44,6 +46,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecyclers()
         setAdapters()
+        btnProfileClick()
         btnBack()
 
 
@@ -135,8 +138,18 @@ class SearchFragment : Fragment() {
     ) {
         viewModel.getMovie()
         viewModel.movie.observe(viewLifecycleOwner) {
-            adapterSearchMovie.submitList(it)
-            adapterGame.submitList(it)
+            when(it){
+                Resource.Loading -> {
+
+                }
+                is Resource.Success -> {
+                    adapterSearchMovie.submitList(it.data)
+                    adapterGame.submitList(it.data)
+                }
+                is Resource.Error -> {
+
+                }
+            }
 
         }
     }
@@ -148,7 +161,18 @@ class SearchFragment : Fragment() {
     private fun setDataWithQuery(adapterMovie: MovieAdapterRecyclersMedium) {
         viewModel.searchResultMovie.observe(viewLifecycleOwner) {
             Log.i("setDataWithQuery", "test")
-            adapterMovie.updateMovieList(it)
+            when(it){
+                Resource.Loading ->{
+                    adapterMovie.showProgress()
+                }
+                is Resource.Success -> {
+                    adapterMovie.hideProgress()
+                    adapterMovie.updateMovieList(it.data.toMovieResult())
+                }
+                is Resource.Error -> {
+
+                }
+            }
         }
     }
 
@@ -200,28 +224,39 @@ class SearchFragment : Fragment() {
 
 
     private fun setVisibilities(query:String){
+
+
         with(binding){
-            if (query != "" || query.isNotBlank()){
-                Log.i("setVisibilities",searchBox.query.isNullOrBlank().toString())
-                rcySearchResultMovies.visibility = View.VISIBLE
-                rcyRecommendedMovies.visibility = View.GONE
-                rcyRecommendedGames.visibility = View.GONE
-                txtRecommendedGames.visibility = View.GONE
-                txtRecommendedMovies.visibility = View.GONE
 
 
-            }
-            else {
-                Log.i("setVisibilities",searchBox.query.isNullOrBlank().toString())
+                if (query == "" || query.isBlank()){
+                Log.i("setVisibilities","IsEmpty true? : "+searchBox.query.isNullOrBlank().toString())
                 rcySearchResultMovies.visibility = View.GONE
                 rcyRecommendedMovies.visibility = View.VISIBLE
                 rcyRecommendedGames.visibility = View.VISIBLE
                 txtRecommendedGames.visibility = View.VISIBLE
                 txtRecommendedMovies.visibility = View.VISIBLE
-
             }
+            else {
+                Log.i("setVisibilities","IsEmpty false?: "+searchBox.query.isNullOrBlank().toString())
+                rcySearchResultMovies.visibility = View.VISIBLE
+                rcyRecommendedMovies.visibility = View.GONE
+                rcyRecommendedGames.visibility = View.GONE
+                txtRecommendedGames.visibility = View.GONE
+                txtRecommendedMovies.visibility = View.GONE
+            }
+
+
+
         }
+
+
     }
 
+
+    private fun btnProfileClick(){
+        binding.imgProfile.setOnClickListener {
+        findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToProfilesAndMoreFragment())
+    }}
 
 }

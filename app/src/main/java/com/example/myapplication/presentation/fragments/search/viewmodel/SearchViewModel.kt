@@ -8,6 +8,7 @@ import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.util.Resource
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -17,27 +18,28 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val movieRemoteRepository: MovieRemoteRepository
 ) : ViewModel() {
-    private val _movie = MutableLiveData<List<Result>>()
-    val movie: LiveData<List<Result>> get() = _movie
+    private val _movie = MutableLiveData<Resource<List<Result>>>()
+    val movie: LiveData<Resource<List<Result>>> get() = _movie
 
-    private val _searchResultMovie = MutableLiveData<List<Result>>()
-    val searchResultMovie : LiveData<List<Result>> get() = _searchResultMovie
+    private val _searchResultMovie = MutableLiveData<Resource<List<Result>>>()
+    val searchResultMovie: LiveData<Resource<List<Result>>> get() = _searchResultMovie
 
 
     fun getMovie() {
         viewModelScope.launch(IO) {
-                val response = movieRemoteRepository.getPopularMovies()
 
             try {
-
+                _movie.postValue(Resource.Loading)
+                val response = movieRemoteRepository.getPopularMovies()
                 if (response.isSuccessful) {
-                    Log.i("getMovie","getMovie status is (isSuccessful): ${response.isSuccessful}")
+                    Log.i("getMovie", "getMovie status is (isSuccessful): ${response.isSuccessful}")
                     response.body()?.let {
-                        _movie.postValue(it.results)
+                        _movie.postValue(Resource.Success(it.results))
                     }
                 }
-            } catch (ex:Exception){
-                Log.e("getMovie","getMovie status is: ${response.errorBody()}")
+            } catch (ex: Exception) {
+                _movie.postValue(Resource.Error(ex))
+                Log.e("getMovie", "getMovie status is: $ex")
             }
         }
     }
@@ -65,23 +67,27 @@ class SearchViewModel @Inject constructor(
 
     fun searchMovieByName(searchKey: String) {
         viewModelScope.launch(IO) {
-            val response = movieRemoteRepository.getPopularMovies()
 
             try {
 
+                _searchResultMovie.postValue(Resource.Loading)
+                val response = movieRemoteRepository.getPopularMovies()
                 if (response.isSuccessful) {
-                    Log.i("getMovie","getMovie status is (isSuccessful): ${response.isSuccessful}")
+                    Log.i("searchMovieByName", "searchMovieByName status is (isSuccessful): ${response.isSuccessful}")
                     response.body()?.let {
-                        _searchResultMovie.postValue(it.results.filter { movieItem ->
+                        _searchResultMovie.postValue(Resource.Success(it.results.filter { movieItem ->
                             movieItem.title.lowercase().contains(searchKey.lowercase())
-                                    || movieItem.original_title.lowercase().contains(searchKey.lowercase())
-                                    || movieItem.overview.lowercase().contains(searchKey.lowercase())
+                                    || movieItem.original_title.lowercase()
+                                .contains(searchKey.lowercase())
+                                    || movieItem.overview.lowercase()
+                                .contains(searchKey.lowercase())
 
-                        })
+                        }))
                     }
                 }
-            } catch (ex:Exception){
-                Log.e("getMovie","getMovie status is: ${response.errorBody()}")
+            } catch (ex: Exception) {
+                _searchResultMovie.postValue(Resource.Error(ex))
+                Log.e("searchMovieByName", "searchMovieByName status is: $ex")
             }
         }
     }

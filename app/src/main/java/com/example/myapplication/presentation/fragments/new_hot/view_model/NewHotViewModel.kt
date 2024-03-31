@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.data.remote.models.movie.Genre
 import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
 import com.example.myapplication.util.Resource
@@ -19,6 +20,9 @@ class NewHotViewModel @Inject constructor(
     private val movieRemoteRepository: MovieRemoteRepository
 ) : ViewModel() {
 
+    private val _movieGenres = MutableLiveData<Resource<List<Genre>>>()
+    val movieGenres : LiveData<Resource<List<Genre>>>  get() = _movieGenres
+
     private val _upComing = MutableLiveData<Resource<List<Result>>>()
     val upComing: LiveData<Resource<List<Result>>> get() = _upComing
 
@@ -27,6 +31,9 @@ class NewHotViewModel @Inject constructor(
     val everyOneWatching: LiveData<Resource<List<Result>>> get() = _everyOneWatching
 
 
+    init {
+        getMovieGenres()
+    }
     fun getUpComingMovies() {
         viewModelScope.launch(IO) {
             try {
@@ -72,6 +79,24 @@ class NewHotViewModel @Inject constructor(
         }
     }
 
+    fun getMovieGenres(){
+        viewModelScope.launch(IO) {
+            try {
+                _movieGenres.postValue(Resource.Loading)
+                val response = movieRemoteRepository.getMovieGenres()
+                if (response.isSuccessful){
+                    Log.i("genres","Success")
+                    response.body()?.let {
+                        _movieGenres.postValue(Resource.Success(listOf(it)))
+                    }
+                }
+            }catch (ex:Exception){
+                Log.i("genres","Error")
+
+                _movieGenres.postValue(Resource.Error(ex))
+            }
+        }
+    }
 
 
 }
