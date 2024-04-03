@@ -103,10 +103,7 @@ class MainActivity : AppCompatActivity() {
     override fun onUserLeaveHint() {
         super.onUserLeaveHint()
 
-        if (!isPipSupported) {
-
-            return
-        } else {
+        if (isPipSupported) {
             updatedPipParams()?.let {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     enterPictureInPictureMode(it)
@@ -130,21 +127,10 @@ class MainActivity : AppCompatActivity() {
 
         navHost.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.fullScreenFragment -> binding.btmNav.visibility = View.GONE
-                R.id.searchFragment -> binding.btmNav.visibility = View.GONE
-                R.id.verifyEmailFragment -> binding.btmNav.visibility = View.GONE
-                R.id.accountsFragment -> binding.btmNav.visibility = View.GONE
-                R.id.movieDetailsFragment -> binding.btmNav.visibility = View.GONE
-                R.id.createAccountFragment -> binding.btmNav.visibility = View.GONE
-                R.id.getStartedFragment -> binding.btmNav.visibility = View.GONE
-                R.id.downloadsFragment -> binding.btmNav.visibility = View.VISIBLE
-                R.id.gamesFragment -> binding.btmNav.visibility = View.GONE
-                R.id.homeFragment -> binding.btmNav.visibility = View.VISIBLE
+                R.id.downloadsFragment ,
+                R.id.homeFragment ,
                 R.id.newHotFragment -> binding.btmNav.visibility = View.VISIBLE
-                R.id.pinDialogFragment -> binding.btmNav.visibility = View.GONE
-                R.id.finishSignUpFragment -> binding.btmNav.visibility = View.GONE
-                R.id.profilesAndMoreFragment -> binding.btmNav.visibility = View.GONE
-                R.id.accountSettingsFragment -> binding.btmNav.visibility = View.GONE
+                else ->{ binding.btmNav.visibility = View.GONE }
             }
         }
     }

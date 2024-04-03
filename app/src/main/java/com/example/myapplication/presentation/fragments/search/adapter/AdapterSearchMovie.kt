@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.RcyRecommendedMoviesBinding
+import com.example.myapplication.domain.remote.models.MovieResult
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.squareup.picasso.Picasso
 
@@ -15,12 +16,12 @@ class AdapterSearchMovie(
     private val movieClickListener: MovieClickListener
 ) : RecyclerView.Adapter<AdapterSearchMovie.AdapterViewHolder>(){
 
-    private val itemCallBack = object : DiffUtil.ItemCallback<Result>(){
-        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+    private val itemCallBack = object : DiffUtil.ItemCallback<MovieResult>(){
+        override fun areItemsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+        override fun areContentsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem == newItem
         }
 
@@ -48,9 +49,9 @@ class AdapterSearchMovie(
 
     inner class AdapterViewHolder(private val binding : RcyRecommendedMoviesBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie:Result){
+        fun bind(movie:MovieResult){
             binding.txtMovieName.text = movie.title
-            Picasso.get().load("$IMAGE_URL${movie.backdrop_path}").into(binding.imgPoster)
+            Picasso.get().load("$IMAGE_URL${movie.backDropPath}").into(binding.imgPoster)
             binding.cardViewPoster.setOnClickListener {
                 movieClickListener.movieClickListener(movie.id.toLong())
             }
@@ -59,7 +60,7 @@ class AdapterSearchMovie(
     }
 
 
-    fun submitList(movieList:List<Result>){
+    fun submitList(movieList:List<MovieResult>){
         diffUtil.submitList(movieList)
     }
 

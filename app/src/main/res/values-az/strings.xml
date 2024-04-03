@@ -15,4 +15,23 @@
         <item>Noyabr</item>
         <item>Dekabr</item>
     </string-array>
+    <string name="signIn_protected_info">Sizin robot olmadığınızı dəqiqləşdirmək məqsədilə giriş Google reCAPTCHA tərəfindən qorunur. Ətraflı.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="accounts_edit_ic_desc">edit icon</string>
+    <string name="accounts_logo_desc">Logo</string>
+    <string name="accounts_who_s_watching">Kim izləyir?</string>
+    <string name="txtAccountExists">Bu hesab artıq mövcuddur. Həmin hesaba daxil olun və ya başqa email daxil edin.</string>
+    <string name="titleCreateAccount"><![CDATA[Limitsiz film, TV Şoular & daha çoxu]]></string>
+    <string name="create_account_desc">Hesab yaradın və biz sizə Netflix haqqında məlumatları göndərəcəyik.</string>
+    <string name="email">Email</string>
+    <string name="password">Şifrə</string>
+    <string name="netflix_offer_email">Zəhmət olmasa, mənə Netflix xüsusi təkliflərini göndərməyin.</string>
+    <string name="create_account">HESAB YARADIN</string>
+    <string name="downloads">Yükləmələr</string>
+    <string name="smart_downloads">Ağıllı yükləmə</string>
+    <string name="img_rcy_header">RcyHeader</string>
+    <string name="turn_on_downloads">Yükləmələri aktivləşdir</string>
+    <string name="downloadsDesc">Biz sənin üçün film və şouları yükləyəcəyik. Beləliklə, hər zaman izləməyə nələrsə olacaq</string>
+    <string name="set_up">Quraşdırın</string>
+    <string name="find_more_to_download">Daha çox</string>
 </resources>

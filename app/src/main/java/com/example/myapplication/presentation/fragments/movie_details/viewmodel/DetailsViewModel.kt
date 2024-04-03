@@ -7,7 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.local.repository.MovieLocalRepository
 import com.example.myapplication.data.remote.models.movie.MovieResponseById
 import com.example.myapplication.data.remote.models.movie.Video
-import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
+import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepositoryImpl
+import com.example.myapplication.domain.remote.usecases.GetMovieByIdUseCase
+import com.example.myapplication.domain.remote.usecases.GetMovieVideosByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -16,8 +18,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
-    private val movieRemoteRepository : MovieRemoteRepository,
-    private val movieLocalRepository: MovieLocalRepository
+    private val movieLocalRepository: MovieLocalRepository,
+    private val getMovieVideosByIdUseCase: GetMovieVideosByIdUseCase,
+    private val getMovieByIdUseCase: GetMovieByIdUseCase
 ) : ViewModel(){
     private val _movieDetail = MutableLiveData<MovieResponseById>()
     val movieDetail : LiveData<MovieResponseById> get() = _movieDetail
@@ -31,7 +34,7 @@ class DetailsViewModel @Inject constructor(
 
     fun getMovieById(movieId: Long){
         viewModelScope.launch(IO) {
-            val response = movieRemoteRepository.getMovieById(movieId)
+            val response = getMovieByIdUseCase.execute(movieId)
 
             if(response.isSuccessful){
                 response.body()?.let {
@@ -44,7 +47,7 @@ class DetailsViewModel @Inject constructor(
 
     fun getMovieVideoById(movieId: Long){
         viewModelScope.launch(IO) {
-            val response = movieRemoteRepository.getMovieVideosById(movieId)
+            val response = getMovieVideosByIdUseCase.execute(movieId)
 
             if (response.isSuccessful){
                 response.body()?.results?.let {

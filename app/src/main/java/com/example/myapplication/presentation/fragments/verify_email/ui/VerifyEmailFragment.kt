@@ -47,7 +47,6 @@ class VerifyEmailFragment : Fragment() {
             Toast.makeText(context,"Signed Out",Toast.LENGTH_SHORT).show()
             findNavController().navigate(VerifyEmailFragmentDirections.actionVerifyEmailFragmentToSignInFragment(""))
         }
-
     }
 
 

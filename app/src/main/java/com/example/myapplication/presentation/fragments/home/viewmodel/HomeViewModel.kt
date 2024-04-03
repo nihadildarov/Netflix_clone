@@ -6,8 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.remote.models.movie.Result
-import com.example.myapplication.data.remote.models.movie.Video
-import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
+import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepositoryImpl
+import com.example.myapplication.domain.remote.usecases.GetPopularMoviesUseCase
+import com.example.myapplication.domain.remote.usecases.GetTopRatedMoviesUseCase
+import com.example.myapplication.domain.remote.usecases.GetUpComingMoviesUseCase
 import com.example.myapplication.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
@@ -17,7 +19,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val movieRemoteRepository: MovieRemoteRepository
+    private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
+    private val getUpComingMoviesUseCase: GetUpComingMoviesUseCase,
+    private val getTopRatedMoviesUseCase: GetTopRatedMoviesUseCase
+
 ) : ViewModel() {
     private val _popularMovieList = MutableLiveData<Resource<List<Result>>>()
     val popularMovieList: LiveData<Resource<List<Result>>> get() = _popularMovieList
@@ -40,7 +45,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(IO) {
             try {
                 _topRatedMovieList.postValue(Resource.Loading)
-                val response = movieRemoteRepository.getTopRatedMovies()
+                val response = getTopRatedMoviesUseCase.execute()
 
                 if (response.isSuccessful) {
                     val body = response.body()
@@ -61,7 +66,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(IO) {
             try {
                 _popularMovieList.postValue(Resource.Loading)
-                val response = movieRemoteRepository.getPopularMovies()
+                val response = getPopularMoviesUseCase.execute()
                 if (response.isSuccessful) {
                     Log.i(
                         "RESPONSES_HOME",
@@ -87,7 +92,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(IO) {
             try {
                 _upComingMovieList.postValue(Resource.Loading)
-                val response = movieRemoteRepository.getUpComingMovies()
+                val response = getUpComingMoviesUseCase.execute()
                 if (response.isSuccessful) {
                     Log.i(
                         "RESPONSES_HOME",

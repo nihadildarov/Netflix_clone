@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.remote.models.movie.Result
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.RcyMovieItemGamesBinding
+import com.example.myapplication.domain.remote.models.MovieResponse
+import com.example.myapplication.domain.remote.models.MovieResult
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.squareup.picasso.Picasso
 
@@ -15,12 +17,12 @@ class AdapterSearchGames(
     private val movieClickListener: MovieClickListener
 ):RecyclerView.Adapter<AdapterSearchGames.AdapterViewHolder>() {
 
-    private val itemCallBack = object : DiffUtil.ItemCallback<Result>(){
-        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+    private val itemCallBack = object : DiffUtil.ItemCallback<MovieResult>(){
+        override fun areItemsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+        override fun areContentsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
             return oldItem == newItem
         }
 
@@ -48,17 +50,17 @@ class AdapterSearchGames(
 
     inner class AdapterViewHolder ( private val binding: RcyMovieItemGamesBinding):RecyclerView.ViewHolder(binding.root){
 
-        fun bind(movie:Result){
-            Picasso.get().load("$IMAGE_URL${movie.poster_path}").into(binding.imgSmallPoster)
+        fun bind(movie:MovieResult){
+            Picasso.get().load("$IMAGE_URL${movie.posterPath}").into(binding.imgSmallPoster)
             binding.txtName.text = movie.title
-            binding.txtCategory.text = movie.vote_average.toString()
+            binding.txtCategory.text = movie.vote.toString()
 
             binding.imgSmallPoster.setOnClickListener {
                 movieClickListener.movieClickListener(movie.id.toLong())
             }
         }
     }
-    fun submitList(movieList:List<Result>){
+    fun submitList(movieList:List<MovieResult>){
         diffUtil.submitList(movieList)
     }
 }

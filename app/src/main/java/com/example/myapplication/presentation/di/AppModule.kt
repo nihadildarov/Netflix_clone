@@ -5,8 +5,10 @@ import androidx.room.Room
 import com.example.myapplication.data.local.dao.MovieDao
 import com.example.myapplication.data.local.db.MovieDatabase
 import com.example.myapplication.data.local.repository.MovieLocalRepository
-import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
+import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepositoryImpl
+import com.example.myapplication.data.remote.repositories.movie.datasourceimpl.MovieRemoteDataSourceImpl
 import com.example.myapplication.data.remote.services.MovieService
+import com.example.myapplication.domain.remote.repositories.MovieRemoteRepository
 import com.example.myapplication.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -50,8 +52,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRemoteRepository(movieService: MovieService): MovieRemoteRepository {
-        return MovieRemoteRepository(movieService)
+    fun provideRemoteRepository(movieRemoteDataSourceImpl: MovieRemoteDataSourceImpl): MovieRemoteRepository {
+        return MovieRemoteRepositoryImpl(movieRemoteDataSourceImpl)
     }
 
 

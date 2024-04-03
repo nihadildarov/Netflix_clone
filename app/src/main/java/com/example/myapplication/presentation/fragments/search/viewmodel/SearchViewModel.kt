@@ -5,9 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.data.remote.models.movie.Result
-import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
+import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.domain.remote.usecases.GetMovieSearchedUseCase
+import com.example.myapplication.domain.remote.usecases.GetPopularMoviesUseCase
 import com.example.myapplication.util.Resource
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -16,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val movieRemoteRepository: MovieRemoteRepository
+    private val getMovieSearchedUseCase: GetMovieSearchedUseCase,
+    private val getPopularMoviesUseCase : GetPopularMoviesUseCase
 ) : ViewModel() {
     private val _movie = MutableLiveData<Resource<List<Result>>>()
     val movie: LiveData<Resource<List<Result>>> get() = _movie
@@ -30,7 +33,7 @@ class SearchViewModel @Inject constructor(
 
             try {
                 _movie.postValue(Resource.Loading)
-                val response = movieRemoteRepository.getPopularMovies()
+                val response = getPopularMoviesUseCase.execute()
                 if (response.isSuccessful) {
                     Log.i("getMovie", "getMovie status is (isSuccessful): ${response.isSuccessful}")
                     response.body()?.let {
@@ -47,7 +50,7 @@ class SearchViewModel @Inject constructor(
 
 //    fun searchMovieByName2(searchKey:String){
 //        viewModelScope.launch(IO) {
-//            val response = movieRemoteRepository.getMovieSearched(searchKey)
+//            val response = getMovieSearchedUseCase.execute(searchKey)
 //
 //            try {
 //                if (response.isSuccessful){
@@ -71,7 +74,7 @@ class SearchViewModel @Inject constructor(
             try {
 
                 _searchResultMovie.postValue(Resource.Loading)
-                val response = movieRemoteRepository.getPopularMovies()
+                val response = getPopularMoviesUseCase.execute()
                 if (response.isSuccessful) {
                     Log.i("searchMovieByName", "searchMovieByName status is (isSuccessful): ${response.isSuccessful}")
                     response.body()?.let {

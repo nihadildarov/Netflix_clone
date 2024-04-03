@@ -1,14 +1,16 @@
 package com.example.myapplication.presentation.fragments.new_hot.view_model
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.remote.models.movie.Genre
 import com.example.myapplication.data.remote.models.movie.Result
-import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepository
+import com.example.myapplication.data.remote.repositories.movie.MovieRemoteRepositoryImpl
+import com.example.myapplication.domain.remote.usecases.GetMovieGenresUseCase
+import com.example.myapplication.domain.remote.usecases.GetPopularMoviesUseCase
+import com.example.myapplication.domain.remote.usecases.GetUpComingMoviesUseCase
 import com.example.myapplication.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
@@ -17,7 +19,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewHotViewModel @Inject constructor(
-    private val movieRemoteRepository: MovieRemoteRepository
+    private val getUpComingMoviesUseCase: GetUpComingMoviesUseCase,
+    private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
+    private val getMovieGenresUseCase: GetMovieGenresUseCase
 ) : ViewModel() {
 
     private val _movieGenres = MutableLiveData<Resource<List<Genre>>>()
@@ -38,7 +42,7 @@ class NewHotViewModel @Inject constructor(
         viewModelScope.launch(IO) {
             try {
                 _upComing.postValue(Resource.Loading)
-                val response = movieRemoteRepository.getUpComingMovies()
+                val response = getUpComingMoviesUseCase.execute()
                 if (response.isSuccessful) {
                     Log.i(
                         "RESPONSES_NEW_HOT",
@@ -60,7 +64,7 @@ class NewHotViewModel @Inject constructor(
         viewModelScope.launch(IO) {
             try {
                 _everyOneWatching.postValue(Resource.Loading)
-                val response = movieRemoteRepository.getPopularMovies()
+                val response = getPopularMoviesUseCase.execute()
                 if (response.isSuccessful) {
                     Log.i(
                         "RESPONSES_NEW_HOT",
@@ -83,7 +87,7 @@ class NewHotViewModel @Inject constructor(
         viewModelScope.launch(IO) {
             try {
                 _movieGenres.postValue(Resource.Loading)
-                val response = movieRemoteRepository.getMovieGenres()
+                val response = getMovieGenresUseCase.execute()
                 if (response.isSuccessful){
                     Log.i("genres","Success")
                     response.body()?.let {

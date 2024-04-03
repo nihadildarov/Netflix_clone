@@ -143,8 +143,8 @@ class SearchFragment : Fragment() {
 
                 }
                 is Resource.Success -> {
-                    adapterSearchMovie.submitList(it.data)
-                    adapterGame.submitList(it.data)
+                    adapterSearchMovie.submitList(it.data.toMovieResult())
+                    adapterGame.submitList(it.data.toMovieResult())
                 }
                 is Resource.Error -> {
 
