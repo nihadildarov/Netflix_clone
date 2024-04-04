@@ -29,17 +29,12 @@ class SearchFragment : Fragment() {
     private val viewModel by viewModels<SearchViewModel>()
 
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
-
-
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,21 +43,7 @@ class SearchFragment : Fragment() {
         setAdapters()
         btnProfileClick()
         btnBack()
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
 
 
     private fun setRecyclers() {
@@ -74,49 +55,39 @@ class SearchFragment : Fragment() {
     }
 
 
-
-
-
-
     private fun setAdapters() {
 
-        val adapterMovie = AdapterSearchMovie(
-            object : MovieClickListener {
-                override fun movieClickListener(movieId: Long) {
-                    findNavController().navigate(
-                        SearchFragmentDirections.actionSearchToMovieDetails(
-                            movieId
-                        )
+        val adapterMovie = AdapterSearchMovie(object : MovieClickListener {
+            override fun movieClickListener(movieId: Long) {
+                findNavController().navigate(
+                    SearchFragmentDirections.actionSearchToMovieDetails(
+                        movieId
                     )
-                }
+                )
             }
-        )
+        })
 
 
-        val adapterGames = AdapterSearchGames(
-            object : MovieClickListener {
-                override fun movieClickListener(movieId: Long) {
-                    findNavController().navigate(
-                        SearchFragmentDirections.actionSearchToMovieDetails(
-                            movieId
-                        )
+        val adapterGames = AdapterSearchGames(object : MovieClickListener {
+            override fun movieClickListener(movieId: Long) {
+                findNavController().navigate(
+                    SearchFragmentDirections.actionSearchToMovieDetails(
+                        movieId
                     )
-                }
+                )
             }
-        )
+        })
 
 
-        val adapterMedium = MovieAdapterRecyclersMedium(
-            object : MovieClickListener {
-                override fun movieClickListener(movieId: Long) {
-                    findNavController().navigate(
-                        SearchFragmentDirections.actionSearchToMovieDetails(
-                            movieId
-                        )
+        val adapterMedium = MovieAdapterRecyclersMedium(object : MovieClickListener {
+            override fun movieClickListener(movieId: Long) {
+                findNavController().navigate(
+                    SearchFragmentDirections.actionSearchToMovieDetails(
+                        movieId
                     )
-                }
+                )
             }
-        )
+        })
 
         binding.rcyRecommendedGames.adapter = adapterGames
         binding.rcyRecommendedMovies.adapter = adapterMovie
@@ -128,24 +99,24 @@ class SearchFragment : Fragment() {
     }
 
 
-
-
-
-
     private fun setDataWithNoQuery(
-        adapterSearchMovie: AdapterSearchMovie,
-        adapterGame: AdapterSearchGames
+        adapterSearchMovie: AdapterSearchMovie, adapterGame: AdapterSearchGames
     ) {
         viewModel.getMovie()
         viewModel.movie.observe(viewLifecycleOwner) {
-            when(it){
+            when (it) {
                 Resource.Loading -> {
-
+                    adapterGame.showProgress()
+                    adapterSearchMovie.showProgress()
                 }
+
                 is Resource.Success -> {
+                    adapterGame.hideProgress()
+                    adapterSearchMovie.hideProgress()
                     adapterSearchMovie.submitList(it.data.toMovieResult())
                     adapterGame.submitList(it.data.toMovieResult())
                 }
+
                 is Resource.Error -> {
 
                 }
@@ -153,31 +124,27 @@ class SearchFragment : Fragment() {
 
         }
     }
-
-
-
 
 
     private fun setDataWithQuery(adapterMovie: MovieAdapterRecyclersMedium) {
         viewModel.searchResultMovie.observe(viewLifecycleOwner) {
             Log.i("setDataWithQuery", "test")
-            when(it){
-                Resource.Loading ->{
+            when (it) {
+                Resource.Loading -> {
                     adapterMovie.showProgress()
                 }
+
                 is Resource.Success -> {
                     adapterMovie.hideProgress()
                     adapterMovie.updateMovieList(it.data.toMovieResult())
                 }
+
                 is Resource.Error -> {
 
                 }
             }
         }
     }
-
-
-
 
 
     private fun searchMovie(
@@ -185,60 +152,60 @@ class SearchFragment : Fragment() {
     ) {
 
 
-            binding.searchBox.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-                androidx.appcompat.widget.SearchView.OnQueryTextListener {
-                override fun onQueryTextChange(newText: String): Boolean {
-                    if (newText.trim() != "") {
-                        Log.i("onQueryTextChange", newText)
-                        viewModel.searchMovieByName(newText)
-                        setDataWithQuery(adapterMovie)
-                        setVisibilities(newText)
-                    }
-                    return true
+        binding.searchBox.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String): Boolean {
+                if (newText.trim() != "") {
+                    Log.i("onQueryTextChange", newText)
+                    viewModel.searchMovieByName(newText)
+                    setDataWithQuery(adapterMovie)
+                    setVisibilities(newText)
                 }
-
-                override fun onQueryTextSubmit(query: String): Boolean {
-                    if (query.trim() != "") {
-                        Log.i("onQueryTextSubmit", query)
-                        viewModel.searchMovieByName(query)
-                        setDataWithQuery(adapterMovie)
-                        binding.searchBox.clearFocus()
-                        setVisibilities(query)
-                    }
-                    return true
-                }
+                return true
             }
-        )
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                if (query.trim() != "") {
+                    Log.i("onQueryTextSubmit", query)
+                    viewModel.searchMovieByName(query)
+                    setDataWithQuery(adapterMovie)
+                    binding.searchBox.clearFocus()
+                    setVisibilities(query)
+                }
+                return true
+            }
+        })
     }
 
 
-
-
-
-
-    private fun btnBack(){
+    private fun btnBack() {
         binding.imgBack.setOnClickListener {
             findNavController().popBackStack()
         }
     }
 
 
-    private fun setVisibilities(query:String){
+    private fun setVisibilities(query: String) {
 
 
-        with(binding){
+        with(binding) {
 
 
-                if (query == "" || query.isBlank()){
-                Log.i("setVisibilities","IsEmpty true? : "+searchBox.query.isNullOrBlank().toString())
+            if (query == "" || query.isBlank()) {
+                Log.i(
+                    "setVisibilities",
+                    "IsEmpty true? : " + searchBox.query.isNullOrBlank().toString()
+                )
                 rcySearchResultMovies.visibility = View.GONE
                 rcyRecommendedMovies.visibility = View.VISIBLE
                 rcyRecommendedGames.visibility = View.VISIBLE
                 txtRecommendedGames.visibility = View.VISIBLE
                 txtRecommendedMovies.visibility = View.VISIBLE
-            }
-            else {
-                Log.i("setVisibilities","IsEmpty false?: "+searchBox.query.isNullOrBlank().toString())
+            } else {
+                Log.i(
+                    "setVisibilities",
+                    "IsEmpty false?: " + searchBox.query.isNullOrBlank().toString()
+                )
                 rcySearchResultMovies.visibility = View.VISIBLE
                 rcyRecommendedMovies.visibility = View.GONE
                 rcyRecommendedGames.visibility = View.GONE
@@ -247,16 +214,16 @@ class SearchFragment : Fragment() {
             }
 
 
-
         }
 
 
     }
 
 
-    private fun btnProfileClick(){
+    private fun btnProfileClick() {
         binding.imgProfile.setOnClickListener {
-        findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToProfilesAndMoreFragment())
-    }}
+            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToProfilesAndMoreFragment())
+        }
+    }
 
 }

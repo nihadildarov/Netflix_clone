@@ -93,6 +93,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_downloadsFragment_to_profilesAndMoreFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_downloads_to_search">
                               <value>
                                 <LayoutPositions />
@@ -249,6 +254,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_homeFragment_to_profilesAndMoreFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_home_to_movieDetails">
                               <value>
                                 <LayoutPositions />
@@ -280,6 +290,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_movieDetailsFragment_to_profilesAndMoreFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_movieDetails_to_search">
                               <value>
                                 <LayoutPositions />
@@ -306,6 +321,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_newHotFragment_to_profilesAndMoreFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_newHot_to_movieDetails">
                               <value>
                                 <LayoutPositions />
@@ -326,8 +346,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-797" />
-                            <option name="y" value="-1129" />
+                            <option name="x" value="1207" />
+                            <option name="y" value="-47" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -365,6 +385,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_searchFragment_to_profilesAndMoreFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_search_to_movieDetails">
                               <value>
                                 <LayoutPositions />

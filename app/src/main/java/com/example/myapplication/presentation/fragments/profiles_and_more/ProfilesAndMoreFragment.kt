@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentProfilesAndMoreBinding
-import com.example.myapplication.presentation.fragments.accounts.MembersProfiles
+import com.example.myapplication.data.remote.models.MembersProfiles
 import com.example.myapplication.presentation.fragments.accounts.adapter.AccountsRcyAdapter
 
 class ProfilesAndMoreFragment : Fragment() {

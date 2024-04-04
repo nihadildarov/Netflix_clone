@@ -5,9 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.R
 import com.example.myapplication.databinding.RcyItemAccountsBinding
-import com.example.myapplication.presentation.fragments.accounts.MembersProfiles
+import com.example.myapplication.data.remote.models.MembersProfiles
 
 class AccountsRcyAdapter(
 
@@ -54,7 +53,7 @@ class AccountsRcyAdapter(
         private val binding: RcyItemAccountsBinding,
         clickAtPosition: (Int) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(isForSettingPage:Boolean,members:MembersProfiles) {
+        fun bind(isForSettingPage:Boolean,members: MembersProfiles) {
             binding.imgAccounts.setImageResource(members.profilePoster)
             binding.txtAccounts.text = members.name
 

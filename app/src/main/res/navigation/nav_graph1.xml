@@ -278,9 +278,14 @@
     </fragment>
     <fragment
         android:id="@+id/pinDialogFragment"
-        android:name="com.example.myapplication.PinDialogFragment"
+        android:name="com.example.myapplication.presentation.fragments.accounts.ui.PinDialogFragment"
         android:label="fragment_pin_dialog"
-        tools:layout="@layout/fragment_pin_dialog" />
+        tools:layout="@layout/fragment_pin_dialog" >
+        <action
+            android:id="@+id/action_pinDialogFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
+    </fragment>
     <fragment
         android:id="@+id/fullScreenFragment"
         android:name="com.example.myapplication.presentation.fragments.fullscreen.FullScreenFragment"

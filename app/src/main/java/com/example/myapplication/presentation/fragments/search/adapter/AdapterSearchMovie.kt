@@ -1,6 +1,8 @@
 package com.example.myapplication.presentation.fragments.search.adapter
 
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -15,6 +17,8 @@ import com.squareup.picasso.Picasso
 class AdapterSearchMovie(
     private val movieClickListener: MovieClickListener
 ) : RecyclerView.Adapter<AdapterSearchMovie.AdapterViewHolder>(){
+
+    private var isLoaded = false
 
     private val itemCallBack = object : DiffUtil.ItemCallback<MovieResult>(){
         override fun areItemsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
@@ -56,13 +60,39 @@ class AdapterSearchMovie(
                 movieClickListener.movieClickListener(movie.id.toLong())
             }
 
+            if (isLoaded){
+                binding.progressBar.visibility = GONE
+                binding.cardViewPoster.visibility = VISIBLE
+                binding.txtMovieName.visibility = VISIBLE
+                binding.imgPoster.visibility = VISIBLE
+                binding.imgPlayBtn.visibility = VISIBLE
+            }else{
+                binding.progressBar.visibility = VISIBLE
+                binding.cardViewPoster.visibility = GONE
+                binding.txtMovieName.visibility = GONE
+                binding.imgPoster.visibility = GONE
+                binding.imgPlayBtn.visibility = GONE
+            }
+
         }
+    }
+
+    fun hideProgress(){
+        isLoaded = true
+        notifyDataSetChanged()
+    }
+
+    fun showProgress (){
+        isLoaded = false
+        notifyDataSetChanged()
     }
 
 
     fun submitList(movieList:List<MovieResult>){
         diffUtil.submitList(movieList)
     }
+
+
 
 
 }
