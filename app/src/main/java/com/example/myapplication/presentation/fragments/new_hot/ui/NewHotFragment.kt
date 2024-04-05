@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
@@ -43,7 +44,8 @@ class NewHotFragment : Fragment() {
         searchBtnClick()
         viewModel.getUpComingMovies()
         viewModel.getEveryOneWatchingMovies()
-
+        binding.rcyGames.visibility = GONE
+        binding.chipGames.visibility = GONE
     }
 
 
@@ -77,7 +79,6 @@ class NewHotFragment : Fragment() {
 
     private fun setAdapters() {
 
-
         val comingSoonAdapter = AdapterRcyNewHotComingSoon(
             object : MovieClickListener {
                 override fun movieClickListener(movieId: Long) {
@@ -105,7 +106,7 @@ class NewHotFragment : Fragment() {
 
 
         val everyOnesWatchingAdapter = AdapterRcyNewHotEveryoneWatching(
-           // observeGenres(),
+            // observeGenres(),
             object : MovieClickListener {
                 override fun movieClickListener(movieId: Long) {
                     findNavController().navigate(
@@ -139,21 +140,54 @@ class NewHotFragment : Fragment() {
 
 
     private fun chipsClick() {
+        var isCheckedComingSoon = false
+        var isCheckedEveryOnesWatching = false
+        var isCheckedGames = false
+
+
         with(binding) {
 
             chipComingSoon.setOnClickListener {
-                Toast.makeText(context, "chip1", Toast.LENGTH_SHORT).show()
-                scrollViewRcy.smoothScrollTo(0, rcyComingSoon.top)
+
+                isCheckedComingSoon = true
+                isCheckedGames = false
+                isCheckedEveryOnesWatching = false
+
+                    chipEveryoneWatch.setChipBackgroundColorResource(R.color.black)
+                    chipEveryoneWatch.setTextColor(resources.getColor(R.color.white))
+                    chipComingSoon.setChipBackgroundColorResource(R.color.white)
+                    chipComingSoon.setTextColor(resources.getColor(R.color.black))
+                    //Toast.makeText(context, "chip1", Toast.LENGTH_SHORT).show()
+                    scrollViewRcy.smoothScrollTo(0, rcyComingSoon.top)
+
             }
 
             chipEveryoneWatch.setOnClickListener {
-                Toast.makeText(context, "chip2", Toast.LENGTH_SHORT).show()
-                scrollViewRcy.smoothScrollTo(0, rcyEveryonesWatching.top)
-            }
+                isCheckedEveryOnesWatching = true
+                isCheckedComingSoon = false
+                isCheckedGames = false
 
-            chipGames.setOnClickListener {
-                Toast.makeText(context, "chip3", Toast.LENGTH_SHORT).show()
-                scrollViewRcy.smoothScrollTo(0, rcyGames.top)
+                    chipComingSoon.setChipBackgroundColorResource(R.color.black)
+                    chipComingSoon.setTextColor(resources.getColor(R.color.white))
+                    chipEveryoneWatch.setChipBackgroundColorResource(R.color.white)
+                    chipEveryoneWatch.setTextColor(resources.getColor(R.color.black))
+                    //Toast.makeText(context, "chip2", Toast.LENGTH_SHORT).show()
+                    scrollViewRcy.smoothScrollTo(0, rcyEveryonesWatching.top)
+
+            }
+//
+//            chipGames.setOnClickListener {
+//                //Toast.makeText(context, "chip3", Toast.LENGTH_SHORT).show()
+//                scrollViewRcy.smoothScrollTo(0, rcyGames.top)
+//            }
+//
+
+
+            chipComingSoon.setOnCheckedChangeListener { button, isChecked ->
+                if (isChecked) {
+                    chipComingSoon.setChipBackgroundColorResource(R.color.gray)
+                    Toast.makeText(context, "Checked", Toast.LENGTH_SHORT).show()
+                }
             }
 
         }
@@ -167,7 +201,7 @@ class NewHotFragment : Fragment() {
     }
 
 
-    private fun btnProfileClick(){
+    private fun btnProfileClick() {
         binding.imgProfile.setOnClickListener {
             findNavController().navigate(NewHotFragmentDirections.actionNewHotFragmentToProfilesAndMoreFragment())
         }

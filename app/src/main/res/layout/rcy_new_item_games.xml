@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:src="@drawable/img"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             />
 
     </com.google.android.material.card.MaterialCardView>
@@ -42,7 +42,7 @@
     <ImageView
         android:id="@+id/imgGameName"
         android:layout_width="150dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:layout_height="90dp"
         android:src="@drawable/img"
         android:layout_marginTop="5dp"

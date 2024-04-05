@@ -56,8 +56,7 @@ class AccountsFragment : Fragment() {
 
 
     private fun popUpDialog(){
-    val pinDialog = PinDialogFragment()
-        pinDialog.show(requireActivity().supportFragmentManager,"PinDialogFragment")
+    PinDialogFragment().show(requireActivity().supportFragmentManager,"PinDialogFragment")
     }
 
     private fun setAdapter() {

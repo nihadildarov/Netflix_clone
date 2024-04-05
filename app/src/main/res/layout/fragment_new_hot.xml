@@ -74,7 +74,7 @@
                 android:alpha="100"
                 android:text="Coming Soon"
                 android:textColor="@color/white"
-                app:chipBackgroundColor="@color/chip_background_colortstate"
+                app:chipBackgroundColor="@color/chip_background_color_state"
                 app:chipCornerRadius="15dp"
                 app:chipIcon="@drawable/ic_notifications"
                 app:rippleColor="@color/gray" />
@@ -87,7 +87,7 @@
                 android:layout_marginStart="5dp"
                 android:alpha="100"
                 android:text="Everyone's Watching"
-                app:chipBackgroundColor="@color/chip_background_colortstate"
+                app:chipBackgroundColor="@color/chip_background_color_state"
                 android:textColor="@color/white"
                 app:chipCornerRadius="15dp"
                 app:chipIcon="@drawable/ic_notifications"
@@ -101,7 +101,7 @@
                 android:alpha="100"
                 android:text="Games"
                 android:textColor="@color/white"
-                app:chipBackgroundColor="@color/chip_background_colortstate"
+                app:chipBackgroundColor="@color/chip_background_color_state"
                 app:chipCornerRadius="15dp"
                 app:chipIcon="@drawable/ic_games"
                 app:rippleColor="@color/gray" />

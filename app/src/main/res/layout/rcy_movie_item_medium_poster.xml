@@ -31,7 +31,7 @@
             android:id="@+id/imgMediumPoster"
             android:layout_width="104dp"
             android:layout_height="146dp"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
