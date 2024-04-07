@@ -50,6 +50,7 @@ android {
 dependencies {
 
 
+    implementation("androidx.activity:activity-ktx:1.8.2")
     val nav_version = "2.7.7"
     val room_version = "2.6.1"
 
@@ -64,8 +65,9 @@ dependencies {
     kapt ("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
-    //Retrofit
+    //Picasso
     implementation("com.squareup.picasso:picasso:2.71828")
+    //Retrofit
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -101,6 +103,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
 
 }

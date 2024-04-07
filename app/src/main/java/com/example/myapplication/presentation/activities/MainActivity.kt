@@ -17,6 +17,7 @@ import android.util.Log
 import android.util.Rational
 import android.view.View
 import android.widget.Toast
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -47,6 +48,10 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen().apply {
+            Thread.sleep(2000)
+        }
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -59,7 +64,8 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun setNavHost(): NavController {
-        val navController = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         return navController.navController
     }
 
@@ -69,12 +75,12 @@ class MainActivity : AppCompatActivity() {
         val navHost = setNavHost()
         var isFullScreen = false
         navHost.addOnDestinationChangedListener { _, destination, _ ->
-            isFullScreen = when(destination.id){
+            isFullScreen = when (destination.id) {
                 R.id.fullScreenFragment -> true
                 else -> false
             }
         }
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && isFullScreen ) {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && isFullScreen) {
             PictureInPictureParams.Builder()
                 .setSourceRectHint( //Smooth animation to the pip window
                     Rect()
@@ -102,7 +108,6 @@ class MainActivity : AppCompatActivity() {
     //PIP mode detection
     override fun onUserLeaveHint() {
         super.onUserLeaveHint()
-
         if (isPipSupported) {
             updatedPipParams()?.let {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -119,18 +124,17 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-
     private fun btmNavVisibilityControl() {
         val navHost = setNavHost()
-
         navHost.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.downloadsFragment ,
-                R.id.homeFragment ,
+                R.id.downloadsFragment,
+                R.id.homeFragment,
                 R.id.newHotFragment -> binding.btmNav.visibility = View.VISIBLE
-                else ->{ binding.btmNav.visibility = View.GONE }
+
+                else -> {
+                    binding.btmNav.visibility = View.GONE
+                }
             }
         }
     }
@@ -138,34 +142,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun setOrientation() {
         val navHost = setNavHost()
-
         navHost.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-
                 R.id.fullScreenFragment -> this.requestedOrientation =
                     ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
 
                 else -> this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
             }
-
         }
-
     }
 
 
     private fun networkStatus() {
-
         val networkManager = NetworkManager(this)
         networkManager.observe(this) {
             if (!it) {
-                Toast.makeText(this, "No internet connection!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "No internet connection!", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-
-
-
 }
 
 

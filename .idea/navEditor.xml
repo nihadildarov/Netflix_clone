@@ -350,6 +350,15 @@
                             <option name="y" value="-47" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_pinDialogFragment_to_homeFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -447,6 +456,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="splashScreenFragment2">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1675" />
+                            <option name="y" value="-475" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="verifyEmailFragment">
                     <value>
                       <LayoutPositions>
@@ -464,18 +485,6 @@
                               </value>
                             </entry>
                           </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="youtubePlayerFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-1612" />
-                            <option name="y" value="-176" />
-                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

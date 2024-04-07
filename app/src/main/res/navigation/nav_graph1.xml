@@ -296,11 +296,6 @@
             app:argType="long" />
     </fragment>
     <fragment
-        android:id="@+id/youtubePlayerFragment"
-        android:name="com.example.myapplication.YoutubePlayerFragment"
-        android:label="fragment_youtube_player"
-        tools:layout="@layout/fragment_youtube_player" />
-    <fragment
         android:id="@+id/accountSettingsFragment"
         android:name="com.example.myapplication.presentation.fragments.account_settings.AccountSettingsFragment"
         android:label="fragment_account_settings"

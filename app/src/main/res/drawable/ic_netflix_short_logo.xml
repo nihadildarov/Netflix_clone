@@ -3,13 +3,19 @@
     android:height="512dp"
     android:viewportWidth="512"
     android:viewportHeight="512">
+  <group
+      android:name="groupLogo"
+      android:pivotX="256"
+      android:pivotY="256"
+      >
   <path
       android:pathData="M304,0h96v512h-96z"
-      android:fillColor="#D32F2F"/>
+      android:fillColor="#A01C1C"/>
   <path
       android:pathData="M112,0h96v512h-96z"
-      android:fillColor="#D32F2F"/>
+      android:fillColor="#A01C1C"/>
   <path
       android:pathData="M400,512l-96,0l-192,-512l96,0z"
-      android:fillColor="#F44336"/>
+      android:fillColor="#D03429"/>
+  </group>
 </vector>

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationSet
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.transition.Fade
 import com.example.myapplication.R
@@ -35,7 +36,6 @@ class SignUpFragment : Fragment() {
 
         btnXClick()
         btnGetStartedClick()
-
     }
 
 
@@ -54,6 +54,7 @@ class SignUpFragment : Fragment() {
                     } else {
                         // Error occurred
                         callBack(false)
+                        Toast.makeText(context,"Error:"+it.exception.toString(),Toast.LENGTH_SHORT).show()
                         Log.e("isEmailRegistered",it.exception.toString())
                     }
             }
@@ -67,13 +68,14 @@ class SignUpFragment : Fragment() {
     private fun checkEmailIfExist(email:String){
         isEmailRegistered(binding.edtEmail.text.toString()){
             if (it){
+                Log.e("IsEmailRegistered","callback is true")
                 findNavController().navigate(SignUpFragmentDirections.actionSignUpToSignIn(email))
             }else{
+                Log.e("IsEmailRegistered","callback is false")
                 auth.currentUser?.delete()
                 findNavController().navigate(SignUpFragmentDirections.actionSignInMainToCreateAccount(email))
             }
         }
-
     }
 
 
@@ -90,7 +92,6 @@ class SignUpFragment : Fragment() {
         binding.btnGetStarted.setOnClickListener {
             if (!binding.edtEmail.text.isNullOrEmpty()) {
                 checkEmailIfExist(binding.edtEmail.text.toString())
-
             } else{
                 binding.emailTil.error = "Email is required!"
             }

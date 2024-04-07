@@ -29,12 +29,10 @@
 
 
     //Splash screen theme
-    <style name="SplashScreenTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorPrimary">@color/black</item>
-        <item name="android:windowBackground">@color/black</item>
-        <item name="android:editTextColor">@color/white</item>
-        <item name="hintTextColor">@color/white</item>
+    <style name="SplashScreenTheme" parent="Theme.SplashScreen"
+        >
+        <item name="postSplashScreenTheme">@style/Base.Theme.MyApplication</item>
+
     </style>
 
 
