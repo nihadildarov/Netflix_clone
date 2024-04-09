@@ -42,7 +42,7 @@
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@color/gray"
         app:itemTextColor="@color/gray"
-        app:itemIconSize="24dp"
+        app:itemIconSize="20dp"
         app:itemActiveIndicatorStyle="@android:color/transparent"
         />
 

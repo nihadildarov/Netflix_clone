@@ -48,15 +48,13 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen().apply {
-            Thread.sleep(2000)
-        }
+        installSplashScreen()
 
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initNav()
-        binding.btmNav.setBackgroundColor(resources.getColor(R.color.dark_gray))
+        binding.btmNav.setBackgroundColor(resources.getColor(R.color.black))
         btmNavVisibilityControl()
         setOrientation()
         networkStatus()

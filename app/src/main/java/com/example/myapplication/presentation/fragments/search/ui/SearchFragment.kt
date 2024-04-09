@@ -89,6 +89,10 @@ class SearchFragment : Fragment() {
             }
         })
 
+
+
+
+
         binding.rcyRecommendedGames.adapter = adapterGames
         binding.rcyRecommendedMovies.adapter = adapterMovie
         binding.rcySearchResultMovies.adapter = adapterMedium

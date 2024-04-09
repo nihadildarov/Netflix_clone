@@ -57,9 +57,9 @@ class MovieAdapterRecyclersContinueWatching(
         fun bind(movie: MovieResult) {
 
 
-            binding.videoPlayer.setOnClickListener {
-                movieClickListener.movieClickListener(movie.id.toLong())
-            }
+//            binding..setOnClickListener {
+//                movieClickListener.movieClickListener(movie.id.toLong())
+//            }
         }
     }
 

@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/img" />
+                    android:src="@drawable/netflix_avatar1" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -47,6 +47,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:src="@drawable/ic_edit"
+                android:backgroundTint="@color/divider"
                 app:layout_constraintBottom_toBottomOf="@id/cardViewAvatar"
                 app:layout_constraintEnd_toEndOf="@id/cardViewAvatar"
                 app:layout_constraintStart_toEndOf="@id/cardViewAvatar"

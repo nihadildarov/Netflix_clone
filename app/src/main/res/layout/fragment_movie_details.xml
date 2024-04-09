@@ -29,7 +29,7 @@
             android:id="@+id/imgProfile"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/img"
+            android:src="@drawable/netflix_avatar1"
             android:scaleType="fitXY"
             android:layout_gravity="end"
             android:background="@android:color/transparent"

@@ -6,18 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationSet
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import androidx.transition.Fade
-import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentSignUpBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.auth
-import com.google.firebase.auth.oAuthCredential
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding

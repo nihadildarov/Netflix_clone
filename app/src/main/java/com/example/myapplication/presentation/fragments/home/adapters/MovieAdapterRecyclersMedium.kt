@@ -72,7 +72,7 @@ class MovieAdapterRecyclersMedium(
             binding.imgMediumPoster.setOnClickListener {
                 movieClickListener.movieClickListener(movie.id.toLong())
             }
-            Log.i("movie111",img)
+
         }
     }
 

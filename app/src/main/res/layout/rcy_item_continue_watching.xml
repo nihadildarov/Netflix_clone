@@ -13,120 +13,105 @@
 
 
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/progressBar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        style="?android:attr/progressBarStyleLarge"-->
-<!--        app:indicatorColor="@color/red"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="?android:attr/progressBarStyleLarge"
+        app:indicatorColor="@color/red"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-<!--&lt;!&ndash;        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/imgWatched"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="104dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="136dp"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:layout_constraintBottom_toTopOf="@id/guide"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:autoPlay="false"/>&ndash;&gt;-->
-
-<!--        <ImageView-->
+<!--        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView-->
 <!--            android:id="@+id/imgWatched"-->
 <!--            android:layout_width="104dp"-->
 <!--            android:layout_height="136dp"-->
 <!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
 <!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
 <!--            app:layout_constraintBottom_toTopOf="@id/guide"-->
-<!--            android:src="@drawable/img"-->
-<!--            android:scaleType="fitXY"-->
-<!--            />-->
+<!--            app:autoPlay="false"/>-->
 
-<!--        <ImageButton-->
-<!--            android:layout_width="55dp"-->
-<!--            android:layout_height="55dp"-->
-<!--            app:layout_constraintTop_toTopOf="@id/imgWatched"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/imgWatched"-->
-<!--            app:layout_constraintStart_toStartOf="@id/imgWatched"-->
-<!--            app:layout_constraintEnd_toEndOf="@id/imgWatched"-->
-<!--            android:background="@drawable/bg_btn_play_alpha"-->
-<!--            android:src="@drawable/ic_play"-->
-<!--            app:tint="@color/white"-->
-<!--            android:scaleType="fitXY"-->
-<!--            android:padding="10dp"-->
+        <ImageView
+            android:id="@+id/imgWatched"
+            android:layout_width="104dp"
+            android:layout_height="136dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/guide"
+            android:src="@drawable/img"
+            android:scaleType="fitXY"
+            />
 
-<!--            />-->
+        <ImageButton
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:layout_constraintTop_toTopOf="@id/imgWatched"
+            app:layout_constraintBottom_toBottomOf="@id/imgWatched"
+            app:layout_constraintStart_toStartOf="@id/imgWatched"
+            app:layout_constraintEnd_toEndOf="@id/imgWatched"
+            android:background="@drawable/bg_btn_play_alpha"
+            android:src="@drawable/ic_play"
+            app:tint="@color/white"
+            android:scaleType="fitXY"
+            android:padding="10dp"
 
-
-<!--        <androidx.constraintlayout.widget.Guideline-->
-<!--            android:id="@+id/guide"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="horizontal"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintGuide_percent="0.78"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/imgBtnInfo"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:src="@drawable/ic_info"-->
-
-<!--            android:scaleType="fitCenter"-->
-<!--            android:backgroundTint="@android:color/transparent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/guide"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toStartOf="@id/imgBtnDots"/>-->
+            />
 
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/imgBtnDots"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            android:src="@drawable/ic_vertical_dots"-->
-<!--            android:backgroundTint="@android:color/transparent"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/imgBtnInfo"-->
-<!--            app:layout_constraintStart_toEndOf="@id/imgBtnInfo"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="@id/imgBtnInfo"/>-->
-
-
-
-
-
-
-
-
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-
-        android:id="@+id/videoPlayer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleSmall"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.78"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imgBtnInfo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_info"
+
+            android:scaleType="fitCenter"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imgBtnDots"/>
+
+
+        <ImageButton
+            android:id="@+id/imgBtnDots"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_vertical_dots"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@id/imgBtnInfo"
+            app:layout_constraintStart_toEndOf="@id/imgBtnInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgBtnInfo"/>
+
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </com.google.android.material.card.MaterialCardView>

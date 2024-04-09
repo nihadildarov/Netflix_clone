@@ -30,7 +30,8 @@
         app:strokeWidth="0dp"
         app:rippleColor="@color/gray"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:backgroundTint="@android:color/transparent">
 
         <ImageView
             android:id="@+id/imgSmallPoster"

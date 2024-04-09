@@ -14,7 +14,7 @@ import com.example.myapplication.domain.remote.models.MovieResult
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
 import com.squareup.picasso.Picasso
 
-class MovieAdapterRecyclersBig(
+class   MovieAdapterRecyclersBig(
     private val movieClickListener: MovieClickListener
 ) : RecyclerView.Adapter<MovieAdapterRecyclersBig.RcyViewHolder>() {
 

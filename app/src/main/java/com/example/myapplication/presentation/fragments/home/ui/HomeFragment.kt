@@ -27,12 +27,13 @@ import com.example.myapplication.R
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.FragmentHomeBinding
 import com.example.myapplication.domain.remote.Mapper.toMovieResult
-import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclerDownloads
+import com.example.myapplication.domain.remote.models.MovieResult
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersBig
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersContinueWatching
 import com.example.myapplication.presentation.fragments.home.adapters.MovieAdapterRecyclersMedium
-import com.example.myapplication.presentation.fragments.home.adapters.GamesAdapterRecyclersGames
 import com.example.myapplication.presentation.adapter_listener.MovieClickListener
+import com.example.myapplication.presentation.fragments.home.adapters.AdapterHomeRecyclerCollection
+import com.example.myapplication.presentation.fragments.home.model.ChildRcyModel
 import com.example.myapplication.presentation.fragments.home.viewmodel.HomeViewModel
 import com.example.myapplication.util.Resource
 import com.squareup.picasso.Picasso
@@ -57,11 +58,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setBigPoster()
-        createRecyclers()
         searchBtnClick()
         btnProfileClick()
-
-
+        cardViewPosterClick()
+        setRecyclers()
     }
 
 
@@ -103,7 +103,11 @@ class HomeFragment : Fragment() {
                     Picasso.get().load(url).into(binding.imgPosterHeader)
                     binding.imgPosterHeader.setOnClickListener {
                         Toast.makeText(context, movie.title, Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movie.id.toLong()))
+                        findNavController().navigate(
+                            HomeFragmentDirections.actionHomeToMovieDetails(
+                                movie.id.toLong()
+                            )
+                        )
 
                     }
                     btnPlayClickBigPoster(movie.id.toLong())
@@ -156,25 +160,31 @@ class HomeFragment : Fragment() {
 
 
     private fun setViewModelData(
-        adapterBig: MovieAdapterRecyclersBig,
-        adapterContinueWatching: MovieAdapterRecyclersContinueWatching
+        adapterParent: AdapterHomeRecyclerCollection
     ) {
         viewModel.popularMovieList.observe(viewLifecycleOwner) {
             when (it) {
                 Resource.Loading -> {
-                    adapterBig.showProgress()
+                    adapterParent.showProgress()
                 }
 
                 is Resource.Success -> {
-                    adapterBig.hideProgress()
-                    adapterBig.submitList(it.data.toMovieResult())
+                    adapterParent.hideProgress()
+                    adapterParent.submitList(
+                        listOf(
+                            ChildRcyModel(
+                                "Text1",
+                                it.data.toMovieResult()
+                            )
+                        )
+                    )
                 }
 
                 is Resource.Error -> {
+                    adapterParent.showProgress()
                     Toast.makeText(context, "Error Occurred", Toast.LENGTH_LONG).show()
                     Log.e("popularMovieListObserve", "Error occurred: ${it.exception}")
                 }
-
             }
 
         }
@@ -183,11 +193,10 @@ class HomeFragment : Fragment() {
         viewModel.upComingMovieList.observe(viewLifecycleOwner) {
             when (it) {
                 Resource.Loading -> {
-                    //Set progressbar visible
                 }
 
                 is Resource.Success -> {
-                    adapterContinueWatching.submitList(it.data.toMovieResult())
+
                 }
 
                 is Resource.Error -> {
@@ -200,35 +209,124 @@ class HomeFragment : Fragment() {
 
 
     private fun setTopRatedMovieFromViewModel(
-        adapterMedium: MovieAdapterRecyclersMedium
+        adapterParent: AdapterHomeRecyclerCollection
     ) {
+
+
         viewModel.topRatedMovieList.observe(viewLifecycleOwner) {
             when (it) {
                 Resource.Loading -> {
-                    adapterMedium.showProgress()
+                    adapterParent.showProgress()
                 }
 
                 is Resource.Success -> {
-                    adapterMedium.hideProgress()
-                    adapterMedium.submitList(it.data.toMovieResult().shuffled())
+
+
+                    adapterParent.hideProgress()
+
+
+                    adapterParent.submitList(
+                        listOf(
+                            ChildRcyModel(getTextList()[0],it.data.toMovieResult().asReversed()),
+                            ChildRcyModel(getTextList()[1],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[2],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[3],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[4],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[5],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[6],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[7],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[8],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[9],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[10],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[11],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[12],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[13],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[14],it.data.toMovieResult()),
+                            ChildRcyModel(getTextList()[15],it.data.toMovieResult())
+                        )
+                    )
+
                 }
 
                 is Resource.Error -> {
-                    adapterMedium.showProgress()
+                    adapterParent.showProgress()
                     Toast.makeText(context, "Error Occurred", Toast.LENGTH_LONG).show()
-                    Log.e("topRatedMovieListObserve", "Error occurred: ${it.exception}")
                 }
             }
         }
     }
 
 
-    private fun createRecyclers() {
+    private fun cardViewPosterClick() {
+        binding.cardViewPoster.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_movieDetails)
+        }
+    }
 
 
-        val textList = listOf<Any>(
-            //"Mobile Games",
-            //"Downloads For You",
+    private fun searchBtnClick() {
+        binding.imgSearch.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeToSearch())
+        }
+    }
+
+    private fun btnPlayClickBigPoster(movieId: Long) {
+        binding.btnPlayHeader.setOnClickListener {
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToFullScreenFragment(
+                    movieId
+                )
+            )
+        }
+    }
+
+    private fun btnProfileClick() {
+        binding.imgAvatar.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfilesAndMoreFragment())
+        }
+    }
+
+
+    private fun setRecyclers() {
+        val adapterMedium = MovieAdapterRecyclersMedium(object : MovieClickListener {
+            override fun movieClickListener(movieId: Long) {
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeToMovieDetails(movieId)
+                )
+            }
+        })
+
+        val adapterBig = MovieAdapterRecyclersBig(object : MovieClickListener {
+            override fun movieClickListener(movieId: Long) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movieId))
+            }
+        })
+
+        val adapterContinueWatching = MovieAdapterRecyclersContinueWatching(object :
+            MovieClickListener {
+            override fun movieClickListener(movieId: Long) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movieId))
+            }
+        })
+
+        binding.rcyHomeRecyclersCollection.layoutManager = LinearLayoutManager(requireContext())
+        val adapterParent =
+            AdapterHomeRecyclerCollection(adapterBig, adapterMedium, adapterContinueWatching)
+        setTopRatedMovieFromViewModel(adapterParent)
+        binding.rcyHomeRecyclersCollection.adapter = adapterParent
+
+    }
+
+    private fun submitListParentAdapter(adapterParent: AdapterHomeRecyclerCollection,movieResult:List<MovieResult>){
+        val textList = getTextList()
+        for (i in textList){
+            adapterParent.submitList(listOf( ChildRcyModel(i,movieResult)))
+        }
+    }
+
+
+    private fun getTextList(): List<String> {
+        return listOf(
             "Soapy TV Dramas",
             "Bingeworthy TV Shows",
             "Critically-acclaimed Dark US TV Shows",
@@ -267,240 +365,16 @@ class HomeFragment : Fragment() {
             "Because you watched Love Tactics",
             "Watch In One Night"
         )
-
-
-        val adapterBig = MovieAdapterRecyclersBig(object : MovieClickListener {
-            override fun movieClickListener(movieId: Long) {
-                findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movieId))
-            }
-        })
-
-        val adapterContinueWatching = MovieAdapterRecyclersContinueWatching(object :
-            MovieClickListener {
-            override fun movieClickListener(movieId: Long) {
-                findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(movieId))
-            }
-
-        })
-
-        setViewModelData(adapterBig, adapterContinueWatching)
-
-
-
-        binding.cardViewPoster.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_movieDetails)
-        }
-
-
-        var prevId = 1
-
-
-
-        for (i in 1..textList.size) {
-            val adapterMedium = MovieAdapterRecyclersMedium(object : MovieClickListener {
-                override fun movieClickListener(movieId: Long) {
-                    findNavController().navigate(
-                        HomeFragmentDirections.actionHomeToMovieDetails(
-                            movieId
-                        )
-                    )
-                }
-
-            })
-
-            setTopRatedMovieFromViewModel(adapterMedium)
-
-            val constraintLayout = binding.constraintHome
-            val constraintSet = ConstraintSet()
-
-
-            val textHeader = TextView(requireContext())
-            textHeader.text = textList[i - 1].toString()
-            textHeader.id = View.generateViewId()
-            textHeader.setTextColor(resources.getColor(R.color.white))
-            val paramsTxt = ConstraintLayout.LayoutParams(
-                0,
-                -2
-            )
-            textHeader.layoutParams = paramsTxt
-            textHeader.setTypeface(null, Typeface.BOLD)
-            textHeader.textSize = 18f
-
-
-            val recycler = RecyclerView(requireContext())
-            recycler.id = View.generateViewId()
-            recycler.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            val paramsRcy = ConstraintLayout.LayoutParams(
-                ConstraintLayout.LayoutParams.MATCH_PARENT,
-                ConstraintLayout.LayoutParams.WRAP_CONTENT
-            )
-            recycler.layoutParams = paramsRcy
-
-            constraintLayout.addView(textHeader)
-            constraintLayout.addView(recycler)
-
-            constraintSet.clone(constraintLayout)
-
-
-            //TextHeaders constraints
-            //Top
-            if (i == 1) {
-                constraintSet.connect(
-                    textHeader.id,
-                    ConstraintSet.TOP,
-                    binding.cardViewPoster.id,
-                    ConstraintSet.BOTTOM,
-                    50
-                )
-            } else {
-                constraintSet.connect(
-                    textHeader.id,
-                    ConstraintSet.TOP,
-                    prevId,
-                    ConstraintSet.BOTTOM,
-                    50
-                )
-            }
-
-            //Start
-            constraintSet.connect(
-                textHeader.id,
-                ConstraintSet.START,
-                ConstraintSet.PARENT_ID,
-                ConstraintSet.START,
-                30
-            )
-            //End
-            if (textList[i - 1] == "Mobile Games" || textList[i - 1] == "My List") {
-                val txtMyList = TextView(requireContext())
-                when (textList[i - 1]) {
-                    "Mobile Games" -> txtMyList.text = "My List"
-                    "My List" -> txtMyList.text = "See All"
-                }
-
-                txtMyList.id = View.generateViewId()
-                txtMyList.setTextColor(resources.getColor(R.color.white))
-                val paramsTxtMyList = ConstraintLayout.LayoutParams(
-                    -2,
-                    -2
-                )
-                txtMyList.layoutParams = paramsTxtMyList
-                txtMyList.setTypeface(null, Typeface.BOLD)
-                txtMyList.textSize = 18f
-                txtMyList.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
-                txtMyList.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                    null, null,
-                    ContextCompat.getDrawable(requireContext(), R.drawable.ic_chevron_right), null
-                )
-                constraintLayout.addView(txtMyList)
-
-                //START
-                constraintSet.connect(
-                    txtMyList.id,
-                    ConstraintSet.START,
-                    textHeader.id,
-                    ConstraintSet.END
-                )
-
-                //TOP
-                constraintSet.connect(
-                    txtMyList.id,
-                    ConstraintSet.TOP,
-                    textHeader.id,
-                    ConstraintSet.TOP
-                )
-                //END
-                constraintSet.connect(
-                    txtMyList.id,
-                    ConstraintSet.END,
-                    ConstraintSet.PARENT_ID,
-                    ConstraintSet.END
-                )
-                //BOTTOM
-                constraintSet.connect(
-                    txtMyList.id,
-                    ConstraintSet.BOTTOM,
-                    textHeader.id,
-                    ConstraintSet.BOTTOM
-                )
-
-                constraintSet.connect(
-                    textHeader.id,
-                    ConstraintSet.END,
-                    txtMyList.id,
-                    ConstraintSet.START
-                )
-            } else {
-                constraintSet.connect(
-                    textHeader.id,
-                    ConstraintSet.END,
-                    ConstraintSet.PARENT_ID,
-                    ConstraintSet.END
-                )
-            }
-
-
-            //Recyclers constraints
-            //Top
-            constraintSet.connect(
-                recycler.id,
-                ConstraintSet.TOP,
-                textHeader.id,
-                ConstraintSet.BOTTOM,
-                8
-            )
-            //Start
-            constraintSet.connect(
-                recycler.id,
-                ConstraintSet.START,
-                ConstraintSet.PARENT_ID,
-                ConstraintSet.START,
-                10
-            )
-            //End
-            constraintSet.connect(
-                recycler.id,
-                ConstraintSet.END,
-                ConstraintSet.PARENT_ID,
-                ConstraintSet.END
-            )
-
-
-
-            prevId = recycler.id
-
-            //Setting recyclers adapters
-            when {
-                textList[i - 1] == "Only on Netflix" -> recycler.adapter = adapterBig
-                textList[i - 1] == "Continue watching" -> recycler.adapter = adapterContinueWatching
-                else -> recycler.adapter = adapterMedium
-
-            }
-
-            constraintSet.applyTo(constraintLayout)
-        }
     }
 
 
-    private fun searchBtnClick() {
-        binding.imgSearch.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeToSearch())
+    private fun setProgressVisibilityForParentAdapter(adapterParent: AdapterHomeRecyclerCollection,isVisible: Boolean){
+        if (isVisible){
+            adapterParent.showProgress()
+        }else{
+            adapterParent.hideProgress()
         }
     }
-
-    private fun btnPlayClickBigPoster(movieId:Long){
-        binding.btnPlayHeader.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFullScreenFragment(movieId))
-        }
-    }
-
-    private fun btnProfileClick(){
-        binding.imgAvatar.setOnClickListener{
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfilesAndMoreFragment())
-        }
-    }
-
 }
 
 

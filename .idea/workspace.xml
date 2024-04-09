@@ -122,11 +122,6 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_youtube_player.xml">
-        <config>
-          <theme>@style/Theme.MyApplication</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/gs_item_page.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
@@ -135,6 +130,11 @@
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/rcy_first_item_downloads.xml">
         <config>
           <theme>@style/Theme.MyApplication</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/rcy_home_items_child_rcys.xml">
+        <config>
+          <theme>@style/Base.Theme.MyApplication</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/rcy_item_accounts.xml">
@@ -203,10 +203,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1878a53f-51cd-484c-9c5f-0526dd177420" name="Changes" comment="Pin dialog vibration settled">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/animator/logo_animator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/animated_logo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-v31/themes.xml" afterDir="false" />
+    <list default="true" id="1878a53f-51cd-484c-9c5f-0526dd177420" name="Changes" comment="updated">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapters/AdapterHomeRecyclerCollection.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/model/ChildRcyModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/rcy_home_items_child_rcys.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
@@ -214,17 +214,31 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/YoutubePlayerFragment.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/activities/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapters/MovieAdapterRecyclersBig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapters/MovieAdapterRecyclersBig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapters/MovieAdapterRecyclersContinueWatching.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapters/MovieAdapterRecyclersContinueWatching.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapters/MovieAdapterRecyclersMedium.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/adapters/MovieAdapterRecyclersMedium.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/ui/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/ui/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/search/ui/SearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/search/ui/SearchFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/signup/ui/SignUpFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/signup/ui/SignUpFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_netflix_logo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_netflix_logo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_netflix_short_logo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_netflix_short_logo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_account_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_account_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_downloads.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_downloads.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_movie_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_movie_details.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_hot.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_hot.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sign_in.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_youtube_player.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rcy_item_accounts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rcy_item_accounts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rcy_item_continue_watching.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rcy_item_continue_watching.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rcy_movie_item_big_poster.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rcy_movie_item_big_poster.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rcy_movie_item_games.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rcy_movie_item_games.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rcy_movie_item_medium_poster.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rcy_movie_item_medium_poster.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +248,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/macbookair/.android/avd/Pixel_5.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[WK4H6DEIORG64DTS]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -283,13 +297,13 @@
       <list>
         <option value="navigationResourceFile" />
         <option value="Kotlin Enum" />
-        <option value="layoutResourceFile" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Object" />
         <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
         <option value="resourceFile" />
         <option value="valueResourceFile" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -302,7 +316,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Creating_Downloads_Fragment" />
+        <entry key="$PROJECT_DIR$" value="Architecture_creation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -332,6 +346,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ScreenRecorder.SavePath&quot;: &quot;/Users/macbookair&quot;,
     &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/Toolbar.java_SELECTED&quot;: &quot;Toolbar&quot;,
     &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/androidx.viewpager2/viewpager2/1.0.0/3c3569044e6969f1ee5c3aa03b08e6717a2d782f/viewpager2-1.0.0-sources.jar!/androidx/viewpager2/widget/ViewPager2.java_SELECTED&quot;: &quot;ViewPager2&quot;,
     &quot;android-custom-view/Users/macbookair/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.11.0/47456a5ab79e72baca757532823ea1fa08e001d3/material-1.11.0-sources.jar!/com/google/android/material/button/MaterialButton.java_SELECTED&quot;: &quot;MaterialButton&quot;,
@@ -341,7 +356,7 @@
     &quot;android-custom-view/Users/macbookair/Library/Android/sdk/sources/android-34/android/view/ViewGroup.java_SELECTED&quot;: &quot;ViewGroup&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Architecture__creation&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;EditHomeRecyclers&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/macbookair/Desktop/Android Projects/Netflix_clone/app/src/main/res/drawable&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
   },
@@ -370,11 +385,11 @@
       <recent name="com.example.myapplication" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.myapplication.presentation.fragments.home.model" />
+      <recent name="com.example.myapplication.presentation.fragments.home" />
       <recent name="com.example.myapplication.presentation.fragments.accounts.ui" />
       <recent name="com.example.myapplication.data.remote.models" />
       <recent name="com.example.myapplication.presentation.fragments.profiles_and_more" />
-      <recent name="com.example.myapplication.presentation.fragments.account_settings" />
-      <recent name="com.example.myapplication.presentation.fragments.fullscreen" />
     </key>
     <key name="android.template.2019067339">
       <recent name="com.example.myapplication" />
@@ -487,14 +502,6 @@
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
       <updated>1699993772412</updated>
-    </task>
-    <task id="LOCAL-00005" summary="updated">
-      <option name="closed" value="true" />
-      <created>1703425527957</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1703425527957</updated>
     </task>
     <task id="LOCAL-00006" summary="updated">
       <option name="closed" value="true" />
@@ -864,7 +871,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712228052675</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="updated">
+      <option name="closed" value="true" />
+      <created>1712523866097</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1712523866097</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -880,7 +895,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="New&amp;Hot fragment recyclers settled properly" />
     <MESSAGE value="added game name in game item layout of home fragment" />
     <MESSAGE value="Recycler smooth scroll settled up in newHot fragment" />
     <MESSAGE value="Header pane created" />
@@ -902,10 +916,11 @@
     <MESSAGE value="Picture in Picture mode settled but worker for every fragments. Need to develop" />
     <MESSAGE value="CheckNetworkConnectivity established for main fragment" />
     <MESSAGE value="Mapper in" />
-    <MESSAGE value="updated" />
     <MESSAGE value="UseCases added and settled up domain layer" />
     <MESSAGE value="Pin dialog actions settled without fireStore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pin dialog actions settled without fireStore" />
+    <MESSAGE value="Pin dialog vibration settled" />
+    <MESSAGE value="updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -948,7 +963,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/myapplication/presentation/fragments/home/ui/HomeFragment.kt</url>
-          <line>57</line>
+          <line>58</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>

@@ -22,14 +22,15 @@
             android:backgroundTint="@android:color/transparent"
             android:src="@drawable/ic_back_arrow" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imgProfile"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
+            android:scaleType="centerCrop"
             android:backgroundTint="@android:color/transparent"
-            android:src="@drawable/img" />
+            android:src="@drawable/netflix_avatar1" />
 
 
     </com.google.android.material.appbar.MaterialToolbar>

@@ -48,7 +48,7 @@
         android:layout_height="45dp"
         android:padding="3dp"
         android:scaleType="fitXY"
-        android:src="@drawable/img"
+        android:src="@drawable/netflix_avatar1"
         app:layout_constraintBottom_toBottomOf="@id/txtPageName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/txtPageName" />
