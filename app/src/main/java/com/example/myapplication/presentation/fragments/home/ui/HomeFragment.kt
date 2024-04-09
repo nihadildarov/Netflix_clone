@@ -2,7 +2,6 @@ package com.example.myapplication.presentation.fragments.home.ui
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
@@ -13,16 +12,11 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.util.Constants.IMAGE_URL
 import com.example.myapplication.databinding.FragmentHomeBinding
@@ -172,7 +166,7 @@ class HomeFragment : Fragment() {
                     adapterParent.hideProgress()
                     adapterParent.submitList(
                         listOf(
-                            ChildRcyModel(
+                            ChildRcyModel(0,
                                 "Text1",
                                 it.data.toMovieResult()
                             )
@@ -220,29 +214,47 @@ class HomeFragment : Fragment() {
                 }
 
                 is Resource.Success -> {
-
-
                     adapterParent.hideProgress()
-
 
                     adapterParent.submitList(
                         listOf(
-                            ChildRcyModel(getTextList()[0],it.data.toMovieResult().asReversed()),
-                            ChildRcyModel(getTextList()[1],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[2],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[3],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[4],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[5],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[6],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[7],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[8],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[9],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[10],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[11],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[12],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[13],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[14],it.data.toMovieResult()),
-                            ChildRcyModel(getTextList()[15],it.data.toMovieResult())
+                            ChildRcyModel(0,getTextList()[0],it.data.toMovieResult()),
+                            ChildRcyModel(1,getTextList()[1],it.data.toMovieResult()),
+                            ChildRcyModel(2,getTextList()[2],it.data.toMovieResult()),
+                            ChildRcyModel(3,getTextList()[3],it.data.toMovieResult()),
+                            ChildRcyModel(4,getTextList()[4],it.data.toMovieResult()),
+                            ChildRcyModel(5,getTextList()[5],it.data.toMovieResult()),
+                            ChildRcyModel(6,getTextList()[6],it.data.toMovieResult()),
+                            ChildRcyModel(7,getTextList()[7],it.data.toMovieResult()),
+                            ChildRcyModel(8,getTextList()[8],it.data.toMovieResult()),
+                            ChildRcyModel(9,getTextList()[9],it.data.toMovieResult()),
+                            ChildRcyModel(10,getTextList()[10],it.data.toMovieResult()),
+                            ChildRcyModel(11,getTextList()[11],it.data.toMovieResult()),
+                            ChildRcyModel(12,getTextList()[12],it.data.toMovieResult()),
+                            ChildRcyModel(13,getTextList()[13],it.data.toMovieResult()),
+                            ChildRcyModel(14,getTextList()[14],it.data.toMovieResult()),
+                            ChildRcyModel(15,getTextList()[15],it.data.toMovieResult()),
+                            ChildRcyModel(16,getTextList()[16],it.data.toMovieResult()),
+                            ChildRcyModel(17,getTextList()[17],it.data.toMovieResult()),
+                            ChildRcyModel(18,getTextList()[18],it.data.toMovieResult()),
+                            ChildRcyModel(19,getTextList()[19],it.data.toMovieResult()),
+                            ChildRcyModel(20,getTextList()[20],it.data.toMovieResult()),
+                            ChildRcyModel(21,getTextList()[21],it.data.toMovieResult()),
+                            ChildRcyModel(22,getTextList()[22],it.data.toMovieResult()),
+                            ChildRcyModel(23,getTextList()[23],it.data.toMovieResult()),
+                            ChildRcyModel(24,getTextList()[24],it.data.toMovieResult()),
+                            ChildRcyModel(25,getTextList()[25],it.data.toMovieResult()),
+                            ChildRcyModel(26,getTextList()[26],it.data.toMovieResult()),
+                            ChildRcyModel(27,getTextList()[27],it.data.toMovieResult()),
+                            ChildRcyModel(28,getTextList()[28],it.data.toMovieResult()),
+                            ChildRcyModel(29,getTextList()[29],it.data.toMovieResult()),
+                            ChildRcyModel(30,getTextList()[30],it.data.toMovieResult()),
+                            ChildRcyModel(31,getTextList()[31],it.data.toMovieResult()),
+                            ChildRcyModel(32,getTextList()[32],it.data.toMovieResult()),
+                            ChildRcyModel(33,getTextList()[33],it.data.toMovieResult()),
+                            ChildRcyModel(34,getTextList()[34],it.data.toMovieResult()),
+                            ChildRcyModel(35,getTextList()[35],it.data.toMovieResult()),
+                            ChildRcyModel(36,getTextList()[36],it.data.toMovieResult())
                         )
                     )
 
@@ -288,13 +300,9 @@ class HomeFragment : Fragment() {
 
 
     private fun setRecyclers() {
-        val adapterMedium = MovieAdapterRecyclersMedium(object : MovieClickListener {
-            override fun movieClickListener(movieId: Long) {
-                findNavController().navigate(
-                    HomeFragmentDirections.actionHomeToMovieDetails(movieId)
-                )
-            }
-        })
+        val adapterMedium = MovieAdapterRecyclersMedium{
+            findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(it))
+        }
 
         val adapterBig = MovieAdapterRecyclersBig(object : MovieClickListener {
             override fun movieClickListener(movieId: Long) {
@@ -320,7 +328,7 @@ class HomeFragment : Fragment() {
     private fun submitListParentAdapter(adapterParent: AdapterHomeRecyclerCollection,movieResult:List<MovieResult>){
         val textList = getTextList()
         for (i in textList){
-            adapterParent.submitList(listOf( ChildRcyModel(i,movieResult)))
+            adapterParent.submitList(listOf( ChildRcyModel(9,i,movieResult)))
         }
     }
 

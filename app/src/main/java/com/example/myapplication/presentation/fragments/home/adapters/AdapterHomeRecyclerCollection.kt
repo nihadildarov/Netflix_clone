@@ -3,23 +3,29 @@ package com.example.myapplication.presentation.fragments.home.adapters
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.findFragment
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.RcyHomeItemsChildRcysBinding
 import com.example.myapplication.presentation.fragments.home.model.ChildRcyModel
+import com.example.myapplication.presentation.fragments.home.ui.HomeFragment
+import com.example.myapplication.presentation.fragments.home.ui.HomeFragmentDirections
+import kotlin.random.Random
 
 class AdapterHomeRecyclerCollection(
     private val movieAdapterBig: MovieAdapterRecyclersBig,
-    private val movieAdapterRecyclersMedium: MovieAdapterRecyclersMedium,
+    private var movieAdapterRecyclersMedium: MovieAdapterRecyclersMedium,
     private val movieAdapterRecyclersContinueWatching: MovieAdapterRecyclersContinueWatching
 ) : RecyclerView.Adapter<AdapterHomeRecyclerCollection.ViewHolderHomeRecyclerCollection>() {
 
     private var progressVisibility = false
     private val itemCallBack = object : DiffUtil.ItemCallback<ChildRcyModel>() {
         override fun areItemsTheSame(oldItem: ChildRcyModel, newItem: ChildRcyModel): Boolean {
-            return oldItem.header == newItem.header || oldItem.recycler == newItem.recycler
+            return oldItem.id == newItem.id && oldItem === newItem
         }
 
         override fun areContentsTheSame(oldItem: ChildRcyModel, newItem: ChildRcyModel): Boolean {
@@ -48,20 +54,23 @@ class AdapterHomeRecyclerCollection(
     override fun onBindViewHolder(holder: ViewHolderHomeRecyclerCollection, position: Int) {
         val current = diffUtil.currentList[position]
 
-        holder.bind(current, position)
+        holder.bind(current)
     }
 
 
     inner class ViewHolderHomeRecyclerCollection(
         private val binding: RcyHomeItemsChildRcysBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(childItem: ChildRcyModel, position: Int) {
+
+
+        fun bind(childItem: ChildRcyModel) {
             binding.txtRcyHeaders.text = childItem.header
             binding.rcyHomeRecyclersItem.layoutManager =
                 LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
 
 
 
+            val shuffledList = childItem.recycler.shuffled()
             Log.i("childItemHeaderName", childItem.header)
             when (childItem.header) {
 
@@ -76,9 +85,17 @@ class AdapterHomeRecyclerCollection(
                     movieAdapterRecyclersContinueWatching.submitList(childItem.recycler.shuffled())
                 }
 
+
                 else -> {
+
+                    movieAdapterRecyclersMedium = MovieAdapterRecyclersMedium {
+                        val action = itemView.findFragment<HomeFragment>()
+                        action.findNavController().navigate(HomeFragmentDirections.actionHomeToMovieDetails(it))
+                    }
+                    Log.e("MediumAdapter",shuffledList.toString())
                     binding.rcyHomeRecyclersItem.adapter = movieAdapterRecyclersMedium
-                    movieAdapterRecyclersMedium.submitList(childItem.recycler.shuffled())
+                    movieAdapterRecyclersMedium.submitList(shuffledList)
+
                 }
             }
 
@@ -102,13 +119,14 @@ class AdapterHomeRecyclerCollection(
     }
 
 
-    fun showProgress():Boolean{
+    fun showProgress(){
         progressVisibility = true
-        return progressVisibility
+
     }
 
-    fun hideProgress():Boolean{
+    fun hideProgress(){
         progressVisibility = false
-        return progressVisibility
+
     }
 }
+

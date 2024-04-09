@@ -79,15 +79,9 @@ class SearchFragment : Fragment() {
         })
 
 
-        val adapterMedium = MovieAdapterRecyclersMedium(object : MovieClickListener {
-            override fun movieClickListener(movieId: Long) {
-                findNavController().navigate(
-                    SearchFragmentDirections.actionSearchToMovieDetails(
-                        movieId
-                    )
-                )
-            }
-        })
+        val adapterMedium = MovieAdapterRecyclersMedium{
+            findNavController().navigate(SearchFragmentDirections.actionSearchToMovieDetails(it))
+        }
 
 
 

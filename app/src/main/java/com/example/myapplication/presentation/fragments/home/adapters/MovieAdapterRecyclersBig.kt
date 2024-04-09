@@ -22,7 +22,7 @@ class   MovieAdapterRecyclersBig(
     private var isLoaded = false
     private val itemCallBack = object : DiffUtil.ItemCallback<MovieResult>() {
         override fun areItemsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem === newItem
         }
 
         override fun areContentsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {

@@ -1,6 +1,8 @@
 package com.example.myapplication.presentation.fragments.home.adapters
 
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -21,7 +23,7 @@ class MovieAdapterRecyclersContinueWatching(
     private var isLoaded = false
     private val itemCallBack = object : DiffUtil.ItemCallback<MovieResult>() {
         override fun areItemsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem === newItem
         }
 
         override fun areContentsTheSame(oldItem: MovieResult, newItem: MovieResult): Boolean {
@@ -56,19 +58,34 @@ class MovieAdapterRecyclersContinueWatching(
 
         fun bind(movie: MovieResult) {
 
+            with(binding) {
 
+                if (isLoaded) {
+                    imgWatched.visibility = VISIBLE
+                    imgBtnDots.visibility = VISIBLE
+                    imgBtnInfo.visibility = VISIBLE
+                    progressBar.visibility = GONE
+                }else{
+                    imgWatched.visibility = GONE
+                    imgBtnDots.visibility = GONE
+                    imgBtnInfo.visibility = GONE
+                    progressBar.visibility = VISIBLE
+                }
+            }
+
+            Picasso.get().load(IMAGE_URL + movie.posterPath).into(binding.imgWatched)
 //            binding..setOnClickListener {
 //                movieClickListener.movieClickListener(movie.id.toLong())
 //            }
         }
     }
 
-    fun hideProgress(){
+    fun hideProgress() {
         isLoaded = true
         notifyDataSetChanged()
     }
 
-    fun showProgress (){
+    fun showProgress() {
         isLoaded = false
         notifyDataSetChanged()
     }

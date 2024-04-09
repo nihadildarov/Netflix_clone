@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.domain.remote.models.MovieResult
 
 data class ChildRcyModel(
+    val id: Int,
     val header: String,
     val recycler : List<MovieResult>
 )
